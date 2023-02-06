@@ -12,7 +12,7 @@
 		E31BFF38298C11D700F213D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31BFF37298C11D700F213D2 /* Assets.xcassets */; };
 		E31BFF3B298C11D700F213D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31BFF3A298C11D700F213D2 /* Preview Assets.xcassets */; };
 		E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF43298D5F9D00F213D2 /* Book.swift */; };
-		E31BFF46298D60F000F213D2 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF45298D60F000F213D2 /* BookView.swift */; };
+		E39DDAB3298D681500D81486 /* ShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DDAB2298D681500D81486 /* ShelfView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +22,7 @@
 		E31BFF37298C11D700F213D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31BFF3A298C11D700F213D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E31BFF43298D5F9D00F213D2 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		E31BFF45298D60F000F213D2 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		E39DDAB2298D681500D81486 /* ShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				E31BFF35298C11D400F213D2 /* ContentView.swift */,
-				E31BFF45298D60F000F213D2 /* BookView.swift */,
+				E39DDAB2298D681500D81486 /* ShelfView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
-				E31BFF46298D60F000F213D2 /* BookView.swift in Sources */,
+				E39DDAB3298D681500D81486 /* ShelfView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
