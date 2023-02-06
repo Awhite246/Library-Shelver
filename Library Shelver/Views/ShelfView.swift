@@ -10,7 +10,16 @@ import SwiftUI
 //displays books and allows dragging around for reordering
 struct ShelfView: View {
     var body: some View {
-        Text("Hello, World!")
+        /* Sudo Code:
+         * Display a bunch of books (ZStack?)
+         * Simulate HStack through .offset
+         * Book spillage (off screen) moves next book to next shelf
+         * Have drag gesture change offset of book
+         * Use .onChange to dynamicly update other book positions
+         * Use .onEnded to finalize book positions
+         * Update book positions (array?) that checker will use
+         */
+        Text("Shelf View")
     }
 }
 
