@@ -10,9 +10,15 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("Library Shelver")
-        }
-        .padding()
+            
+        } .background(
+            ZStack {
+                Image("chalkboard1")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 1000, height: 300)
+            }
+        )
     }
 }
 
