@@ -19,17 +19,25 @@ struct ContentView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
-                    .frame(height: 600)
-    
+                    .frame(height: 400)
+                // adding 2 navigation links for the two gamemodes
                 NavigationLink(destination: ShelfView()) {
-                    Label("PLAY", systemImage: "")
+                    Label("DEWEY", systemImage: "")
+                        .foregroundColor(Color.green)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                }
+                .padding(50)
+                NavigationLink(destination: ShelfView()) {
+                    Label("FICTION", systemImage: "")
                         .foregroundColor(Color.green)
                         .font(.title)
                         .fontWeight(.bold)
                     
                 }
                 Spacer()
-                    .frame(height: 600)
+                    .frame(height: 400)
             } .background(
                 ZStack {
                     Image("chalkboard1")
