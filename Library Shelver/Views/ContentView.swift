@@ -9,21 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Library Shelver")
-                .foregroundColor(Color.yellow)
-                .font(.title)
-                .fontWeight(.bold)
+        NavigationView {
+            VStack {
                 Spacer()
-                .frame(height: 500)
-        } .background(
-            ZStack {
-                Image("chalkboard1")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 1000, height: 300)
-            }
-        )
+                    .frame(height: 500)
+                
+                Text("Library Shelver")
+                    .foregroundColor(Color.yellow)
+                    .font(.title)
+                    .fontWeight(.bold)
+                Spacer()
+                    .frame(height: 600)
+    
+                NavigationLink(destination: ShelfView()) {
+                    Label("PLAY", systemImage: "")
+                        .foregroundColor(Color.green)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                }
+                Spacer()
+                    .frame(height: 600)
+            } .background(
+                ZStack {
+                    Image("chalkboard1")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 1000, height: 300)
+                }
+            )
+        }
+
     }
 }
 
