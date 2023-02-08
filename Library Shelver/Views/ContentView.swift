@@ -20,7 +20,7 @@ struct ContentView: View {
                     .fontWeight(.bold)
                 Spacer()
                     .frame(height: 400)
-                // adding 2 navigation links for the two gamemodes
+                // adding 3 navigation links for the two gamemodes and how to play page
                 NavigationLink(destination: ShelfView()) {
                     Label("DEWEY", systemImage: "")
                         .foregroundColor(Color.green)
@@ -28,9 +28,17 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     
                 }
-                .padding(50)
+                .padding(30)
                 NavigationLink(destination: ShelfView()) {
                     Label("FICTION", systemImage: "")
+                        .foregroundColor(Color.green)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                }
+                .padding(30)
+                NavigationLink(destination: ShelfView()) {
+                    Label("HOW TO PLAY", systemImage: "")
                         .foregroundColor(Color.green)
                         .font(.title)
                         .fontWeight(.bold)
