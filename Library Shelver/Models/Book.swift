@@ -12,6 +12,7 @@ struct Book : Hashable {
     var title : String
     var dewey : Float
     var author : String
+    var offset : CGFloat
 }
 
 import SwiftUI
@@ -31,7 +32,7 @@ struct BookView: View {
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe"))
+        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", offset: 0))
     }
 }
 
