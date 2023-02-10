@@ -10,7 +10,7 @@ import SwiftUI
 //displays books and allows dragging around for reordering
 struct ShelfView: View {
     //placeholder for actual randomized book list
-    @State var bookList = (0...5).map { num in Book(title: "Title", dewey: 123.45, author: "Author", offset: (200 - CGFloat(num * 100))) }
+    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: 1, author: "\(num)", xPosition: (50 + CGFloat(num * 55))) }
     @State var position = 0.0
     var body: some View {
         /* Sudo Code:
@@ -28,15 +28,16 @@ struct ShelfView: View {
                 Group {
                     ForEach(0..<6) { i in
                         BookView(book: bookList[i])
-                            .offset(x: bookList[i].offset)
+                            .position(x: bookList[i].xPosition)
+                            //.offset(x: bookList[i].offset)
                             .gesture(
                                 DragGesture()
                                     .onChanged { gesture in
                                         
-                                        bookList[i].offset = gesture.location.x
+                                        bookList[i].xPosition = gesture.location.x
                                         //Dynamicly change positions
                                         //each time the book passes halfway through another book it switches positions
-                                        position = bookList[i].offset
+                                        position = bookList[i].xPosition
                                     }
                                     //update 'start' position of books on release
                                     .onEnded { _ in
@@ -45,7 +46,7 @@ struct ShelfView: View {
                             )
                     }
                 }
-                .frame(width: UIScreen.main.bounds.width)
+                .offset(y: 100)
             }
         }
     }

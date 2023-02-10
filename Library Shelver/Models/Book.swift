@@ -12,7 +12,9 @@ struct Book : Hashable {
     var title : String
     var dewey : Float
     var author : String
-    var offset : CGFloat
+    var xPosition : CGFloat
+    var width : CGFloat = 50
+    var height: CGFloat = 100
 }
 
 import SwiftUI
@@ -24,6 +26,7 @@ struct BookView: View {
         VStack {
             //tempory place holder in place of a book image
             Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
+                .frame(width: book.width, height: book.height)
                 .multilineTextAlignment(.center)
                 .border(Color.black, width: 1)
         }
@@ -32,7 +35,7 @@ struct BookView: View {
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", offset: 0))
+        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", xPosition: 0, width: 50, height: 120))
     }
 }
 
