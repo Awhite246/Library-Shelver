@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400743E12993FC89002A2EEB /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E02993FC89002A2EEB /* Buttons.swift */; };
 		E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */; };
 		E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF35298C11D400F213D2 /* ContentView.swift */; };
 		E31BFF38298C11D700F213D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31BFF37298C11D700F213D2 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400743E02993FC89002A2EEB /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		E31BFF30298C11D400F213D2 /* Library Shelver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Library Shelver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library_ShelverApp.swift; sourceTree = "<group>"; };
 		E31BFF35298C11D400F213D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +38,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400743DF2993FC39002A2EEB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				400743E02993FC89002A2EEB /* Buttons.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E31BFF27298C11D400F213D2 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +65,7 @@
 		E31BFF32298C11D400F213D2 /* Library Shelver */ = {
 			isa = PBXGroup;
 			children = (
+				400743DF2993FC39002A2EEB /* Components */,
 				E31BFF42298D5F7300F213D2 /* Models */,
 				E31BFF41298D5F6700F213D2 /* Views */,
 				E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */,
@@ -159,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400743E12993FC89002A2EEB /* Buttons.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
