@@ -33,15 +33,19 @@ struct ShelfView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { gesture in
-                                        
+                                        //moves the book your dragging
                                         bookList[i].xPosition = gesture.location.x
-                                        //Dynamicly change positions
+                                        //Dynamicly change other book positions
+                                        
                                         //each time the book passes halfway through another book it switches positions
                                         position = bookList[i].xPosition
                                     }
                                     //update 'start' position of books on release
                                     .onEnded { _ in
-                                        
+                                        bookList.sort { $0.xPosition < $1.xPosition}
+                                        for i in 0..<6 {
+                                            bookList[i].xPosition = CGFloat(50 + (i * 55))
+                                        }
                                     }
                             )
                     }
