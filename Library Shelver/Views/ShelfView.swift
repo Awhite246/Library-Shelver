@@ -12,6 +12,10 @@ struct ShelfView: View {
     //placeholder for actual randomized book list
     @State var bookList = (0...5).map { num in Book(title: "Book", dewey: 1, author: "\(num)", xPosition: (50 + CGFloat(num * 55))) }
     @State var position = 0.0
+    @State var currentBook = -1 //keeps track of which book is being dragged, so more than one book can't be dragged at once
+    
+    let arraySize = 6 //used for testing, and so changing array size is easier
+    
     var body: some View {
         /* Sudo Code:
          * Display a bunch of books (ZStack?)
@@ -24,24 +28,41 @@ struct ShelfView: View {
          */
         VStack {
             Text("\(position)")
+            Text("\(currentBook)")
             ZStack {
                 Group {
-                    ForEach(0..<6) { i in
+                    ForEach(0..<arraySize) { i in
                         BookView(book: bookList[i])
                             .position(x: bookList[i].xPosition)
                             //.offset(x: bookList[i].offset)
                             .gesture(
                                 DragGesture()
                                     .onChanged { gesture in
-                                        //moves the book your dragging
-                                        bookList[i].xPosition = gesture.location.x
-                                        //Dynamicly change other book positions
+                                        //checks if there is a current book or not
+                                        if currentBook < 0 {
+                                            currentBook = i
+                                        }
+                                        if i == currentBook {
+                                            //moves the book your dragging
+                                            bookList[i].xPosition = gesture.location.x
+                                        }
+                                        //Dynamicly change other book positions, parting the waters
                                         
-                                        //each time the book passes halfway through another book it switches positions
+                                        if i > 0 && bookList[i].xPosition < bookList[i - 1].xPosition { //checking moving left, when position is less than the book behind
+                                            bookList[i - 1].xPosition = CGFloat(50 + (i * 55))
+                                        }
+                                        if i < arraySize - 1 && bookList[i].xPosition > bookList[i + 1].xPosition {
+                                            //checking moving right, when position is greater than book ahead
+                                            bookList[i + 1].xPosition = CGFloat(50 + (i * 55))
+                                        }
+                                        
                                         position = bookList[i].xPosition
                                     }
                                     //update 'start' position of books on release
                                     .onEnded { _ in
+                                        //resets current book so a new book can be dragged
+                                        currentBook = -1
+                                        //sorts the books by position, then spreads them out
                                         bookList.sort { $0.xPosition < $1.xPosition}
                                         for i in 0..<6 {
                                             bookList[i].xPosition = CGFloat(50 + (i * 55))
