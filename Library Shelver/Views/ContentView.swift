@@ -13,7 +13,6 @@ struct ContentView: View {
             VStack {
                 Spacer()
                     .frame(height: 500)
-                
                 Text("Library Shelver")
                     .foregroundColor(Color.yellow)
                     .font(.title)

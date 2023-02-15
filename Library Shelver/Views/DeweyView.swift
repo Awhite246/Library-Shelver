@@ -9,8 +9,17 @@ import SwiftUI
 
 struct DeweyView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        VStack {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        } .background(
+            ZStack {
+                Image("viewBackgrounds")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 750, height: 200)
+            }
+        )
+    } 
 }
 
 struct DeweyView_Previews: PreviewProvider {
