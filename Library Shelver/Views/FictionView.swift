@@ -10,7 +10,17 @@ import SwiftUI
 struct FictionView: View {
     var body: some View {
         VStack {
+            Spacer()
+                .frame(height: 500)
+            Text("Fiction Sorter")
+                .foregroundColor(Color.yellow)
+                .fontWeight(.bold)
+                .font(.title)
+                Spacer()
+                .frame(height: 300)
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Spacer()
+                .frame(height: 900)
         } .background(
             ZStack {
                 Image("viewBackgrounds")
