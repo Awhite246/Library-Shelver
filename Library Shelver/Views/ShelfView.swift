@@ -45,8 +45,11 @@ struct ShelfView: View {
                                             currentBook = i
                                             frontBook = i + 1
                                             backBook = i - 1
-                                            bookList[i].height += 10
-                                            bookList[i].width += 5
+                                            withAnimation(.linear(duration: 0.05)) {
+                                                bookList[i].height += 10
+                                                bookList[i].width += 5
+                                            }
+                                            
                                         }
                                         if i == currentBook { //makes sure only the current book can be dragged
                                             //moves the book your dragging
@@ -55,15 +58,25 @@ struct ShelfView: View {
                                         //Dynamicly change other book positions, parting the waters
                                         
                                         if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //checking moving left, when position is less than the book behind
-                                            bookList[backBook].xPosition = CGFloat(50 + ((backBook + 1) * 55))
+                                            withAnimation(.linear(duration: 0.05)) {
+                                                bookList[backBook].xPosition = CGFloat(50 + ((backBook - 1 == currentBook ? backBook : backBook + 1) * 55))
+                                            }
                                             frontBook = backBook
                                             backBook -= 1
+                                            if backBook == currentBook {
+                                                backBook -= 1
+                                            }
                                         }
                                         if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
                                             //checking moving right, when position is greater than book ahead
-                                            bookList[frontBook].xPosition = CGFloat(50 + ((frontBook - 1) * 55))
+                                            withAnimation(.linear(duration: 0.05)) {
+                                                bookList[frontBook].xPosition = CGFloat(50 + ((frontBook + 1 == currentBook ? frontBook : frontBook - 1) * 55))
+                                            }
                                             backBook = frontBook
                                             frontBook += 1
+                                            if frontBook == currentBook {
+                                                frontBook += 1
+                                            }
                                         }
                                         
                                         position = bookList[i].xPosition
