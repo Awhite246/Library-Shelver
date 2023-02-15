@@ -18,7 +18,7 @@ struct HowToPlay: View {
                 .font(.title)
                 Spacer()
                 .frame(height: 300)
-            Text("--")
+            Text(" - There are two gamemodes")
             Spacer()
                 .frame(height: 900)
         } .background(
