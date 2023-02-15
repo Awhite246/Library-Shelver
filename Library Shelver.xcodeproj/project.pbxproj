@@ -10,6 +10,7 @@
 		400743E12993FC89002A2EEB /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E02993FC89002A2EEB /* Buttons.swift */; };
 		400743E5299D2FE5002A2EEB /* DeweyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E4299D2FE5002A2EEB /* DeweyView.swift */; };
 		400743E7299D2FF0002A2EEB /* FictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E6299D2FF0002A2EEB /* FictionView.swift */; };
+		400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E8299D3046002A2EEB /* HowToPlay.swift */; };
 		E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */; };
 		E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF35298C11D400F213D2 /* ContentView.swift */; };
 		E31BFF38298C11D700F213D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31BFF37298C11D700F213D2 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		400743E02993FC89002A2EEB /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		400743E4299D2FE5002A2EEB /* DeweyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeweyView.swift; sourceTree = "<group>"; };
 		400743E6299D2FF0002A2EEB /* FictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FictionView.swift; sourceTree = "<group>"; };
+		400743E8299D3046002A2EEB /* HowToPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlay.swift; sourceTree = "<group>"; };
 		E31BFF30298C11D400F213D2 /* Library Shelver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Library Shelver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library_ShelverApp.swift; sourceTree = "<group>"; };
 		E31BFF35298C11D400F213D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				E39DDAB429915ADC00D81486 /* ShelfView.swift */,
 				400743E4299D2FE5002A2EEB /* DeweyView.swift */,
 				400743E6299D2FF0002A2EEB /* FictionView.swift */,
+				400743E8299D3046002A2EEB /* HowToPlay.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				400743E12993FC89002A2EEB /* Buttons.swift in Sources */,
+				400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
