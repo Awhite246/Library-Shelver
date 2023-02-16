@@ -34,10 +34,12 @@ struct ShelfView: View {
             ZStack {
                 Group {
                     ForEach(0..<arraySize) { i in
+                        //Displays a book with title, author, and dewy number. Book is horizontally draggable
                         BookView(book: bookList[i])
                             .position(x: bookList[i].xPosition)
                             //.offset(x: bookList[i].offset)
                             .gesture(
+                                
                                 DragGesture()
                                     .onChanged { gesture in
                                         //checks if there is a current book or not
@@ -45,6 +47,7 @@ struct ShelfView: View {
                                             currentBook = i
                                             frontBook = i + 1
                                             backBook = i - 1
+                                            //makes the book your dragging bigger so it is easier for the user to tell what is happening
                                             withAnimation(.linear(duration: 0.05)) {
                                                 bookList[i].height += 10
                                                 bookList[i].width += 5
@@ -57,20 +60,20 @@ struct ShelfView: View {
                                         }
                                         //Dynamicly change other book positions, parting the waters
                                         
-                                        if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //checking moving left, when position is less than the book behind
+                                        if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //checking moving left, when the position of the dragged book is halfway past the book behind.
                                             withAnimation(.linear(duration: 0.05)) {
-                                                bookList[backBook].xPosition = CGFloat(50 + ((backBook - 1 == currentBook ? backBook : backBook + 1) * 55))
+                                                bookList[backBook].xPosition = CGFloat(50 + ((backBook - 1 >= currentBook ? backBook : backBook + 1) * 55))
                                             }
                                             frontBook = backBook
                                             backBook -= 1
-                                            if backBook == currentBook {
+                                            if backBook == currentBook { //stops book glitch
                                                 backBook -= 1
                                             }
                                         }
                                         if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
-                                            //checking moving right, when position is greater than book ahead
+                                            //checking moving right, when position of the dragged book is halfway past the book ahead
                                             withAnimation(.linear(duration: 0.05)) {
-                                                bookList[frontBook].xPosition = CGFloat(50 + ((frontBook + 1 == currentBook ? frontBook : frontBook - 1) * 55))
+                                                bookList[frontBook].xPosition = CGFloat(50 + ((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * 55))
                                             }
                                             backBook = frontBook
                                             frontBook += 1
@@ -90,10 +93,10 @@ struct ShelfView: View {
                                         frontBook = -1
                                         backBook = -1
                                         //sorts the books by position, then spreads them out
-                                        bookList.sort { $0.xPosition < $1.xPosition}
-                                        for j in 0..<6 {
-                                            bookList[j].xPosition = CGFloat(50 + (j * 55))
-                                        }
+                                            bookList.sort { $0.xPosition < $1.xPosition}
+                                            for j in 0..<6 {
+                                                bookList[j].xPosition = CGFloat(50 + (j * 55))
+                                            }
                                     }
                             )
                     }

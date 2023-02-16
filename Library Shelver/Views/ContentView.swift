@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Library Shelver
 //
-//  Created by Alistair White on 2/2/23.
+//  Created by Alistair White & Victor Gunderson on 2/2/23.
 //
 
 import SwiftUI
