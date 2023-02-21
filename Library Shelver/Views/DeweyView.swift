@@ -10,17 +10,11 @@ import SwiftUI
 struct DeweyView: View {
     var body: some View {
         VStack {
-            Spacer()
-                .frame(height: 500)
             Text("Dewey Sorter")
                 .foregroundColor(Color.yellow)
                 .fontWeight(.bold)
                 .font(.title)
-            Spacer()
-                .frame(height: 300)
             ShelfView() //displays the shelf of draggable books
-            Spacer()
-                .frame(height: 900)
         }
         .background(
             ZStack {
