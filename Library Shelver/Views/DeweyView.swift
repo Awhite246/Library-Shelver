@@ -21,7 +21,8 @@ struct DeweyView: View {
             ShelfView() //displays the shelf of draggable books
             Spacer()
                 .frame(height: 900)
-        } .background(
+        }
+        .background(
             ZStack {
                 Image("viewBackgrounds")
                     .resizable()

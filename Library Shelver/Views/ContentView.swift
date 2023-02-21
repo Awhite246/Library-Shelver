@@ -11,14 +11,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Spacer()
-                    .frame(height: 500)
                 Text("Library Shelver")
                     .foregroundColor(Color.yellow)
                     .font(.title)
                     .fontWeight(.bold)
-                Spacer()
-                    .frame(height: 400)
                 // adding 3 navigation links for the two gamemodes and how to play page
                 NavigationLink(destination: DeweyView()) {
                     Label("DEWEY", systemImage: "")
@@ -43,9 +39,8 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     
                 }
-                Spacer()
-                    .frame(height: 400)
-            } .background(
+            }
+            .background(
                 ZStack {
                     Image("chalkboard1")
                         .resizable()
@@ -54,7 +49,6 @@ struct ContentView: View {
                 }
             )
         }
-
     }
 }
 
