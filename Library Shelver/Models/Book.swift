@@ -13,8 +13,8 @@ struct Book : Hashable {
     var dewey : Float
     var author : String
     var xPosition : CGFloat
-    var width : CGFloat = 50
-    var height: CGFloat = 100
+    var width : CGFloat = 100
+    var height: CGFloat = 300
 }
 
 import SwiftUI
@@ -28,14 +28,15 @@ struct BookView: View {
             Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
                 .frame(width: book.width, height: book.height)
                 .multilineTextAlignment(.center)
-                .border(Color.black, width: 1)
+                .border(Color.black, width: 2)
         }
+        .background(Color.cyan)
     }
 }
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", xPosition: 0, width: 50, height: 120))
+        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", xPosition: 0, width: 100, height: 300))
     }
 }
 
