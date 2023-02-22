@@ -12,7 +12,7 @@ struct Book : Hashable {
     var title : String
     var dewey : Float
     var author : String
-    var xPosition : CGFloat
+    var xPosition : CGFloat = 0
     var width : CGFloat = 100
     var height: CGFloat = 300
 }
