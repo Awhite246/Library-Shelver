@@ -19,13 +19,12 @@ struct Book : Hashable {
 
 import SwiftUI
 
-//Creates a view which will be used for each book dislpayed
-struct BookView: View {
+struct BookView: View { //Book View displays an individual book, which is then used multiple times to display multiple books in ShelfView
     let book : Book
     var body: some View {
+        //tempory place holder in place of a book image
         ZStack {
             Color.green
-            //tempory place holder in place of a book image
             Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
                 .multilineTextAlignment(.center)
         }

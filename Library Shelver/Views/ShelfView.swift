@@ -7,101 +7,101 @@
 
 import SwiftUI
 
-//displays books and allows dragging around for reordering
-struct ShelfView: View {
+struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
     let offSet = 110
-    //placeholder for actual randomized book list
-    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", xPosition: (80 + CGFloat(num * 110))) }
-    @State var position = 0.0
-    @State var currentBook = -1 //keeps track of which book is being dragged, so more than one book can't be dragged at once
-    @State var frontBook = -1 //keeps track of book infront of current book
-    @State var backBook = -1 //keeps track of book behind of current book
-    @State var check = false //used to keep of if books are in order
     let arraySize = 6 //used for testing, and so changing array size is easier
+    
+    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", xPosition: (80 + CGFloat(num * 110))) } //placeholder for actual randomized book list
+    
+    @State var currentBook = -1 //Index of the book being dragged
+    @State var frontBook = -1 //Index of the book to the right of the current book
+    @State var backBook = -1 //Index of book to the left of the current book
+    
+    @State var check = false //Are books in order
     var body: some View {
-        /* Sudo Code:
-         * Display a bunch of books (ZStack?)
-         * Simulate HStack through .offset
-         * Book spillage (off screen) moves next book to next shelf
-         * Have drag gesture change offset of book
-         * Use .onChange to dynamicly update other book positions
-         * Use .onEnded to finalize book positions
-         * Update book positions (array?) that checker will use
-         */
         VStack {
             HStack {
+                //Displays 'correct' when check == true, 'wrong' when check == false
                 Text("\(check ? "Correct" : "Wrong")")
                     .foregroundColor(check ? .green : .red)
             }
             .foregroundColor(.blue)
             .background(.black)
-            //Text("Current: \(currentBook)\tBack:\(backBook)\tFront:\(frontBook)")
             ZStack {
                 Group {
                     ForEach(0..<arraySize) { i in
-                        //Displays a book with title, author, and dewy number. Book is horizontally draggable
-                        BookView(book: bookList[i])
+                        BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
                             .position(x: bookList[i].xPosition)
                             .zIndex(i == currentBook ? 10 : 0)
                             .gesture(
                                 DragGesture()
-                                    .onChanged { gesture in
-                                        //checks if there is a current book or not
-                                        if currentBook < 0 {
+                                    .onChanged { gesture in //When user is dragging on screen
+                                        
+                                        if currentBook < 0 { //Checks if there is not a book already being dragged
+                                            
+                                            //Update index storing values
                                             currentBook = i
                                             frontBook = i + 1
                                             backBook = i - 1
                                             
-                                            //makes the book your dragging bigger so it is easier for the user to tell what is happening
-                                            withAnimation(.linear(duration: 0.05)) {
+                                            withAnimation(.linear(duration: 0.05)) { //Increases the dragged book size with an animation
                                                 bookList[i].height += CGFloat(bookList[i].height / 15)
                                                 bookList[i].width += CGFloat(bookList[i].width / 15)
                                             }
                                         }
-                                        if i == currentBook { //makes sure only the current book can be dragged
-                                            //moves the book your dragging
-                                            bookList[i].xPosition = gesture.location.x
+                                        
+                                        if i == currentBook { //Checks if the book is the currentBook
+                                            bookList[i].xPosition = gesture.location.x //Updates the x position of the book
                                         }
-                                        //Dynamicly change other book positions, parting the waters
-                                        if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //checking moving left, when the position of the dragged book is halfway past the book behind.
+                                        
+                                        //Moving left
+                                        if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //Checks if the currentBook is halfway past the left book
                                             withAnimation(.linear(duration: 0.05)) {
-                                                bookList[backBook].xPosition = CGFloat(80 + ((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet))
+                                                bookList[backBook].xPosition = CGFloat(80 + ((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet)) //Moves the left book to where the currentBook used to be
                                             }
+                                            
+                                            //Update index storing values
                                             frontBook = backBook
                                             backBook -= 1
-                                            if backBook == currentBook { //stops book glitch
+                                            if backBook == currentBook { //Makes sure the left book index never equals the currentBook index
                                                 backBook -= 1
                                             }
                                         }
+                                        
+                                        //Moving right
                                         if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
-                                            //checking moving right, when position of the dragged book is halfway past the book ahead
+                                            //Checks if the currentBook is halfway past the right book
                                             withAnimation(.linear(duration: 0.05)) {
-                                                bookList[frontBook].xPosition = CGFloat(80 + ((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet))
+                                                bookList[frontBook].xPosition = CGFloat(80 + ((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet)) //Moves the right book to where the currentBook used to be
                                             }
+                                            
+                                            //Update index storing values
                                             backBook = frontBook
                                             frontBook += 1
-                                            if frontBook == currentBook {
+                                            if frontBook == currentBook { //Makes sure the right book index never equals the currentBook index
                                                 frontBook += 1
                                             }
                                         }
-                                        
-                                        position = bookList[i].xPosition
                                     }
-                                    //update 'start' position of books on release
-                                    .onEnded { _ in
-                                        //resets current book so a new book can be dragged
+                                
+                                    .onEnded { _ in //When user releases touch from screen
                                         
-                                            bookList[i].height -= CGFloat(bookList[i].height / 15)
-                                            bookList[i].width -= CGFloat(bookList[i].width / 15)
+                                        //Resets the book height and width
+                                        bookList[i].height -= CGFloat(bookList[i].height / 15)
+                                        bookList[i].width -= CGFloat(bookList[i].width / 15)
+                                        
+                                        //Resets all index storing values
                                         currentBook = -1
                                         frontBook = -1
                                         backBook = -1
-                                        //sorts the books by position, then spreads them out
-                                            bookList.sort { $0.xPosition < $1.xPosition}
-                                            for j in 0..<6 {
-                                                bookList[j].xPosition = CGFloat(80 + (j * offSet))
-                                            }
-                                        //imediatly checks order on release
+                                        
+                                        //sorts the books array by book position
+                                        bookList.sort { $0.xPosition < $1.xPosition}
+                                        for j in 0..<6 {
+                                            bookList[j].xPosition = CGFloat(80 + (j * offSet)) //Spreads out the books
+                                        }
+                                        
+                                        //Check if the order is correct
                                         check = checkOrder()
                                     }
                             )
@@ -112,8 +112,10 @@ struct ShelfView: View {
         }
     }
     func checkOrder() -> Bool {
+        //Goes through entire array of books
         for i in 1..<arraySize {
-            if !(bookList[i].dewey > bookList[i - 1].dewey) {
+            //If the book is ever smaller than the book before it, return false
+            if (bookList[i].dewey < bookList[i - 1].dewey) {
                 return false
             }
         }
