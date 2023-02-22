@@ -30,7 +30,7 @@ struct ShelfView: View {
          */
         VStack {
             HStack {
-                Text("\(position)")
+                //Text("\(position)")
                 Button("Check") {
                     for i in 1..<arraySize {
                         if !(bookList[i].dewey > bookList[i - 1].dewey) {
@@ -41,8 +41,11 @@ struct ShelfView: View {
                     }
                 }
                 Text(": \(check ? "Correct" : "Wrong")")
+                    .foregroundColor(check ? .green : .red)
             }
-            Text("Current: \(currentBook)\tBack:\(backBook)\tFront:\(frontBook)")
+            .foregroundColor(.blue)
+            .background(.black)
+            //Text("Current: \(currentBook)\tBack:\(backBook)\tFront:\(frontBook)")
             ZStack {
                 Group {
                     ForEach(0..<arraySize) { i in

@@ -23,14 +23,14 @@ import SwiftUI
 struct BookView: View {
     let book : Book
     var body: some View {
-        VStack {
+        ZStack {
+            Color.green
             //tempory place holder in place of a book image
             Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
-                .frame(width: book.width, height: book.height)
                 .multilineTextAlignment(.center)
-                .border(Color.black, width: 2)
         }
-        .background(Color.cyan)
+        .frame(width: book.width, height: book.height)
+        .border(Color.black, width: 2)
     }
 }
 
