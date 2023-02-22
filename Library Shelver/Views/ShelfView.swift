@@ -30,17 +30,7 @@ struct ShelfView: View {
          */
         VStack {
             HStack {
-                //Text("\(position)")
-                Button("Check") {
-                    for i in 1..<arraySize {
-                        if !(bookList[i].dewey > bookList[i - 1].dewey) {
-                            check = false
-                            return
-                        }
-                        check = true
-                    }
-                }
-                Text(": \(check ? "Correct" : "Wrong")")
+                Text("\(check ? "Correct" : "Wrong")")
                     .foregroundColor(check ? .green : .red)
             }
             .foregroundColor(.blue)
@@ -111,6 +101,8 @@ struct ShelfView: View {
                                             for j in 0..<6 {
                                                 bookList[j].xPosition = CGFloat(80 + (j * offSet))
                                             }
+                                        //imediatly checks order on release
+                                        check = checkOrder()
                                     }
                             )
                     }
@@ -118,6 +110,14 @@ struct ShelfView: View {
                 .offset(y: 150)
             }
         }
+    }
+    func checkOrder() -> Bool {
+        for i in 1..<arraySize {
+            if !(bookList[i].dewey > bookList[i - 1].dewey) {
+                return false
+            }
+        }
+        return true
     }
 }
 
