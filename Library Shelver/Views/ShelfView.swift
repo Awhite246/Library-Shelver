@@ -11,7 +11,7 @@ import AVFoundation
 struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
     let offSet = 110
     let arraySize = 6 //used for testing, and so changing array size is easier
-    
+    @State private var player: AVAudioPlayer!
     @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 100, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
