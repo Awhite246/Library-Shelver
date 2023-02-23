@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
     let offSet = 110
@@ -21,6 +22,8 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
     
     @State var totalWidth : CGFloat = 0 //Total width of all books and space inbetween the books
     @State var startingPos : CGFloat = 0 //Position of the first book
+    // Use this code to make sounds playSounds(sound: "")
+    
     var body: some View {
         VStack {
             HStack {
