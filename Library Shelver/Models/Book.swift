@@ -15,6 +15,8 @@ struct Book : Hashable {
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
     var height: CGFloat = 300
+    
+    var color : Color = .green //Temp
 }
 
 import SwiftUI
@@ -24,7 +26,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
     var body: some View {
         //tempory place holder in place of a book image
         ZStack {
-            Color.green
+            book.color
             Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
                 .multilineTextAlignment(.center)
         }

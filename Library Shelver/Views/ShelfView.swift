@@ -11,26 +11,30 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
     let offSet = 110
     let arraySize = 6 //used for testing, and so changing array size is easier
     
-    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", height: CGFloat.random(in: 250...300)) } //placeholder for actual randomized book list
+    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 100, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
     @State var backBook = -1 //Index of book to the left of the current book
     
     @State var check = false //Are books in order
+    
+    @State var totalWidth : CGFloat = 0 //Total width of all books and space inbetween the books
+    @State var startingPos : CGFloat = 0 //Position of the first book
     var body: some View {
         VStack {
             HStack {
                 //Displays 'correct' when check == true, 'wrong' when check == false
                 Text("\(check ? "Correct" : "Wrong")")
                     .foregroundColor(check ? .green : .red)
+                Text("\t\(totalWidth)\t\(startingPos)")
             }
             .foregroundColor(.blue)
             .background(.black)
             ZStack {
                 ForEach(0..<arraySize) { i in
                     BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
-                        .position(x: bookList[i].xPosition, y: 150 - (bookList[i].height / 2))
+                        .position(x: bookList[i].xPosition, y: 300 - (bookList[i].height / 2))
                         .zIndex(i == currentBook ? 10 : 0)
                         .gesture( DragGesture()
                             .onChanged { gesture in //When user is dragging on screen
@@ -55,7 +59,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                 //Moving left
                                 if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //Checks if the currentBook is halfway past the left book
                                     withAnimation(.linear(duration: 0.05)) {
-                                        bookList[backBook].xPosition = CGFloat(80 + ((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet)) //Moves the left book to where the currentBook used to be
+                                        bookList[backBook].xPosition = startingPos + CGFloat((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet) //Moves the left book to where the currentBook used to be
                                     }
                                     
                                     //Update index storing values
@@ -70,7 +74,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                 if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
                                     //Checks if the currentBook is halfway past the right book
                                     withAnimation(.linear(duration: 0.05)) {
-                                        bookList[frontBook].xPosition = CGFloat(80 + ((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet)) //Moves the right book to where the currentBook used to be
+                                        bookList[frontBook].xPosition = startingPos + CGFloat((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet) //Moves the right book to where the currentBook used to be
                                     }
                                     
                                     //Update index storing values
@@ -100,13 +104,23 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                             }
                         )
                 }
-                .offset(y: 150)
             }
         }
         .onAppear {
+            //Calculates total width of all the books
+            for i in 0..<arraySize {
+                totalWidth += bookList[i].width
+                totalWidth += 10
+            }
+            totalWidth -= 10
+            
+            //Calculates starting position from the total width
+            startingPos = ( totalWidth) / 2
+            //spreads books out
             sortByPosition()
         }
     }
+    
     func checkOrder() -> Bool {
         //Goes through entire array of books
         for i in 1..<arraySize {
@@ -117,11 +131,12 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         return true
     }
+    
     func sortByPosition() {
         //sorts the books array by book position
         bookList.sort { $0.xPosition < $1.xPosition}
         for j in 0..<6 {
-            bookList[j].xPosition = CGFloat(80 + (j * offSet)) //Spreads out the books
+            bookList[j].xPosition = startingPos + CGFloat((j * offSet)) //Spreads out the books
         }
     }
 }
