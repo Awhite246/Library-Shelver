@@ -19,6 +19,9 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
     @State var backBook = -1 //Index of book to the left of the current book
     
     @State var check = false //Are books in order
+    
+    // Use this code to make sounds playSounds(sound: "")
+    
     var body: some View {
         VStack {
             HStack {
