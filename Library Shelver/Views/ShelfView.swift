@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
     let offSet = 110
     let arraySize = 6 //used for testing, and so changing array size is easier
-    
+    @State private var player: AVAudioPlayer!
     @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", height: CGFloat.random(in: 250...300)) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
@@ -105,6 +106,18 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         .onAppear {
             sortByPosition()
+        }
+    }
+    func playSounds(sound: String) {
+        if let asset = NSDataAsset(name: sound){
+            do {
+                // Use NSDataAsset's data property to access the audio file stored in Sound.
+                player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
+                // Play the above sound file.
+                player?.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
     }
     func checkOrder() -> Bool {
