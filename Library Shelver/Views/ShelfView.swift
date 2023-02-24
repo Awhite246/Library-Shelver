@@ -42,7 +42,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                         .gesture( DragGesture()
                             .onChanged { gesture in //When user is dragging on screen
                                 
-                                if currentBook < 0 { //Checks if there is not a book already being dragged
+                                if currentBook < 0 { //Runs once, when book first starts getting dragged
                                     
                                     //Update index storing values
                                     currentBook = i
