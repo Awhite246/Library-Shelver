@@ -27,7 +27,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
         //tempory place holder in place of a book image
         ZStack {
             book.color
-            Text("\(book.title)\nBy: \(book.author)\n\(book.dewey)")
+            Text("\(book.title)\nBy: \(book.author)\n\(book.dewey, specifier: "%.3f")")
                 .multilineTextAlignment(.center)
         }
         .frame(width: book.width, height: book.height)
