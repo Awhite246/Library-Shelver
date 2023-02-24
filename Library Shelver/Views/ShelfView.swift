@@ -43,7 +43,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                             .onChanged { gesture in //When user is dragging on screen
                                 
                                 if currentBook < 0 { //Runs once, when book first starts getting dragged
-                                    
+                                    playSounds(sound: "click")
                                     //Update index storing values
                                     currentBook = i
                                     frontBook = i + 1
@@ -90,7 +90,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                             }
                                   
                             .onEnded { _ in //When user releases touch from screen
-                                
+                                playSounds(sound: "click")
                                 //Resets the book height and width
                                 bookList[i].height -= CGFloat(bookList[i].height / 15)
                                 bookList[i].width -= CGFloat(bookList[i].width / 15)
@@ -133,6 +133,18 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
             }
         }
         return true
+    }
+    func playSounds(sound: String) {
+        if let asset = NSDataAsset(name: sound){
+            do {
+                // Use NSDataAsset's data property to access the audio file stored in Sound.
+                player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
+                // Play the above sound file.
+                player?.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func sortByPosition() {
