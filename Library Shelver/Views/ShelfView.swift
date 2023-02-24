@@ -118,7 +118,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
             totalWidth -= 10
             
             //Calculates starting position from the total width
-            startingPos = ( totalWidth) / 2
+            startingPos = (830 - totalWidth) / 2
             //spreads books out
             sortByPosition()
         }
