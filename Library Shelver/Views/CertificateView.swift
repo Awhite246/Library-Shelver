@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct CertificateView: View {
+    @State private var name = ""
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Spacer()
+                .frame(height: 0)
+            TextField("Enter Name Here", text: $name)
+                .padding(300)
+            Text("Take a screenshot or show this to the librarian")
+            Spacer()
+                .frame(height: 0)
         } .background(
             ZStack {
                 Image("certificate")
