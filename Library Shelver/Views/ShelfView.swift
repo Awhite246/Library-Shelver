@@ -11,7 +11,9 @@ import AVFoundation
 struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
     let offSet = 110
     let arraySize = 6 //used for testing, and so changing array size is easier
+    
     @State private var player: AVAudioPlayer!
+    
     @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 100, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
@@ -118,7 +120,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
             totalWidth -= 10
             
             //Calculates starting position from the total width
-            startingPos = (830 - totalWidth) / 2
+            startingPos = (730 - totalWidth) / 2
             //spreads books out
             sortByPosition()
         }
@@ -134,6 +136,23 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         return true
     }
+    func widthToLeft(index : Int) -> CGFloat {
+        return 0
+    }
+    func widthToRight(index : Int) -> CGFloat {
+        return 0
+    }
+    func sortByPosition() {
+        //sorts the books array by book position
+        bookList.sort { $0.xPosition < $1.xPosition}
+        var currWidth = startingPos //Current total width added up
+        for j in 0..<6 {
+            bookList[j].xPosition = currWidth + (bookList[j].width / 2)
+            //bookList[j].xPosition = startingPos + CGFloat((j * offSet)) //Spreads out the books
+            currWidth += bookList[j].width + 10
+        }
+    }
+    
     func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
@@ -144,14 +163,6 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
-        }
-    }
-    
-    func sortByPosition() {
-        //sorts the books array by book position
-        bookList.sort { $0.xPosition < $1.xPosition}
-        for j in 0..<6 {
-            bookList[j].xPosition = startingPos + CGFloat((j * offSet)) //Spreads out the books
         }
     }
 }
