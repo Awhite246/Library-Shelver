@@ -43,7 +43,9 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                             .onChanged { gesture in //When user is dragging on screen
                                 
                                 if currentBook < 0 { //Runs once, when book first starts getting dragged
-                                    playSounds(sound: "click")
+                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                        playSounds(sound: "click")
+                                    }
                                     //Update index storing values
                                     currentBook = i
                                     frontBook = i + 1
