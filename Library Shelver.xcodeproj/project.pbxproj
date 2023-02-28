@@ -76,7 +76,6 @@
 				400743DF2993FC39002A2EEB /* Components */,
 				E31BFF42298D5F7300F213D2 /* Models */,
 				E31BFF41298D5F6700F213D2 /* Views */,
-				E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */,
 				E31BFF37298C11D700F213D2 /* Assets.xcassets */,
 				E31BFF39298C11D700F213D2 /* Preview Content */,
 			);
@@ -100,6 +99,7 @@
 				400743E4299D2FE5002A2EEB /* DeweyView.swift */,
 				400743E6299D2FF0002A2EEB /* FictionView.swift */,
 				400743E8299D3046002A2EEB /* HowToPlay.swift */,
+				E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

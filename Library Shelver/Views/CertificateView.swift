@@ -9,15 +9,18 @@ import SwiftUI
 
 struct CertificateView: View {
     @State private var name = ""
+    @State private var showingAlert = false
     var body: some View {
         VStack {
-            Spacer()
-                .frame(height: 0)
+            
             TextField("Enter Name Here", text: $name)
                 .padding(300)
-            Text("Take a screenshot or show this to the librarian")
-            Spacer()
-                .frame(height: 0)
+                .alert("CONGRADULATIONS! Type your name in the area where it says to type it. Then show it to your librarian", isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) { }
+                        // normal alert usage, alert is presented when showing alert = true (1000 points)
+                    }
+                
+                
         } .background(
             ZStack {
                 Image("certificate")
