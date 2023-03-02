@@ -41,6 +41,14 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     
                 }
+                
+                NavigationLink(destination: CertificateView()) {
+                    Label("certificate", systemImage: "")
+                        .foregroundColor(Color.green)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                }
             }
             .background(
                 ZStack {
