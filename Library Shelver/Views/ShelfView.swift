@@ -11,7 +11,7 @@ import AVFoundation
 //ShelfView displays books on a shelf that can be dragged around.
 struct ShelfView: View {
     let arraySize = 6 //Used for testing, and so changing array size is easier
-    let offSet = 10 //How far apart displayed books are
+    let offSet : CGFloat = 10 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
@@ -25,7 +25,6 @@ struct ShelfView: View {
     
     @State var totalWidth : CGFloat = 0 //Total width of all books and space inbetween the books
     @State var startingPos : CGFloat = 0 //Position of the first book
-    // Use this code to make sounds playSounds(sound: "")
     
     var body: some View {
         VStack {
@@ -40,7 +39,7 @@ struct ShelfView: View {
                 ForEach(0..<arraySize) { i in
                     BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
                         .position(x: bookList[i].xPosition, y: 300 - (bookList[i].height / 2))
-                        .zIndex(i == currentBook ? 10 : 0)
+                        .zIndex(i == currentBook ? 10 : 0) //Makes sure currentBook is dislplayed ontop of all books
                         .gesture( DragGesture()
                             .onChanged { gesture in //When user is dragging on screen
                                 
@@ -125,9 +124,9 @@ struct ShelfView: View {
             //Calculates total width of all the books
             for i in 0..<arraySize {
                 totalWidth += bookList[i].width
-                totalWidth += 10
+                totalWidth += offSet
             }
-            totalWidth -= 10
+            totalWidth -= offSet
             
             //Calculates starting position from the total width
             startingPos = (730 - totalWidth) / 2
@@ -153,13 +152,13 @@ struct ShelfView: View {
         var total : CGFloat = 0
         for i in 0..<index {
             if i != currentBook {
-                total += bookList[i].width + 10
+                total += bookList[i].width + offSet
             }
         }
         if includeCurrent {
             total += bookList[currentBook].width
             total -= (bookList[currentBook].width / 15) //Current books increases size when dragged around
-            total += 10
+            total += offSet
         }
         return total
     }
@@ -172,7 +171,7 @@ struct ShelfView: View {
         
         for j in 0..<6 {
             bookList[j].xPosition = currWidth + (bookList[j].width / 2) //Spreads out the books
-            currWidth += bookList[j].width + 10
+            currWidth += bookList[j].width + offSet
         }
     }
     
