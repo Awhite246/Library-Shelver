@@ -64,7 +64,8 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                 //Moving left
                                 if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //Checks if the currentBook is halfway past the left book
                                     withAnimation(.linear(duration: 0.05)) {
-                                        bookList[backBook].xPosition = startingPos + totalWidth - (widthToRight(index: backBook) + (bookList[backBook].width / 2) + 5)
+                                        //bookList[backBook].xPosition = startingPos + totalWidth - (widthToRight(index: backBook) + (bookList[backBook].width / 2) + 5)
+                                        bookList[backBook].xPosition = startingPos + widthToLeft(index: backBook, includeCurrent: true) + (bookList[backBook].width / 2)
                                         //bookList[backBook].xPosition = startingPos + CGFloat((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet) //Moves the left book to where the currentBook used to be
                                     }
                                     
@@ -138,12 +139,15 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         return true
     }
-    func widthToLeft(index : Int) -> CGFloat {
+    func widthToLeft(index : Int, includeCurrent : Bool = false) -> CGFloat {
         var total : CGFloat = 0
         for i in 0..<index {
             if i != currentBook {
                 total += bookList[i].width + 10
             }
+        }
+        if includeCurrent {
+            total += (bookList[currentBook].width - (bookList[currentBook].width / 15)) + 10
         }
         return total
     }
