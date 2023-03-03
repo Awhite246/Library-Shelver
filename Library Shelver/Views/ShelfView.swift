@@ -14,7 +14,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 100, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 120, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
@@ -64,7 +64,8 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                 //Moving left
                                 if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //Checks if the currentBook is halfway past the left book
                                     withAnimation(.linear(duration: 0.05)) {
-                                        bookList[backBook].xPosition = startingPos + CGFloat((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet) //Moves the left book to where the currentBook used to be
+                                        bookList[backBook].xPosition = startingPos + totalWidth - (widthToRight(index: backBook) + (bookList[backBook].width / 2) + 5)
+                                        //bookList[backBook].xPosition = startingPos + CGFloat((backBook - 1 >= currentBook ? backBook : backBook + 1) * offSet) //Moves the left book to where the currentBook used to be
                                     }
                                     
                                     //Update index storing values
@@ -79,7 +80,8 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                 if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
                                     //Checks if the currentBook is halfway past the right book
                                     withAnimation(.linear(duration: 0.05)) {
-                                        bookList[frontBook].xPosition = startingPos + CGFloat((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet) //Moves the right book to where the currentBook used to be
+                                        bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2)
+                                        //bookList[frontBook].xPosition = startingPos + CGFloat((frontBook + 1 <= currentBook ? frontBook : frontBook - 1) * offSet) //Moves the right book to where the currentBook used to be
                                     }
                                     
                                     //Update index storing values
@@ -137,10 +139,22 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         return true
     }
     func widthToLeft(index : Int) -> CGFloat {
-        return 0
+        var total : CGFloat = 0
+        for i in 0..<index {
+            if i != currentBook {
+                total += bookList[i].width + 10
+            }
+        }
+        return total
     }
     func widthToRight(index : Int) -> CGFloat {
-        return 0
+        var total : CGFloat = 0
+        for i in (index + 1)..<arraySize {
+            if i != currentBook {
+                total += bookList[i].width + 10
+            }
+        }
+        return total
     }
     func sortByPosition() {
         //sorts the books array by book position
