@@ -8,9 +8,10 @@
 import SwiftUI
 import AVFoundation
 
-struct ShelfView: View { //ShelfView displays books on a shelf that can be dragged around.
-    let offSet = 110
-    let arraySize = 6 //used for testing, and so changing array size is easier
+//ShelfView displays books on a shelf that can be dragged around.
+struct ShelfView: View {
+    let arraySize = 6 //Used for testing, and so changing array size is easier
+    let offSet = 10 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
@@ -32,7 +33,6 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                 //Displays 'correct' when check == true, 'wrong' when check == false
                 Text("\(check ? "Correct" : "Wrong")")
                     .foregroundColor(check ? .green : .red)
-                Text("\t\(totalWidth)\t\(startingPos)")
             }
             .foregroundColor(.blue)
             .background(.black)
@@ -44,22 +44,27 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                         .gesture( DragGesture()
                             .onChanged { gesture in //When user is dragging on screen
                                 
-                                if currentBook < 0 { //Runs once, when book first starts getting dragged
-                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                        playSounds(sound: "click")
-                                    }
+                                //Runs once, when book first starts getting dragged
+                                if currentBook < 0 {
                                     //Update index storing values
                                     currentBook = i
                                     frontBook = i + 1
                                     backBook = i - 1
                                     
-                                    withAnimation(.linear(duration: 0.05)) { //Increases the dragged book size with an animation
+                                    //Plays the sound
+                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                        playSounds(sound: "click")
+                                    }
+                                    
+                                    //Increases the dragged book size with an animation
+                                    withAnimation(.linear(duration: 0.05)) {
                                         bookList[i].height += CGFloat(bookList[i].height / 15)
                                         bookList[i].width += CGFloat(bookList[i].width / 15)
                                     }
                                 }
                                 
-                                if i == currentBook { //Checks if the book is the currentBook
+                                //Checks if the book is the currentBook so only one book can be dragged at a time
+                                if i == currentBook {
                                     bookList[i].xPosition = gesture.location.x //Updates the x position of the book
                                 }
                                 
@@ -72,14 +77,15 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                     //Update index storing values
                                     frontBook = backBook
                                     backBook -= 1
-                                    if backBook == currentBook { //Makes sure the left book index never equals the currentBook index
+                                    
+                                    //Makes sure the left book index never equals the currentBook index
+                                    if backBook == currentBook {
                                         backBook -= 1
                                     }
                                 }
                                 
                                 //Moving right
-                                if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) {
-                                    //Checks if the currentBook is halfway past the right book
+                                if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) { //Checks if the currentBook is halfway past the right book
                                     withAnimation(.linear(duration: 0.05)) {
                                         bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2) //Moves the right book to where the currentBook used to be
                                     }
@@ -87,7 +93,9 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
                                     //Update index storing values
                                     backBook = frontBook
                                     frontBook += 1
-                                    if frontBook == currentBook { //Makes sure the right book index never equals the currentBook index
+                                    
+                                    //Makes sure the right book index never equals the currentBook index
+                                    if frontBook == currentBook {
                                         frontBook += 1
                                     }
                                 }
@@ -128,6 +136,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
     }
     
+    //Checks the dewey numbers of array
     func checkOrder() -> Bool {
         //Goes through entire array of books
         for i in 1..<arraySize {
@@ -138,6 +147,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         return true
     }
+    
     //Calculates the width to the left of book index
     func widthToLeft(index : Int, includeCurrent : Bool = false) -> CGFloat {
         var total : CGFloat = 0
@@ -153,13 +163,15 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
         }
         return total
     }
+    
+    //First sorts the books by position, then spreads books out by correct x amount
     func sortByPosition() {
-        //sorts the books array by book position
-        bookList.sort { $0.xPosition < $1.xPosition}
-        var currWidth = startingPos //Current total width added up
+        bookList.sort { $0.xPosition < $1.xPosition} //Sorts the books array by x position
+        
+        var currWidth = startingPos //Stores the width
+        
         for j in 0..<6 {
-            bookList[j].xPosition = currWidth + (bookList[j].width / 2)
-            //bookList[j].xPosition = startingPos + CGFloat((j * offSet)) //Spreads out the books
+            bookList[j].xPosition = currWidth + (bookList[j].width / 2) //Spreads out the books
             currWidth += bookList[j].width + 10
         }
     }
