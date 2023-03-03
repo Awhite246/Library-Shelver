@@ -14,7 +14,7 @@ struct ShelfView: View { //ShelfView displays books on a shelf that can be dragg
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: 120, height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
