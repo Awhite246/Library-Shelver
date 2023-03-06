@@ -10,12 +10,12 @@ import AVFoundation
 
 //ShelfView displays books on a shelf that can be dragged around.
 struct ShelfView: View {
-    let arraySize = 6 //Used for testing, and so changing array size is easier
+    let arraySize = 7 //Used for testing, and so changing array size is easier
     let offSet : CGFloat = 10 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0...5).map { num in Book(title: "Book", dewey: Float.random(in: 0...1000), author: "\(num)", width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0..<7).map { num in Book(title: "Book \(num)", dewey: (num % 3 == 0 ? Double.random(in: (501.09)...(501.11)) : 501.1), author: "\(num % 2 == 0 ? "Bob\(num * 2)" : "Joe\(num / 2)")", width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
@@ -141,6 +141,9 @@ struct ShelfView: View {
                 return false
             } else if (bookList[i].dewey == bookList[i - 1].dewey){
                 //check author
+                if bookList[i].author < bookList[i - 1].author {
+                    return false
+                }
             }
         }
         return true
@@ -168,7 +171,7 @@ struct ShelfView: View {
         
         var currWidth = startingPos //Stores the width
         
-        for j in 0..<6 {
+        for j in 0..<arraySize {
             bookList[j].xPosition = currWidth + (bookList[j].width / 2) //Spreads out the books
             currWidth += bookList[j].width + offSet
         }

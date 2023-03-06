@@ -10,7 +10,7 @@ import Foundation
 struct Book : Hashable {
     var id = UUID()
     var title : String
-    var dewey : Float
+    var dewey : Double
     var author : String
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
