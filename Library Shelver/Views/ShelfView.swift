@@ -68,7 +68,7 @@ struct ShelfView: View {
                                 }
                                 
                                 //Moving left
-                                if backBook >= 0 && bookList[i].xPosition < (bookList[backBook].xPosition + (bookList[backBook].width / 2)) { //Checks if the currentBook is halfway past the left book
+                                if backBook >= 0 && bookList[i].xPosition - (bookList[i].width / 2) < bookList[backBook].xPosition { //Checks if the currentBook is halfway past the left book
                                     withAnimation(.linear(duration: 0.05)) {
                                         bookList[backBook].xPosition = startingPos + widthToLeft(index: backBook, includeCurrent: true) + (bookList[backBook].width / 2) //Moves the left book to where the currentBook used to be
                                     }
@@ -84,7 +84,7 @@ struct ShelfView: View {
                                 }
                                 
                                 //Moving right
-                                if frontBook < arraySize && bookList[i].xPosition > (bookList[frontBook].xPosition - (bookList[frontBook].width / 2)) { //Checks if the currentBook is halfway past the right book
+                                if frontBook < arraySize && bookList[i].xPosition + (bookList[i].width / 2) > bookList[frontBook].xPosition { //Checks if the currentBook is halfway past the right book
                                     withAnimation(.linear(duration: 0.05)) {
                                         bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2) //Moves the right book to where the currentBook used to be
                                     }
@@ -127,10 +127,7 @@ struct ShelfView: View {
                 totalWidth += offSet
             }
             totalWidth -= offSet
-            
-            //Calculates starting position from the total width
-            startingPos = (730 - totalWidth) / 2
-            //spreads books out
+            startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
             sortByPosition()
         }
     }
@@ -142,6 +139,8 @@ struct ShelfView: View {
             //If the book is ever smaller than the book before it, return false
             if (bookList[i].dewey < bookList[i - 1].dewey) {
                 return false
+            } else if (bookList[i].dewey == bookList[i - 1].dewey){
+                //check author
             }
         }
         return true
