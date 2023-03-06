@@ -20,7 +20,7 @@ struct ContentView: View {
                 // adding 3 navigation links for the two gamemodes and how to play page
                 NavigationLink(destination: DeweyView()) {
                     Label("DEWEY", systemImage: "")
-                        .foregroundColor(Color.green)
+                        .foregroundColor(Color.blue)
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -28,7 +28,7 @@ struct ContentView: View {
                 .padding(30)
                 NavigationLink(destination: FictionView()) {
                     Label("FICTION", systemImage: "")
-                        .foregroundColor(Color.green)
+                        .foregroundColor(Color.blue)
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -36,7 +36,7 @@ struct ContentView: View {
                 .padding(30)
                 NavigationLink(destination: HowToPlay()) {
                     Label("HOW TO PLAY", systemImage: "")
-                        .foregroundColor(Color.green)
+                        .foregroundColor(Color.blue)
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -44,7 +44,7 @@ struct ContentView: View {
                 
                 NavigationLink(destination: CertificateView()) {
                     Label("certificate", systemImage: "")
-                        .foregroundColor(Color.green)
+                        .foregroundColor(Color.blue)
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -52,8 +52,7 @@ struct ContentView: View {
             }
             .background(
                 ZStack {
-                    Image("chalkboard1")
-                        .resizable()
+                    Color.mint
                         .scaledToFill()
                         .frame(width: 1000, height: 300)
                 }
