@@ -18,20 +18,10 @@ struct ContentView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 // adding 3 navigation links for the two gamemodes and how to play page
-                NavigationLink(destination: DeweyView()) {
-                    Label("DEWEY", systemImage: "")
-                        .foregroundColor(Color.blue)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                }
-                .padding(30)
-                NavigationLink(destination: FictionView()) {
-                    Label("FICTION", systemImage: "")
-                        .foregroundColor(Color.blue)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
+                NavigationLink {
+                    DeweyView()
+                } label: {
+                    CustomButton(text: "Start")
                 }
                 .padding(30)
                 NavigationLink(destination: HowToPlay()) {

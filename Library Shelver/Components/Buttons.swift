@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CustomButton: View {
     var text: String
-    var background: Color = .yellow
+    var background: Color = .orange
     var body: some View {
         Text(text)
             .foregroundColor(.cyan)
