@@ -19,7 +19,7 @@ struct ContentView: View {
                     .fontWeight(.bold)
                 // adding 3 navigation links for the two gamemodes and how to play page
                 NavigationLink {
-                    DeweyView()
+                    PlayScreen()
                 } label: {
                     CustomButton(text: "Start")
                 }

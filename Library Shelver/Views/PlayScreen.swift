@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct PlayScreen: View {
+    @State private var name = ""
     var body: some View {
         VStack {
+            Text("Enter Name Below, Then Select Name Below")
+                .fontWeight(.bold)
+                .font(.title)
+                .padding(30)
+            TextField("Enter Name Here", text: $name)
+            NavigationLink(destination: FictionView()) {
+                Label("Fiction", systemImage: "")
+                    .foregroundColor(Color.blue)
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+            }
+            NavigationLink(destination: DeweyView()) {
+                Label("Dewey", systemImage: "")
+                    .foregroundColor(Color.blue)
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+            }
             
         } .background(
             ZStack {
