@@ -11,12 +11,12 @@ struct PlayScreen: View {
     @State private var name = ""
     var body: some View {
         VStack {
-            Text("Enter Name Below, Then Select Name Below")
+            Text("Enter Name Below, Then Select Game Mode Below")
                 .fontWeight(.bold)
                 .font(.title)
                 .padding(30)
             TextField("Enter Name Here", text: $name)
-                
+                .fontWeight(.bold)
             NavigationLink {
                 DeweyView()
             } label: {
