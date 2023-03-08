@@ -11,7 +11,7 @@ import AVFoundation
 //ShelfView displays books on a shelf that can be dragged around.
 struct ShelfView: View {
     let arraySize = 7 //Used for testing, and so changing array size is easier
-    let offSet : CGFloat = 10 //How far apart displayed books are
+    let offSet : CGFloat = 7 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
@@ -69,7 +69,7 @@ struct ShelfView: View {
                                 
                                 //Moving left
                                 if backBook >= 0 && bookList[i].xPosition - (bookList[i].width / 2) < bookList[backBook].xPosition { //Checks if the currentBook is halfway past the left book
-                                    withAnimation(.linear(duration: 0.05)) {
+                                    withAnimation(.linear(duration: 0.1)) {
                                         bookList[backBook].xPosition = startingPos + widthToLeft(index: backBook, includeCurrent: true) + (bookList[backBook].width / 2) //Moves the left book to where the currentBook used to be
                                     }
                                     
@@ -85,7 +85,7 @@ struct ShelfView: View {
                                 
                                 //Moving right
                                 if frontBook < arraySize && bookList[i].xPosition + (bookList[i].width / 2) > bookList[frontBook].xPosition { //Checks if the currentBook is halfway past the right book
-                                    withAnimation(.linear(duration: 0.05)) {
+                                    withAnimation(.linear(duration: 0.1)) {
                                         bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2) //Moves the right book to where the currentBook used to be
                                     }
                                     
@@ -128,10 +128,17 @@ struct ShelfView: View {
             }
             totalWidth -= offSet
             startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
+            
             sortByPosition()
         }
     }
-    
+    //Makes sure array isn't already sorted by chance (maybe not needed?)
+    func fixPresortedArray() {
+        if checkOrder() {
+            bookList.shuffle()
+            fixPresortedArray()
+        }
+    }
     //Checks the dewey numbers of array
     func checkOrder() -> Bool {
         //Goes through entire array of books
