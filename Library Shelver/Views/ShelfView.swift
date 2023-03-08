@@ -148,7 +148,7 @@ struct ShelfView: View {
                 return false
             } else if (bookList[i].dewey == bookList[i - 1].dewey){
                 //check author
-                if bookList[i].author < bookList[i - 1].author {
+                if bookList[i].author.suffix(3).uppercased() < bookList[i - 1].author.suffix(3).uppercased() {
                     return false
                 }
             }
