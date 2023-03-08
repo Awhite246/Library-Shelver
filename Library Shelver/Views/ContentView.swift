@@ -24,12 +24,10 @@ struct ContentView: View {
                     CustomButton(text: "Start")
                 }
                 .padding(30)
-                NavigationLink(destination: HowToPlay()) {
-                    Label("HOW TO PLAY", systemImage: "")
-                        .foregroundColor(Color.blue)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
+                NavigationLink {
+                    PlayScreen()
+                } label: {
+                    CustomButton(text: "How To Play")
                 }
                 
                 NavigationLink(destination: CertificateView()) {
