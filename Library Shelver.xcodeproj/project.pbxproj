@@ -13,6 +13,7 @@
 		400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743E8299D3046002A2EEB /* HowToPlay.swift */; };
 		400743ED29AD045F002A2EEB /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400743EC29AD045F002A2EEB /* CertificateView.swift */; };
 		40970A4F29B8E376006CAE3A /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40970A4E29B8E376006CAE3A /* PlayScreen.swift */; };
+		40970A5129B8E818006CAE3A /* HTPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40970A5029B8E818006CAE3A /* HTPButton.swift */; };
 		E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */; };
 		E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF35298C11D400F213D2 /* ContentView.swift */; };
 		E31BFF38298C11D700F213D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31BFF37298C11D700F213D2 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		400743E8299D3046002A2EEB /* HowToPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlay.swift; sourceTree = "<group>"; };
 		400743EC29AD045F002A2EEB /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
 		40970A4E29B8E376006CAE3A /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
+		40970A5029B8E818006CAE3A /* HTPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTPButton.swift; sourceTree = "<group>"; };
 		E31BFF30298C11D400F213D2 /* Library Shelver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Library Shelver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31BFF33298C11D400F213D2 /* Library_ShelverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library_ShelverApp.swift; sourceTree = "<group>"; };
 		E31BFF35298C11D400F213D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				400743E02993FC89002A2EEB /* Buttons.swift */,
+				40970A5029B8E818006CAE3A /* HTPButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			files = (
 				400743E12993FC89002A2EEB /* Buttons.swift in Sources */,
 				400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */,
+				40970A5129B8E818006CAE3A /* HTPButton.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,

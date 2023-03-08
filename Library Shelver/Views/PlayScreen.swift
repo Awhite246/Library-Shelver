@@ -16,6 +16,7 @@ struct PlayScreen: View {
                 .font(.title)
                 .padding(30)
             TextField("Enter Name Here", text: $name)
+                
             NavigationLink(destination: FictionView()) {
                 Label("Fiction", systemImage: "")
                     .foregroundColor(Color.blue)

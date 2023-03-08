@@ -1,13 +1,13 @@
 //
-//  Buttons.swift
+//  HTPButton.swift
 //  Library Shelver
 //
-//  Created by Victor Gunderson on 2/8/23.
+//  Created by Victor Gunderson on 3/8/23.
 //
 
 import SwiftUI
 
-struct CustomButton: View {
+struct HTPButton: View {
     var text: String
     var background: Color = .orange
     var body: some View {
@@ -21,9 +21,9 @@ struct CustomButton: View {
     }
 }
 
-struct CustomButton_Previews: PreviewProvider {
+struct HTPButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(text: "Next")
+        HTPButton(text: "How To Play")
     }
 }
 
