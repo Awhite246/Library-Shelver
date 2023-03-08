@@ -17,20 +17,18 @@ struct PlayScreen: View {
                 .padding(30)
             TextField("Enter Name Here", text: $name)
                 
-            NavigationLink(destination: FictionView()) {
-                Label("Fiction", systemImage: "")
-                    .foregroundColor(Color.blue)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
+            NavigationLink {
+                DeweyView()
+            } label: {
+                CustomButton(text: "Dewey")
             }
-            NavigationLink(destination: DeweyView()) {
-                Label("Dewey", systemImage: "")
-                    .foregroundColor(Color.blue)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
+            .padding(30)
+            NavigationLink {
+                FictionView()
+            } label: {
+                CustomButton(text: "Fiction")
             }
+        
             
         } .background(
             ZStack {
