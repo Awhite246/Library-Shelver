@@ -23,6 +23,9 @@ struct CertificateView: View {
                 
         } .background(
             ZStack {
+                Color.mint
+                    .scaledToFill()
+                    .frame(width: 1000, height: 300)
                 Image("certificate")
                     .resizable()
                     .frame(width: 800, height: 400)
