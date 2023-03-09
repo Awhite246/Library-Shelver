@@ -8,29 +8,34 @@
 import SwiftUI
 
 struct CertificateView: View {
-    @State private var name = ""
-    @State private var showingAlert = false
+    @State var attempts = 0
+    @State var date = Date.now
     var body: some View {
-        VStack {
-            
-            TextField("Enter Name Here", text: $name)
-                .padding(300)
-                .alert("CONGRADULATIONS! Type your name in the area where it says to type it. Then show it to your librarian", isPresented: $showingAlert) {
-                        Button("OK", role: .cancel) { }
-                        // normal alert usage, alert is presented when showing alert = true (1000 points)
-                    }
-                
-                
-        } .background(
-            ZStack {
-                Color.mint
-                    .scaledToFill()
-                    .frame(width: 1000, height: 300)
-                Image("certificate")
-                    .resizable()
-                    .frame(width: 800, height: 400)
+        ZStack {
+            Color("Lion")
+                .ignoresSafeArea()
+                .scaledToFill()
+            Color("Peach")
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .frame(height: 350)
+                .offset(x: -10, y: 10)
+            VStack {
+                Text("Congratulations!")
+                    .font(.system(size: 80))
+                    .foregroundColor(Color("Bistre"))
+                    .bold()
+                Text("You have completed library shelver in \(attempts) attempts")
+                    .foregroundColor(Color("Brown"))
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .padding(.bottom, 90)
+                Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
+                    .multilineTextAlignment(.center)
+                    .font(.title3)
+                    .foregroundColor(Color("Brown"))
+                    .fontWeight(.semibold)
             }
-        )
+        }
     }
 }
 
