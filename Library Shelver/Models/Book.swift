@@ -32,7 +32,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
                 Text("\(book.title)\nBy: \(book.author)\n\(book.dewey, specifier: "%.2f")")
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 50)
-                Sticker(author: book.author.suffix(3).uppercased(), dewey: book.dewey)
+                Sticker(author: book.author.prefix(3).uppercased(), dewey: book.dewey)
             }
         }
         .frame(width: book.width, height: book.height)

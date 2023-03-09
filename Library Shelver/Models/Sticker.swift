@@ -25,7 +25,7 @@ struct Sticker: View {
                     .padding(.top, 10)
             }
         }
-        .frame(width:75, height: 100)
+        .frame(width:70, height: 100)
     }
 }
 

@@ -15,7 +15,7 @@ struct ShelfView: View {
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0..<7).map { num in Book(title: "Book \(num)", dewey: (num % 3 == 0 ? Double.random(in: (501.09)...(501.11)) : 501.1), author: "\(num % 2 == 0 ? "Bob\(num * 2)" : "Joe\(num / 2)")", width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0..<7).map { num in Book(title: "Book \(num)", dewey: (num % 3 == 0 ? Double.random(in: (501)...(501.2)) : 501.1), author: "\(num % 2 == 0 ? "Bob\(num * 2)" : "Joe\(num / 2)")", width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
@@ -148,7 +148,7 @@ struct ShelfView: View {
                 return false
             } else if (bookList[i].dewey == bookList[i - 1].dewey){
                 //check author
-                if bookList[i].author.suffix(3).uppercased() < bookList[i - 1].author.suffix(3).uppercased() {
+                if bookList[i].author.prefix(3).uppercased() < bookList[i - 1].author.prefix(3).uppercased() {
                     return false
                 }
             }
