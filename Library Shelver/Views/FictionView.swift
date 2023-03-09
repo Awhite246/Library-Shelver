@@ -19,7 +19,7 @@ struct FictionView: View {
         }
         .background(
             ZStack {
-                Image("viewBackgrounds")
+                Image("Shelf Background")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 750, height: 200)

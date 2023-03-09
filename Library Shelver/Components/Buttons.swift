@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CustomButton: View {
     var text: String
     var background: Color = .orange
     var body: some View {
         Text(text)
-            .foregroundColor(.cyan)
+            .foregroundColor(.black)
             .padding()
             .padding(.horizontal)
             .background(background)

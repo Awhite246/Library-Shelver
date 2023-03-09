@@ -11,25 +11,24 @@ struct PlayScreen: View {
     @State private var name = ""
     var body: some View {
         VStack {
-            Text("Enter Name Below, Then Select Name Below")
+            Text("Enter Name Below, Then Select Game Mode Below")
                 .fontWeight(.bold)
                 .font(.title)
                 .padding(30)
             TextField("Enter Name Here", text: $name)
-            NavigationLink(destination: FictionView()) {
-                Label("Fiction", systemImage: "")
-                    .foregroundColor(Color.blue)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
+                .fontWeight(.bold)
+            NavigationLink {
+                DeweyView()
+            } label: {
+                CustomButton(text: "Dewey")
             }
-            NavigationLink(destination: DeweyView()) {
-                Label("Dewey", systemImage: "")
-                    .foregroundColor(Color.blue)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
+            .padding(30)
+            NavigationLink {
+                FictionView()
+            } label: {
+                CustomButton(text: "Fiction")
             }
+        
             
         } .background(
             ZStack {
