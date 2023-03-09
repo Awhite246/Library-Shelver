@@ -9,10 +9,12 @@ import SwiftUI
 
 struct CustomButton: View {
     var text: String
-    var background: Color = .orange
+    var background: Color = Color("Peach")
     var body: some View {
         Text(text)
-            .foregroundColor(.black)
+            .font(.system(size: 25))
+            .fontWeight(.semibold)
+            .foregroundColor(Color("Falu Red"))
             .padding()
             .padding(.horizontal)
             .background(background)

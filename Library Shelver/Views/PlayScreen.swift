@@ -8,36 +8,26 @@
 import SwiftUI
 
 struct PlayScreen: View {
-    @State private var name = ""
     var body: some View {
-        VStack {
-            Text("Enter Name Below, Then Select Game Mode Below")
-                .fontWeight(.bold)
-                .font(.title)
+            VStack {
+                Text("Library Shelver")
+                    .fontWeight(.bold)
+                    .font(.system(size: 50))
+                    .foregroundColor(Color("Bistre"))
+                    .padding(30)
+                NavigationLink {
+                    DeweyView()
+                } label: {
+                    CustomButton(text: "Dewey")
+                }
                 .padding(30)
-            TextField("Enter Name Here", text: $name)
-                .fontWeight(.bold)
-            NavigationLink {
-                DeweyView()
-            } label: {
-                CustomButton(text: "Dewey")
+                NavigationLink {
+                    FictionView()
+                } label: {
+                    CustomButton(text: "Fiction")
+                }
             }
-            .padding(30)
-            NavigationLink {
-                FictionView()
-            } label: {
-                CustomButton(text: "Fiction")
-            }
-        
-            
-        } .background(
-            ZStack {
-                Color.mint
-                    .scaledToFill()
-                    .frame(width: 1000, height: 300)
-            }
-        )
-    }
+        }
 }
 
 struct PlayScreen_Previews: PreviewProvider {

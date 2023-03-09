@@ -12,41 +12,46 @@ struct ContentView: View {
     @State private var player: AVAudioPlayer!
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Library Shelver")
-                    .foregroundColor(Color.yellow)
-                    .font(.title)
-                    .fontWeight(.bold)
-                // adding 3 navigation links for the two gamemodes and how to play page
-                NavigationLink {
-                    PlayScreen()
-                } label: {
-                    CustomButton(text: "Start")
-                }
-                .padding(30)
-                NavigationLink {
-                    HowToPlay()
-                } label: {
-                    CustomButton(text: "How To Play")
-                }
-                
-                NavigationLink(destination: CertificateView()) {
-                    Label("certificate", systemImage: "")
-                        .foregroundColor(Color.blue)
-                        .font(.title)
+            ZStack {
+                Color("Lion")
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                VStack {
+                    Text("Library Shelver")
                         .fontWeight(.bold)
-                    
+                        .font(.system(size: 50))
+                        .foregroundColor(Color("Bistre"))
+                    NavigationLink {
+                        DeweyView()
+                    } label: {
+                        CustomButton(text: "Dewey")
+                    }
+                    .padding(.bottom, 5)
+                    NavigationLink {
+                        FictionView()
+                    } label: {
+                        CustomButton(text: "Fiction")
+                    }
+                    .padding(.bottom, 5)
+                    HStack {
+                        NavigationLink {
+                            HowToPlay()
+                        } label: {
+                            CustomButton(text: "Help")
+                        }
+                        .padding(.horizontal, 55)
+                        NavigationLink {
+                            CertificateView()
+                        } label: {
+                            CustomButton(text: "Certificate")
+                        }
+                    }
+                    .padding(.bottom, 5)
                 }
             }
-            .background(
-                ZStack {
-                    Color.mint
-                        .scaledToFill()
-                        .frame(width: 1000, height: 300)
-                }
-            )
         }
     }
+    
     func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
