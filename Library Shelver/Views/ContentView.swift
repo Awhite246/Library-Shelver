@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
                 .padding(30)
                 NavigationLink {
-                    PlayScreen()
+                    HowToPlay()
                 } label: {
                     CustomButton(text: "How To Play")
                 }
