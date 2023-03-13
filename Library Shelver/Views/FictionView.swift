@@ -22,7 +22,7 @@ struct FictionView: View {
                 Image("Shelf Background")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 750, height: 200)
+                    .ignoresSafeArea()
             }
         )
     }
