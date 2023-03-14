@@ -23,9 +23,20 @@ struct CustomButton: View {
     }
 }
 
+struct BackButton: View {
+    let size : CGFloat = 25
+    var body: some View {
+        Image(systemName: "arrow.backward.square.fill")
+            .resizable()
+            .frame(width: size, height: size)
+            .foregroundColor(Color("Peach"))
+            .shadow(color: Color("Bistre"), radius: size / 5)
+    }
+}
+
 struct CustomButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(text: "Next")
+        BackButton()
     }
 }
 

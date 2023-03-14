@@ -23,6 +23,7 @@ struct ContentView: View {
                         .foregroundColor(Color("Bistre"))
                     NavigationLink {
                         DeweyView()
+                            .navigationBarBackButtonHidden()
                     } label: {
                         CustomButton(text: "Dewey")
                     }

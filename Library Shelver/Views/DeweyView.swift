@@ -10,11 +10,24 @@ import AVFoundation
 struct DeweyView: View {
     @State private var player: AVAudioPlayer!
     var body: some View {
-        VStack {
-            Text("Dewey Sorter")
-                .foregroundColor(Color.yellow)
-                .fontWeight(.bold)
-                .font(.title)
+        VStack (alignment: .customCenter) {
+            HStack {
+                Button {
+                    
+                } label: {
+                    BackButton()
+                }
+                .frame(alignment: .leading)
+                Text("Dewey Sorter")
+                    .foregroundColor(Color("Peach"))
+                    .shadow(color: Color("Peach"), radius: 20)
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .frame(alignment: .center)
+                    .alignmentGuide(.customCenter) {
+                        $0[HorizontalAlignment.center]
+                    }
+            }
             ShelfView() //displays the shelf of draggable books
         }
         .background(
@@ -26,7 +39,6 @@ struct DeweyView: View {
             }
         )
     }
-    
 }
 
 struct DeweyView_Previews: PreviewProvider {
