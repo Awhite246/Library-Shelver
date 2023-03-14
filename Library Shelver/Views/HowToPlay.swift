@@ -9,21 +9,21 @@ import SwiftUI
 
 struct HowToPlay: View {
     var body: some View {
-        VStack {
-            Spacer()
-                .frame(height: 500)
-            Text("How To Play?")
-                .foregroundColor(Color.yellow)
-                .fontWeight(.bold)
-                .font(.title)
-                Spacer()
-                .frame(height: 300)
-            Text(" - There are two gamemodes")
-            Spacer()
-                .frame(height: 900)
+        ZStack {
+            Color("Peach")
+                .scaledToFill()
+                .ignoresSafeArea()
+            VStack {
+                Text("How To Play?")
+                    .fontWeight(.bold)
+                    .font(.system(size: 50))
+                    .foregroundColor(Color("Bistre"))
+                    .padding(30)
+                Text(" - There are two gamemodes")
+            }
         } .background(
             ZStack {
-                Image("chalkboard1")
+                Image("peach")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 750, height: 200)
