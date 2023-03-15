@@ -20,6 +20,7 @@
 		E331CD1729B67A19009014C3 /* bookList.json in Resources */ = {isa = PBXBuildFile; fileRef = E331CD1629B67A19009014C3 /* bookList.json */; };
 		E331CD1B29B8E6CC009014C3 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E331CD1A29B8E6CC009014C3 /* Sticker.swift */; };
 		E331CD1D29BF740B009014C3 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E331CD1C29BF740B009014C3 /* Alignment.swift */; };
+		E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E331CD1E29C0C488009014C3 /* JSONreader.swift */; };
 		E39DDAB529915ADC00D81486 /* ShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DDAB429915ADC00D81486 /* ShelfView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		E331CD1629B67A19009014C3 /* bookList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookList.json; sourceTree = "<group>"; };
 		E331CD1A29B8E6CC009014C3 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		E331CD1C29BF740B009014C3 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
+		E331CD1E29C0C488009014C3 /* JSONreader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONreader.swift; sourceTree = "<group>"; };
 		E39DDAB429915ADC00D81486 /* ShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				E331CD1629B67A19009014C3 /* bookList.json */,
 				E331CD1A29B8E6CC009014C3 /* Sticker.swift */,
 				E331CD1C29BF740B009014C3 /* Alignment.swift */,
+				E331CD1E29C0C488009014C3 /* JSONreader.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */,
 				E331CD1D29BF740B009014C3 /* Alignment.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
+				E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
 				400743ED29AD045F002A2EEB /* CertificateView.swift in Sources */,

@@ -9,15 +9,18 @@ import Foundation
 
 struct Book : Hashable {
     var id = UUID()
-    var title : String
-    var subtitle : String = ""
-    var dewey : Double
-    var author : String
+    var info : BookInfo
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
     var height: CGFloat = 300
     
     var color : Color = .green //Temp
+}
+struct BookInfo : Codable, Equatable, Hashable {
+    var id = UUID()
+    var title : String
+    var dewey : Double
+    var author : String
 }
 
 import SwiftUI
@@ -29,10 +32,10 @@ struct BookView: View { //Book View displays an individual book, which is then u
         ZStack {
             book.color
             VStack {
-                Text("\(book.title)\nBy: \(book.author)\n\(book.dewey, specifier: "%.2f")")
+                Text("\(book.info.title)\nBy: \(book.info.author)\n\(book.info.dewey, specifier: "%.2f")")
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 50)
-                Sticker(author: book.author.prefix(3).uppercased(), dewey: book.dewey)
+                Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
             }
         }
         .frame(width: book.width, height: book.height)
@@ -42,7 +45,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(title: "Book", dewey: 031.1, author: "Joe", xPosition: 0, width: 100, height: 300))
+        BookView(book: Book(info: BookInfo(title: "Book", dewey: 031.1, author: "Joe"), xPosition: 0, width: 100, height: 300))
     }
 }
 
