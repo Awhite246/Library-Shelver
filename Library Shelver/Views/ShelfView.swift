@@ -23,6 +23,7 @@ struct ShelfView: View {
     @State var backBook = -1 //Index of book to the left of the current book
     
     @State var check = false //Are books in order
+    @State var timesChecked = 0
     
     @State var totalWidth : CGFloat = 0 //Total width of all books and space inbetween the books
     @State var startingPos : CGFloat = 0 //Position of the first book
@@ -33,6 +34,8 @@ struct ShelfView: View {
                 //Displays 'correct' when check == true, 'wrong' when check == false
                 Text("\(check ? "Correct" : "Wrong")")
                     .foregroundColor(check ? .green : .red)
+                Text("Attemps: \(timesChecked)")
+                    .foregroundColor(.white)
             }
             .foregroundColor(.blue)
             .background(.black)
@@ -113,15 +116,14 @@ struct ShelfView: View {
                                 backBook = -1
                                 
                                 sortByPosition()
-                                
-                                //Check if the order is correct
-                                check = checkOrder()
                             }
                         )
                 }
             }
             Button("CHECK") {
-                
+                //Check if the order is correct
+                check = checkOrder()
+                timesChecked += 1
             }
         }
         .onAppear {
