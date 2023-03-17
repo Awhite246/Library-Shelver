@@ -3,6 +3,7 @@
         "title": "The Black Hole Paradox",
         "dewey": 523.8,
         "author": "Parker"
+        // difficulty : easy, medium, hard 
     },
     {
         "title": "Quantum Entanglement for Beginners",
