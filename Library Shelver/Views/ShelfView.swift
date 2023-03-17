@@ -120,6 +120,9 @@ struct ShelfView: View {
                         )
                 }
             }
+            Button("CHECK") {
+                
+            }
         }
         .onAppear {
             //Calculates total width of all the books
