@@ -10,13 +10,14 @@ import AVFoundation
 
 //ShelfView displays books on a shelf that can be dragged around.
 struct ShelfView: View {
+    let allBookInfo = Bundle.main.decode([BookInfo].self, from: "bookList.json")
     let arraySize = 7 //Used for testing, and so changing array size is easier
     let offSet : CGFloat = 7 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(title: "Book \(num)", dewey: (num % 3 == 0 ? Double.random(in: (501)...(501.2)) : 501.1), author: "\(num % 2 == 0 ? "Bob\(num * 2)" : "Joe\(num / 2)")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
-    
+    @State var jBookList = [Book]()
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
     @State var backBook = -1 //Index of book to the left of the current book
@@ -182,6 +183,16 @@ struct ShelfView: View {
             bookList[j].xPosition = currWidth + (bookList[j].width / 2) //Spreads out the books
             currWidth += bookList[j].width + offSet
         }
+    }
+    
+    //Pulls random data from JSON file
+    func generateBooks()  {
+        return
+//        var list = [Book]()
+//        for i in 0..<arraySize {
+//            let bookInfo = allBookInfo[i]
+//            bookList.append(Book(info: bookInfo, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan))
+//        }
     }
     
     func playSounds(sound: String) {

@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct Book : Hashable {
-    var id = UUID()
+struct Book : Identifiable {
     var info : BookInfo
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
     var height: CGFloat = 300
     
     var color : Color = .green //Temp
-}
-struct BookInfo : Codable, Equatable, Hashable {
+    
     var id = UUID()
+}
+struct BookInfo : Codable, Equatable {
     var title : String
     var dewey : Double
     var author : String

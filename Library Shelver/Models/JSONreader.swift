@@ -5,7 +5,7 @@
 //  Created by Alistair White on 3/14/23.
 //
 
-import Foundation
+import UIKit
 
 extension Bundle {
     func decode<T: Decodable>(_ type: T.Type, from file: String) -> T {
