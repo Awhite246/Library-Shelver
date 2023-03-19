@@ -34,8 +34,12 @@ struct BookView: View { //Book View displays an individual book, which is then u
             VStack {
                 Text("\(book.info.title)\nBy: \(book.info.author)\n\(book.info.dewey, specifier: "%.2f")")
                     .multilineTextAlignment(.center)
+                    .padding(.vertical)
                     .padding(.bottom, 50)
+                Spacer()
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
+                    .padding(.vertical)
+                    
             }
         }
         .frame(width: book.width, height: book.height)

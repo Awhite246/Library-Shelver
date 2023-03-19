@@ -16,8 +16,9 @@ struct ShelfView: View {
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0..<7).map { num in Book(info: BookInfo(title: "Book \(num)", dewey: (num % 3 == 0 ? Double.random(in: (501)...(501.2)) : 501.1), author: "\(num % 2 == 0 ? "Bob\(num * 2)" : "Joe\(num / 2)")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0..<7).map { num in Book(info: BookInfo(title: "Book \(num)", dewey: Double(num), author: "\(num % 2 == 0 ? "Bob" : "Joe")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), color: Bool.random() ? .yellow : .cyan) } //placeholder for actual randomized book list
     @State var jBookList = [Book]()
+    
     @State var currentBook = -1 //Index of the book being dragged
     @State var frontBook = -1 //Index of the book to the right of the current book
     @State var backBook = -1 //Index of book to the left of the current book
@@ -30,15 +31,15 @@ struct ShelfView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                //Displays 'correct' when check == true, 'wrong' when check == false
-                Text("\(check ? "Correct" : "Wrong")")
-                    .foregroundColor(check ? .green : .red)
-                Text("Attemps: \(timesChecked)")
-                    .foregroundColor(.white)
-            }
-            .foregroundColor(.blue)
-            .background(.black)
+//            HStack {
+//                //Displays 'correct' when check == true, 'wrong' when check == false
+//                Text("\(check ? "Correct" : "Wrong")")
+//                    .foregroundColor(check ? .green : .red)
+//                Text("Attemps: \(timesChecked)")
+//                    .foregroundColor(.white)
+//            }
+//            .foregroundColor(.blue)
+//            .background(.black)
             ZStack {
                 ForEach(0..<arraySize) { i in
                     BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
@@ -120,11 +121,11 @@ struct ShelfView: View {
                         )
                 }
             }
-            Button("CHECK") {
-                //Check if the order is correct
-                check = checkOrder()
-                timesChecked += 1
-            }
+//            Button("CHECK") {
+//                //Check if the order is correct
+//                check = checkOrder()
+//                timesChecked += 1
+//            }
         }
         .onAppear {
             //Calculates total width of all the books
@@ -139,7 +140,7 @@ struct ShelfView: View {
         }
     }
     //Makes sure array isn't already sorted by chance (maybe not needed?)
-    func fixPresortedArray() {
+    private func fixPresortedArray() {
         if checkOrder() {
             bookList.shuffle()
             fixPresortedArray()
@@ -163,7 +164,7 @@ struct ShelfView: View {
     }
     
     //Calculates the width to the left of book index
-    func widthToLeft(index : Int, includeCurrent : Bool = false) -> CGFloat {
+    private func widthToLeft(index : Int, includeCurrent : Bool = false) -> CGFloat {
         var total : CGFloat = 0
         for i in 0..<index {
             if i != currentBook {
@@ -179,7 +180,7 @@ struct ShelfView: View {
     }
     
     //First sorts the books by position, then spreads books out by correct x amount
-    func sortByPosition() {
+    private func sortByPosition() {
         bookList.sort { $0.xPosition < $1.xPosition} //Sorts the books array by x position
         
         var currWidth = startingPos //Stores the width
@@ -191,7 +192,7 @@ struct ShelfView: View {
     }
     
     //Pulls random data from JSON file
-    func generateBooks()  {
+    private func generateBooks()  {
         return
 //        var list = [Book]()
 //        for i in 0..<arraySize {
@@ -200,7 +201,7 @@ struct ShelfView: View {
 //        }
     }
     
-    func playSounds(sound: String) {
+    private func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
                 // Use NSDataAsset's data property to access the audio file stored in Sound.

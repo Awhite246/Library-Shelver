@@ -12,8 +12,9 @@ struct Sticker: View {
     let dewey: Double
     var body: some View {
         ZStack {
-            Color.white
-                .clipShape(RoundedRectangle(cornerRadius: 15))
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color.black)
+                .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
             VStack {
                 Text("\(author)")
                     .foregroundColor(.black)

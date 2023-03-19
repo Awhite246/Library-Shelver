@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 struct DeweyView: View {
     @State private var player: AVAudioPlayer!
+    @State var correct = false
     var body: some View {
         VStack (alignment: .customCenter) {
             HStack {
@@ -18,6 +19,7 @@ struct DeweyView: View {
                     BackButton()
                 }
                 .frame(alignment: .leading)
+                Spacer()
                 Text("Dewey Sorter")
                     .foregroundColor(Color("Peach"))
                     .shadow(color: Color("Peach"), radius: 20)
@@ -27,8 +29,17 @@ struct DeweyView: View {
                     .alignmentGuide(.customCenter) {
                         $0[HorizontalAlignment.center]
                     }
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("Check")
+                }
+                
             }
+            .padding()
             ShelfView() //displays the shelf of draggable books
+                
         }
         .background(
             ZStack {
