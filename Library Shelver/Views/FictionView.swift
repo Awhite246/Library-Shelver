@@ -10,11 +10,25 @@ import AVFoundation
 struct FictionView: View {
     @State private var player: AVAudioPlayer!
     var body: some View {
-        VStack {
-            Text("Fiction Sorter")
-                .foregroundColor(Color.yellow)
-                .fontWeight(.bold)
-                .font(.title)
+        VStack (alignment: .customCenter) {
+            HStack {
+                NavigationLink {
+                    ContentView()
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    BackButton()
+                }
+                .frame(alignment: .leading)
+                Text("Fiction Sorter")
+                    .foregroundColor(Color("Peach"))
+                    .shadow(color: Color("Peach"), radius: 20)
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .frame(alignment: .center)
+                    .alignmentGuide(.customCenter) {
+                        $0[HorizontalAlignment.center]
+                    }
+            }
             ShelfView() //displays the shelf of draggable books
         }
         .background(
@@ -25,18 +39,6 @@ struct FictionView: View {
                     .ignoresSafeArea()
             }
         )
-    }
-    func playSounds(sound: String) {
-        if let asset = NSDataAsset(name: sound){
-            do {
-                // Use NSDataAsset's data property to access the audio file stored in Sound.
-                player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
-                // Play the above sound file.
-                player?.play()
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
     }
 }
 

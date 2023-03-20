@@ -12,8 +12,9 @@ struct DeweyView: View {
     var body: some View {
         VStack (alignment: .customCenter) {
             HStack {
-                Button {
-                    
+                NavigationLink {
+                    ContentView()
+                        .navigationBarBackButtonHidden()
                 } label: {
                     BackButton()
                 }
