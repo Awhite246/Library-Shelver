@@ -9,16 +9,17 @@ import SwiftUI
 import AVFoundation
 struct DeweyView: View {
     @State private var player: AVAudioPlayer!
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var correct = false
     var body: some View {
         VStack (alignment: .customCenter) {
             HStack {
                 Button {
-                    
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     BackButton()
+                        
                 }
-                .frame(alignment: .leading)
                 Spacer()
                 Text("Dewey Sorter")
                     .foregroundColor(Color("Peach"))
@@ -31,9 +32,14 @@ struct DeweyView: View {
                     }
                 Spacer()
                 Button {
-                    
                 } label: {
                     Text("Check")
+                        .foregroundColor(Color("Peach"))
+                        .background {
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(Color("Bistre"))
+                        }
+                        .shadow(radius: 20)
                 }
                 
             }

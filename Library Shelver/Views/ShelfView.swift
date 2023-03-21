@@ -117,16 +117,12 @@ struct ShelfView: View {
                                 backBook = -1
                                 
                                 sortByPosition()
+                                
+                                check = checkOrder()
                             }
                         )
                 }
             }
-            
-//            Button("CHECK") {
-//                //Check if the order is correct
-//                check = checkOrder()
-//                timesChecked += 1
-//            }
         }
         .onAppear {
             //Calculates total width of all the books
