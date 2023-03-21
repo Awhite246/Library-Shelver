@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var player: AVAudioPlayer!
     @State var name = ""
     @State var submit = false
+    @State var shake = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -41,9 +42,14 @@ struct ContentView: View {
                                 Button {
                                     if name.count > 1 {
                                         submit = true
+                                    } else {
+                                        shake = true
                                     }
                                 } label: {
                                     CustomButton(text: "Submit")
+                                }
+                                .shake($shake) {
+                                    print("Finished")
                                 }
                                 
                             }
@@ -77,6 +83,7 @@ struct ContentView: View {
                         .padding(.horizontal, 55)
                         NavigationLink {
                             CertificateView(attempts: -1)
+                                .navigationBarBackButtonHidden()
                         } label: {
                             CustomButton(text: "Certificate")
                         }
