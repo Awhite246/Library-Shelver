@@ -9,15 +9,14 @@ import SwiftUI
 import AVFoundation
 
 //ShelfView displays books on a shelf that can be dragged around.
-struct ShelfView: View {
-    
-    let allBookInfo = Bundle.main.decode([BookInfo].self, from: "bookList.json")
+struct ShelfView: View { var book : Book
+    //let allBookInfo = Bundle.main.decode([BookInfo].self, from: "bookList.json")
     let arraySize = 7 //Used for testing, and so changing array size is easier
     let offSet : CGFloat = 7 //How far apart displayed books are
     
     @State private var player: AVAudioPlayer!
     
-    @State var bookList = (0..<7).map { num in Book(info: BookInfo(title: "Book \(num)", dewey: Double(num), author: "\(num % 2 == 0 ? "Bob" : "Joe")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
+    @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: Double(num), author: "\(num % 2 == 0 ? "Bob" : "Joe")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
     @State var jBookList = [Book]()
     
     @State var currentBook = -1 //Index of the book being dragged
