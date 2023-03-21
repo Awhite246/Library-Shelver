@@ -43,7 +43,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal, 55)
                         NavigationLink {
-                            CertificateView()
+                            CertificateView(attempts: 15)
                         } label: {
                             CustomButton(text: "Certificate")
                         }

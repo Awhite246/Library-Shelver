@@ -42,6 +42,9 @@ struct DeweyView: View {
                         Text("Check")
                             .shadow(radius: 40)
                             .font(.caption)
+                        Text("\(attempts)")
+                            .font(.system(size: 0))
+                            .hidden()
                     }
                     .foregroundColor(Color("Peach"))
                 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CertificateView: View {
-    @State var attempts = 0
+    @State var attempts : Int
     @State var date = Date.now
     var body: some View {
         ZStack {
@@ -41,6 +41,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView()
+        CertificateView(attempts: 0)
     }
 }
