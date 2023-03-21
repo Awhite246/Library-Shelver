@@ -80,7 +80,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(info: BookInfo(title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
+        BookView(book: Book(info: BookInfo(id: 0, title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
     }
 }
 
