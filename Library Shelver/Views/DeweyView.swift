@@ -39,7 +39,6 @@ struct DeweyView: View {
             }
             .padding()
             ShelfView() //displays the shelf of draggable books
-                
         }
         .background(
             ZStack {

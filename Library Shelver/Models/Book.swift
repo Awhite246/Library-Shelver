@@ -15,6 +15,12 @@ struct Book : Identifiable {
     
     var color : Color = .green //Temp
     
+    var horizontal = false
+    //Colors
+    var barColor : Color = .yellow
+    var color1 : Color = .green
+    var color2 : Color = .blue
+    
     var id = UUID()
 }
 struct BookInfo : Codable, Equatable {
@@ -30,16 +36,40 @@ struct BookView: View { //Book View displays an individual book, which is then u
     var body: some View {
         //tempory place holder in place of a book image
         ZStack {
-            book.color
+            VStack(spacing: 0) {
+                book.barColor
+                    .frame(height: 20)
+                if book.horizontal {
+                    VStack(spacing: 0) {
+                        book.color1
+                        book.color2
+                    }
+                } else {
+                    VStack {
+                        HStack(spacing: 0) {
+                            book.color1
+                            book.color2
+                        }
+                    }
+                }
+            }
+            .frame(width: book.width, height: book.height)
             VStack {
-                Text("\(book.info.title)\nBy: \(book.info.author)\n\(book.info.dewey, specifier: "%.2f")")
+                Text("\(book.info.author)")
                     .multilineTextAlignment(.center)
-                    .padding(.vertical)
+                    .foregroundColor(book.barColor)
+                    .padding(.vertical, 1)
                     .padding(.bottom, 50)
+                    .colorInvert()
+                Text("\(book.info.title)")
+                    .multilineTextAlignment(.center)
+                    .rotationEffect(Angle(degrees: 90))
+                    .font(.title3)
+                    .fontWeight(.semibold)
                 Spacer()
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
                     .padding(.vertical)
-                    
+                
             }
         }
         .frame(width: book.width, height: book.height)
@@ -49,7 +79,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(info: BookInfo(title: "Book", dewey: 031.1, author: "Joe"), xPosition: 0, width: 100, height: 300))
+        BookView(book: Book(info: BookInfo(title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
     }
 }
 
