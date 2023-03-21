@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CertificateView: View {
     @State var attempts : Int
+    @State var name : String
     @State var date = Date.now
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -25,7 +26,7 @@ struct CertificateView: View {
                     .font(.system(size: 80))
                     .foregroundColor(Color("Bistre"))
                     .bold()
-                Text("You have completed library shelver in \(attempts) attempts")
+                Text("\(name)\n has completed library shelver in \(attempts) attempts")
                     .foregroundColor(Color("Brown"))
                     .font(.title)
                     .fontWeight(.semibold)
@@ -55,6 +56,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView(attempts: 0)
+        CertificateView(attempts: 0, name: "George")
     }
 }

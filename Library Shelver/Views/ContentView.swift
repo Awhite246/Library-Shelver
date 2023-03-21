@@ -16,7 +16,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Lion")
+                Image("Wood Background")
+                    .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
                 VStack {
@@ -24,6 +25,8 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .font(.system(size: 50))
                         .foregroundColor(Color("Bistre"))
+                        .shadow(color: Color("Peach"),radius: 10)
+                        .shadow(color: Color("Peach"),radius: 2)
                     ZStack {
                         if !submit {
                             VStack {
@@ -57,7 +60,7 @@ struct ContentView: View {
                         else {
                             VStack {
                                 NavigationLink {
-                                    DeweyView()
+                                    DeweyView(name: name)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Dewey")
@@ -82,7 +85,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal, 55)
                         NavigationLink {
-                            CertificateView(attempts: -1)
+                            CertificateView(attempts: -1, name: "")
                                 .navigationBarBackButtonHidden()
                         } label: {
                             CustomButton(text: "Certificate")

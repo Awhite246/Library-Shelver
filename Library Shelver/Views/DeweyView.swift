@@ -8,6 +8,8 @@
 import SwiftUI
 import AVFoundation
 struct DeweyView: View {
+    let name : String
+    
     @State private var player: AVAudioPlayer!
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var correct = false
@@ -66,13 +68,13 @@ struct DeweyView: View {
             }
         )
         .fullScreenCover(isPresented: $showCertificate) {
-            CertificateView(attempts: attempts)
+            CertificateView(attempts: attempts, name: name)
         }
     }
 }
 
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {
-        DeweyView()
+        DeweyView(name : "George")
     }
 }
