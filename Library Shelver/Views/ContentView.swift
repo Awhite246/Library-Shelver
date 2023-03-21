@@ -10,7 +10,8 @@ import AVFoundation
 
 struct ContentView: View {
     @State private var player: AVAudioPlayer!
-    
+    @State var name = ""
+    @State var submit = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,19 +23,51 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .font(.system(size: 50))
                         .foregroundColor(Color("Bistre"))
-                    NavigationLink {
-                        DeweyView()
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        CustomButton(text: "Dewey")
+                    ZStack {
+                        if !submit {
+                            VStack {
+                                TextField("Enter your name here", text: $name)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: 25))
+                                    .foregroundColor(Color("Falu Red"))
+                                    .padding()
+                                    .padding(.horizontal)
+                                    .background {
+                                        Color("Peach")
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                            .padding(.horizontal, 75)
+                                            .shadow(radius: 10)
+                                    }
+                                Button {
+                                    if name.count > 1 {
+                                        submit = true
+                                    }
+                                } label: {
+                                    CustomButton(text: "Submit")
+                                }
+                                
+                            }
+                        }
+                        else {
+                            VStack {
+                                NavigationLink {
+                                    DeweyView()
+                                        .navigationBarBackButtonHidden()
+                                } label: {
+                                    CustomButton(text: "Dewey")
+                                }
+                                .padding(.bottom, 5)
+                                NavigationLink {
+                                    FictionView()
+                                } label: {
+                                    CustomButton(text: "Fiction")
+                                }
+                            }
+                            .disabled(name.count < 1)
+                        }
                     }
                     .padding(.bottom, 5)
-                    NavigationLink {
-                        FictionView()
-                    } label: {
-                        CustomButton(text: "Fiction")
-                    }
-                    .padding(.bottom, 5)
+                    
                     HStack {
                         NavigationLink {
                             HowToPlay()
@@ -43,7 +76,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal, 55)
                         NavigationLink {
-                            CertificateView(attempts: 15)
+                            CertificateView(attempts: -1)
                         } label: {
                             CustomButton(text: "Certificate")
                         }
