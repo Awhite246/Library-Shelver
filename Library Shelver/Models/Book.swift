@@ -24,6 +24,7 @@ struct Book : Identifiable {
     var id = UUID()
 }
 struct BookInfo : Hashable, Codable, Identifiable {
+    var id: Int
     var title : String
     var dewey : Double
     var author : String
