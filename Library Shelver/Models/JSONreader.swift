@@ -34,3 +34,5 @@ func load<T: Decodable>(_ filename: String) -> T {
 }
 
     // here is link for this https://stackoverflow.com/questions/73939302/can-i-use-a-string-in-a-json-file-to-access-a-swift-view-from-within-another-vie
+
+// additional link incase if first link doesnt work in  our code. https://www.hackingwithswift.com/forums/swiftui/is-it-possible-to-use-a-variable-string-to-read-a-json-file/20244/20251
