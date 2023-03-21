@@ -11,14 +11,15 @@ struct DeweyView: View {
     @State private var player: AVAudioPlayer!
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var correct = false
+    @State var attempts = 0
+    @State var showCertificate = false
     var body: some View {
-        VStack (alignment: .customCenter) {
+        VStack {
             HStack {
                 Button {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     BackButton()
-                        
                 }
                 Spacer()
                 Text("Dewey Sorter")
@@ -27,24 +28,28 @@ struct DeweyView: View {
                     .fontWeight(.bold)
                     .font(.title)
                     .frame(alignment: .center)
-                    .alignmentGuide(.customCenter) {
-                        $0[HorizontalAlignment.center]
-                    }
                 Spacer()
                 Button {
+                    attempts += 1
+                    if correct {
+                        showCertificate = true
+                    }
                 } label: {
-                    Text("Check")
-                        .foregroundColor(Color("Peach"))
-                        .background {
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(Color("Bistre"))
-                        }
-                        .shadow(radius: 20)
+                    VStack (spacing: 0) {
+                        Image(systemName: "person.fill.checkmark")
+                            .resizable()
+                            .frame(width: 35, height: 25)
+                        Text("Check")
+                            .shadow(radius: 40)
+                            .font(.caption)
+                    }
+                    .foregroundColor(Color("Peach"))
                 }
+                .offset(y: 5)
                 
             }
             .padding()
-            ShelfView() //displays the shelf of draggable books
+            ShelfView(check: $correct) //displays the shelf of draggable books
         }
         .background(
             ZStack {
@@ -54,6 +59,9 @@ struct DeweyView: View {
                     .ignoresSafeArea()
             }
         )
+        .fullScreenCover(isPresented: $showCertificate) {
+            CertificateView(attempts: attempts)
+        }
     }
 }
 

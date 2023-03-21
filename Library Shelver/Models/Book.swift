@@ -13,8 +13,6 @@ struct Book : Identifiable {
     var width : CGFloat = 100
     var height: CGFloat = 300
     
-    var color : Color = .green //Temp
-    
     var horizontal = false
     //Colors
     var barColor : Color = .yellow
@@ -58,6 +56,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
                 Text("\(book.info.author)")
                     .multilineTextAlignment(.center)
                     .foregroundColor(book.barColor)
+                    .fontWeight(.semibold)
                     .padding(.vertical, 1)
                     .padding(.bottom, 50)
                     .colorInvert()

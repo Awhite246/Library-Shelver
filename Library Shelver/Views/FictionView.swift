@@ -9,8 +9,9 @@ import SwiftUI
 import AVFoundation
 struct FictionView: View {
     @State private var player: AVAudioPlayer!
+    @State var correct = false
     var body: some View {
-        VStack (alignment: .customCenter) {
+        VStack () {
             HStack {
                 NavigationLink {
                     ContentView()
@@ -25,11 +26,8 @@ struct FictionView: View {
                     .fontWeight(.bold)
                     .font(.title)
                     .frame(alignment: .center)
-                    .alignmentGuide(.customCenter) {
-                        $0[HorizontalAlignment.center]
-                    }
             }
-            ShelfView() //displays the shelf of draggable books
+            ShelfView(check: $correct) //displays the shelf of draggable books
         }
         .background(
             ZStack {

@@ -23,8 +23,7 @@ struct ShelfView: View {
     @State var frontBook = -1 //Index of the book to the right of the current book
     @State var backBook = -1 //Index of book to the left of the current book
     
-    @State var check = false //Are books in order
-    @State var timesChecked = 0
+    @Binding var check : Bool //Are books in order
     
     @State var totalWidth : CGFloat = 0 //Total width of all books and space inbetween the books
     @State var startingPos : CGFloat = 0 //Position of the first book
@@ -214,6 +213,6 @@ struct ShelfView: View {
 
 struct ShelfView_Previews: PreviewProvider {
     static var previews: some View {
-        ShelfView()
+        ShelfView(check: .constant(false))
     }
 }
