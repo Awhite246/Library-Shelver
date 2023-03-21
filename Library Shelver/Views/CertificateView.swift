@@ -10,6 +10,7 @@ import SwiftUI
 struct CertificateView: View {
     @State var attempts : Int
     @State var date = Date.now
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
             Color("Lion")
@@ -29,6 +30,19 @@ struct CertificateView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                     .padding(.bottom, 90)
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    if attempts > 0 {
+                        Text("Try Again")
+                    } else {
+                        Image(systemName: "arrow.backward.square.fill")
+                        Text("Go Back")
+                    }
+                }
+                .font(.title2)
+                .foregroundColor(Color("Brown"))
+                .fontWeight(.bold)
                 Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
                     .multilineTextAlignment(.center)
                     .font(.title3)

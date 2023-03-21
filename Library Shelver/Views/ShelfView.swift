@@ -132,6 +132,7 @@ struct ShelfView: View {
             totalWidth -= offSet
             startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
             
+            bookList.shuffle()
             sortByPosition()
             
             check = checkOrder()
