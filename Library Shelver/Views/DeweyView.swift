@@ -39,12 +39,15 @@ struct DeweyView: View {
                         Image(systemName: "person.fill.checkmark")
                             .resizable()
                             .frame(width: 35, height: 25)
-                        Text("Check")
-                            .shadow(radius: 40)
-                            .font(.caption)
-                        Text("\(attempts)")
-                            .font(.system(size: 0))
-                            .hidden()
+                        HStack {
+                            Text("Check")
+                                .shadow(radius: 40)
+                                .font(.caption)
+                            Text("\(attempts)")
+                                .font(.system(size: 0))
+                                .hidden()
+                        }
+
                     }
                     .foregroundColor(Color("Peach"))
                 }

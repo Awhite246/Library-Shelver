@@ -133,6 +133,8 @@ struct ShelfView: View {
             startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
             
             sortByPosition()
+            
+            check = checkOrder()
         }
     }
     //Makes sure array isn't already sorted by chance (maybe not needed?)
