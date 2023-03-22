@@ -67,7 +67,7 @@ struct ContentView: View {
                                 }
                                 .padding(.bottom, 5)
                                 NavigationLink {
-                                    FictionView()
+                                    FictionView(name: name)
                                 } label: {
                                     CustomButton(text: "Fiction")
                                 }

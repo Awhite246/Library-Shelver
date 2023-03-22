@@ -19,19 +19,21 @@ struct Sticker: View {
                 Text("\(author)")
                     .foregroundColor(.black)
                     .font(.system(size: 30).bold())
-                Text("\(dewey, specifier: "%.2f")")
-                    .foregroundColor(.black)
-                    .font(.system(size: 20))
-                    .fontWeight(.semibold)
-                    .padding(.top, 10)
+                if dewey > -1 {
+                    Text("\(dewey, specifier: "%.2f")")
+                        .foregroundColor(.black)
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                        .padding(.top, 10)
+                }
             }
         }
-        .frame(width:70, height: 100)
+        .frame(width:70, height: dewey > -1 ? 100: 60)
     }
 }
 
 struct Sticker_Previews: PreviewProvider {
     static var previews: some View {
-        Sticker(author: "JOE", dewey: 131.1)
+        Sticker(author: "JOS", dewey: -1)
     }
 }
