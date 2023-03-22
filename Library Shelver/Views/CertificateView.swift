@@ -33,17 +33,29 @@ struct CertificateView: View {
                     Text("Has Completed the Fiction Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
                         .multilineTextAlignment(.center)
                         .font(.title)
-                        .padding(.bottom, 30)
+                        .padding(.bottom, 10)
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        if attempts > 0 {
-                            Text("Try Again")
-                        } else {
-                            Image(systemName: "arrow.backward.square.fill")
-                            Text("Go Back")
+                        HStack {
+                            if attempts > 0 {
+                                Image(systemName: "arrow.counterclockwise.circle.fill")
+                                Text("Try Again?")
+                            } else {
+                                Image(systemName: "arrow.backward.square.fill")
+                                Text("Go Back")
+                            }
+                        }
+                        .foregroundColor(Color("Peach"))
+                        .shadow(color: Color("Falu Red"),radius: 1)
+                        .background {
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(Color("Lion"))
+                                .padding(.horizontal, -10)
+                                .padding(.vertical, -5)
                         }
                     }
+                    .padding(10)
                     .font(.title2)
                     
                     Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
@@ -59,6 +71,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView(attempts: 0, name: "George")
+        CertificateView(attempts: 1, name: "George")
     }
 }

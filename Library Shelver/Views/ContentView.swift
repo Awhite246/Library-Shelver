@@ -68,6 +68,7 @@ struct ContentView: View {
                                 .padding(.bottom, 5)
                                 NavigationLink {
                                     FictionView(name: name)
+                                        .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Fiction")
                                 }
