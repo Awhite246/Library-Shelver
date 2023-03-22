@@ -15,7 +15,7 @@ struct DeweyView: View {
     @State var correct = false
     @State var attempts = 0
     @State var showCertificate = false
-    @State private var player: AVAudioPlayer!
+    
     var body: some View {
         VStack {
             HStack {
@@ -36,7 +36,6 @@ struct DeweyView: View {
                     attempts += 1
                     if correct {
                         showCertificate = true
-                        playSounds(sound: "winning")
                     }
                 } label: {
                     VStack (spacing: 0) {
@@ -74,18 +73,7 @@ struct DeweyView: View {
         }
     }
 }
-private func playSounds(sound: String) {
-    if let asset = NSDataAsset(name: sound){
-        do {
-            // Use NSDataAsset's data property to access the audio file stored in Sound.
-            player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
-            // Play the above sound file.
-            player?.play()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    }
-}
+
 
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {

@@ -15,7 +15,7 @@ struct FictionView: View {
     @State var correct = false
     @State var showCertificate = false
     @State var attempts = 0
-    @State private var player: AVAudioPlayer!
+    
     //PLACE HOLDER FOR REAL LIST
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: -1, author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) }
     
@@ -39,7 +39,7 @@ struct FictionView: View {
                     attempts += 1
                     if correct {
                         showCertificate = true
-                        playSounds(sound: "winning")
+                        
                     }
                 } label: {
                     VStack (spacing: 0) {
@@ -77,18 +77,7 @@ struct FictionView: View {
         }
     }
 }
-private func playSounds(sound: String) {
-    if let asset = NSDataAsset(name: sound){
-        do {
-            // Use NSDataAsset's data property to access the audio file stored in Sound.
-            player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
-            // Play the above sound file.
-            player?.play()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    }
-}
+
 
 struct FictionView_Previews: PreviewProvider {
     static var previews: some View {
