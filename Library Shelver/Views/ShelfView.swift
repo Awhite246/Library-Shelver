@@ -9,7 +9,8 @@ import SwiftUI
 import AVFoundation
 
 //ShelfView displays books on a shelf that can be dragged around.
-struct ShelfView: View { var book : Book
+struct ShelfView: View {
+    
     //let allBookInfo = Bundle.main.decode([BookInfo].self, from: "bookList.json")
     let arraySize = 7 //Used for testing, and so changing array size is easier
     let offSet : CGFloat = 7 //How far apart displayed books are

@@ -35,6 +35,7 @@ struct DeweyView: View {
                     attempts += 1
                     if correct {
                         showCertificate = true
+
                     }
                 } label: {
                     VStack (spacing: 0) {
