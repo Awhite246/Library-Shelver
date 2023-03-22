@@ -26,29 +26,32 @@ struct CertificateView: View {
                     .font(.system(size: 80))
                     .foregroundColor(Color("Bistre"))
                     .bold()
-                Text("\(name)\n has completed library shelver in \(attempts) attempts")
-                    .foregroundColor(Color("Brown"))
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding(.bottom, 90)
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    if attempts > 0 {
-                        Text("Try Again")
-                    } else {
-                        Image(systemName: "arrow.backward.square.fill")
-                        Text("Go Back")
+                    .shadow(color: .yellow, radius: 50)
+                Group {
+                    Text(name)
+                        .font(.system(size: 40))
+                    Text("Has Completed the Fiction Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .padding(.bottom, 30)
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        if attempts > 0 {
+                            Text("Try Again")
+                        } else {
+                            Image(systemName: "arrow.backward.square.fill")
+                            Text("Go Back")
+                        }
                     }
+                    .font(.title2)
+                    
+                    Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
+                        .multilineTextAlignment(.center)
+                        .font(.title3)
                 }
-                .font(.title2)
                 .foregroundColor(Color("Brown"))
-                .fontWeight(.bold)
-                Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
-                    .multilineTextAlignment(.center)
-                    .font(.title3)
-                    .foregroundColor(Color("Brown"))
-                    .fontWeight(.semibold)
+                .fontWeight(.semibold)
             }
         }
     }
