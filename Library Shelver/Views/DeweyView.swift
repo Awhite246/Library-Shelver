@@ -97,6 +97,11 @@ struct DeweyView: View {
             CertificateView(attempts: attempts, name: name, certificateList: certificateList)
         }
     }
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+        // delay function. use delay(pick a number) { type stuff }
+    }
     private func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
