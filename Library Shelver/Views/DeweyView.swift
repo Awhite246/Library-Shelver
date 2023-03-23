@@ -16,6 +16,7 @@ struct DeweyView: View {
     @State var attempts = 0
     @State var showCertificate = false
     @State private var showingAlert = false
+    let delayTime = DispatchTime.now
     
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: (Bool.random() ? Double(num) : 1.0), author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
     
@@ -101,6 +102,8 @@ struct DeweyView: View {
         let when = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
         // delay function. use delay(pick a number) { type stuff }
+        // https://stackoverflow.com/questions/24034544/dispatch-after-gcd-in-swift/24318861#24318861
+        //
     }
     private func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
