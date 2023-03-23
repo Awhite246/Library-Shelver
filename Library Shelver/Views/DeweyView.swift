@@ -39,6 +39,8 @@ struct DeweyView: View {
                     if correct {
                         showCertificate = true
                         playSounds(sound: "winning")
+                    } else {
+                        playSounds(sound: "wrong")
                     }
                 } label: {
                     VStack (spacing: 0) {

@@ -39,7 +39,9 @@ struct FictionView: View {
                     attempts += 1
                     if correct {
                         showCertificate = true
-                        playSounds(sound: "Winning")
+                        playSounds(sound: "winning")
+                    } else {
+                        playSounds(sound: "wrong")
                     }
                 } label: {
                     VStack (spacing: 0) {
