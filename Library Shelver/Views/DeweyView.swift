@@ -15,6 +15,7 @@ struct DeweyView: View {
     @State var correct = false
     @State var attempts = 0
     @State var showCertificate = false
+    @State private var showingAlert = false
     
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: (Bool.random() ? Double(num) : 1.0), author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
     
@@ -41,6 +42,7 @@ struct DeweyView: View {
                         playSounds(sound: "winning")
                     } else {
                         playSounds(sound: "wrong")
+                        showingAlert = true
                     }
                 } label: {
                     VStack (spacing: 0) {
@@ -65,6 +67,9 @@ struct DeweyView: View {
             .padding()
             ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
                 
+        }
+        .alert("Close One! Try it again. You Got This!", isPresented: $showingAlert){
+            Button("OK", role: .cancel) { }
         }
         .background(
             ZStack {
