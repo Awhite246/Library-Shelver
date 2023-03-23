@@ -88,12 +88,19 @@ struct ContentView: View {
                         .padding(.horizontal, 55)
                         NavigationLink {
                             SavedCertificate(certificateList: certificateList)
+                                .navigationBarBackButtonHidden()
                         } label: {
                             CustomButton(text: "Certificate")
                         }
                     }
                     .padding(.bottom, 5)
                 }
+            }
+        }
+        .onAppear {
+            if !certificateList.certifcates.isEmpty {
+                name = certificateList.certifcates.first!.name
+                submit = true
             }
         }
     }

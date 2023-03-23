@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SavedCertificate: View {
-    @ObservedObject var certificateList : CertificateList()
+    @ObservedObject var certificateList : CertificateList
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -46,6 +46,7 @@ struct SavedCertificate: View {
                     ForEach(certificateList.certifcates) { certificate in
                         NavigationLink {
                             CertificateView(attempts: certificate.attempts, name: certificate.name)
+                                .navigationBarBackButtonHidden()
                         } label: {
                             HStack {
                                 Text("\(certificate.attempts)")
@@ -66,6 +67,6 @@ struct SavedCertificate: View {
 
 struct SavedCertificate_Previews: PreviewProvider {
     static var previews: some View {
-        SavedCertificate()
+        SavedCertificate(certificateList: CertificateList())
     }
 }
