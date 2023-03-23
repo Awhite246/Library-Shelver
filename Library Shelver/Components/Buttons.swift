@@ -25,12 +25,14 @@ struct CustomButton: View {
 
 struct BackButton: View {
     let size : CGFloat = 25
+    var background = Color("Peach")
+    var shadow = Color("Bistre")
     var body: some View {
         Image(systemName: "arrow.backward.square.fill")
             .resizable()
             .frame(width: size, height: size)
-            .foregroundColor(Color("Peach"))
-            .shadow(color: Color("Bistre"), radius: size / 5)
+            .foregroundColor(background)
+            .shadow(color: shadow, radius: size / 5)
     }
 }
 

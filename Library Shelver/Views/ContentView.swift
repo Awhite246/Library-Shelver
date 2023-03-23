@@ -82,6 +82,7 @@ struct ContentView: View {
                     HStack {
                         NavigationLink {
                             HowToPlay()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             CustomButton(text: "Help")
                         }

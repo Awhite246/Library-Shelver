@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HowToPlay: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
             Color("Lion")
@@ -18,11 +19,23 @@ struct HowToPlay: View {
                 .frame(height: 350)
                 .offset(x: -10, y: 10)
             VStack {
-                Text("How To Play?")
-                    .fontWeight(.bold)
-                    .font(.system(size: 50))
-                    .foregroundColor(Color("Bistre"))
-                    .padding(30)
+                HStack {
+                    Spacer()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        BackButton(background: Color("Bistre"),shadow: Color("Peach"))
+                    }
+                    Spacer()
+                    Text("How To Play?")
+                        .fontWeight(.bold)
+                        .font(.system(size: 50))
+                        .foregroundColor(Color("Bistre"))
+                        .padding(.vertical, 30)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    Spacer()
+                }
                 Text("""
 • There are two gamemodes: Dewey and Fiction
 
