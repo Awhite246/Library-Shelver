@@ -56,8 +56,9 @@ struct ShelfView: View {
                                     backBook = i - 1
                                     
                                     //Plays the sound
-                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now()){
                                         playSounds(sound: "click")
+                                            
                                     }
                                     
                                     //Increases the dragged book size with an animation
