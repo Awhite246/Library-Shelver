@@ -8,6 +8,7 @@
 import Foundation
 
 struct Book : Identifiable {
+    var id = UUID()
     var info : BookInfo
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
@@ -18,11 +19,9 @@ struct Book : Identifiable {
     var barColor : Color = .yellow
     var color1 : Color = .green
     var color2 : Color = .blue
-    
-    var id = UUID()
 }
-struct BookInfo : Hashable, Codable, Identifiable {
-    var id: Int
+struct BookInfo : Codable, Identifiable {
+    var id : Int
     var title : String
     var dewey : Double
     var author : String

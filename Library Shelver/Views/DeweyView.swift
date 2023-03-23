@@ -9,12 +9,14 @@ import SwiftUI
 import AVFoundation
 struct DeweyView: View {
     let name : String
-    
+    @ObservedObject var certificateList : CertificateList
     @State private var player: AVAudioPlayer!
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var correct = false
     @State var attempts = 0
     @State var showCertificate = false
+    
+    @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: (Bool.random() ? Double(num) : 1.0), author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
     
     var body: some View {
         VStack {
@@ -58,7 +60,8 @@ struct DeweyView: View {
                 
             }
             .padding()
-            ShelfView(check: $correct) //displays the shelf of draggable books
+            ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
+                
         }
         .background(
             ZStack {
@@ -68,8 +71,22 @@ struct DeweyView: View {
                     .ignoresSafeArea()
             }
         )
-        .fullScreenCover(isPresented: $showCertificate) {
-            CertificateView(attempts: attempts, name: name)
+        .fullScreenCover(isPresented: $showCertificate, onDismiss: {
+            //When the cerficate is closed
+            attempts = 0
+            //Re-shuffle list (and maybe do new books?)
+            //Temp solution
+            @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+            
+//            for i in 0..<bookList.count {
+//                var newBook = bookList[i]
+//                newBook.xPosition = 0
+//                bookList[i] = newBook
+//            }
+//            bookList.shuffle()
+        }) {
+            //When showCertifcate is true
+            CertificateView(attempts: attempts, name: name, certificateList: certificateList)
         }
     }
 }
@@ -77,6 +94,6 @@ struct DeweyView: View {
 
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {
-        DeweyView(name : "George")
+        DeweyView(name : "George", certificateList: CertificateList())
     }
 }

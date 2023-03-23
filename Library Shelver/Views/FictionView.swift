@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 struct FictionView: View {
     let name : String
-    
+    @ObservedObject var certificateList : CertificateList
     @State private var player: AVAudioPlayer!
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var correct = false
@@ -73,7 +73,7 @@ struct FictionView: View {
             }
         )
         .fullScreenCover(isPresented: $showCertificate) {
-            CertificateView(attempts: attempts, name: name)
+            CertificateView(attempts: attempts, name: name, certificateList: certificateList)
         }
     }
 }
@@ -81,6 +81,6 @@ struct FictionView: View {
 
 struct FictionView_Previews: PreviewProvider {
     static var previews: some View {
-        FictionView(name: "George")
+        FictionView(name: "George", certificateList: CertificateList())
     }
 }

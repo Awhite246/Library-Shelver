@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
+    @ObservedObject var certificateList = CertificateList()
     @State private var player: AVAudioPlayer!
     @State var name = ""
     @State var submit = false
@@ -60,14 +61,14 @@ struct ContentView: View {
                         else {
                             VStack {
                                 NavigationLink {
-                                    DeweyView(name: name)
+                                    DeweyView(name: name, certificateList: certificateList)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Dewey")
                                 }
                                 .padding(.bottom, 5)
                                 NavigationLink {
-                                    FictionView(name: name)
+                                    FictionView(name: name, certificateList: certificateList)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Fiction")
@@ -86,8 +87,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal, 55)
                         NavigationLink {
-                            CertificateView(attempts: -1, name: "")
-                                .navigationBarBackButtonHidden()
+                            SavedCertificate()
                         } label: {
                             CustomButton(text: "Certificate")
                         }

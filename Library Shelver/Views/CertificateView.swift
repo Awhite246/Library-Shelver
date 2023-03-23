@@ -12,6 +12,7 @@ struct CertificateView: View {
     @State var name : String
     @State var date = Date.now
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var certificateList : CertificateList
     var body: some View {
         ZStack {
             Color("Lion")
@@ -35,6 +36,7 @@ struct CertificateView: View {
                         .font(.title)
                         .padding(.bottom, 10)
                     Button {
+                        certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date))
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         HStack {
@@ -71,6 +73,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView(attempts: 1, name: "George")
+        CertificateView(attempts: 1, name: "George", certificateList: CertificateList())
     }
 }
