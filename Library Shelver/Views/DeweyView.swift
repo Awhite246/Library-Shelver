@@ -15,7 +15,7 @@ struct DeweyView: View {
     @State var correct = false
     @State var attempts = 0
     @State var showCertificate = false
-    
+    @State var date = Date.now
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: (Bool.random() ? Double(num) : 1.0), author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) } //placeholder for actual randomized book list
     
     var body: some View {
@@ -37,6 +37,7 @@ struct DeweyView: View {
                 Button {
                     attempts += 1
                     if correct {
+                        date = Date.now
                         showCertificate = true
                     }
                 } label: {
@@ -52,7 +53,7 @@ struct DeweyView: View {
                                 .font(.system(size: 0))
                                 .hidden()
                         }
-
+                        
                     }
                     .foregroundColor(Color("Peach"))
                 }
@@ -61,7 +62,7 @@ struct DeweyView: View {
             }
             .padding()
             ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
-                
+            
         }
         .background(
             ZStack {
@@ -73,20 +74,22 @@ struct DeweyView: View {
         )
         .fullScreenCover(isPresented: $showCertificate, onDismiss: {
             //When the cerficate is closed
+            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date))
             attempts = 0
+            
             //Re-shuffle list (and maybe do new books?)
             //Temp solution
             @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
             
-//            for i in 0..<bookList.count {
-//                var newBook = bookList[i]
-//                newBook.xPosition = 0
-//                bookList[i] = newBook
-//            }
-//            bookList.shuffle()
+            //            for i in 0..<bookList.count {
+            //                var newBook = bookList[i]
+            //                newBook.xPosition = 0
+            //                bookList[i] = newBook
+            //            }
+            //            bookList.shuffle()
         }) {
             //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, certificateList: certificateList)
+            CertificateView(attempts: attempts, name: name, date: date)
         }
     }
 }

@@ -8,14 +8,57 @@
 import SwiftUI
 
 struct SavedCertificate: View {
-    @ObservedObject var certificateList = CertificateList()
+    @ObservedObject var certificateList : CertificateList()
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        List {
-            ForEach(certificateList.certifcates) { certificate in
+        ZStack {
+            Image("Wood Background 2")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            VStack {
                 HStack {
-                    Text("")
-                    //certificate.name
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        BackButton()
+                    }
+                    Spacer()
+                    Text("Saved Certificates")
+                        .foregroundColor(Color("Peach"))
+                        .shadow(color: Color("Peach"), radius: 20)
+                        .fontWeight(.bold)
+                        .font(.title)
+                        .frame(alignment: .center)
+                    Spacer()
                 }
+                .padding()
+                List {
+                    HStack {
+                        Text("Attempts")
+                        Spacer()
+                        Text("Completion Date")
+                    }
+                    .bold()
+                    .foregroundColor(Color("Bistre"))
+                    .listRowBackground(Color("Peach"))
+                    ForEach(certificateList.certifcates) { certificate in
+                        NavigationLink {
+                            CertificateView(attempts: certificate.attempts, name: certificate.name)
+                        } label: {
+                            HStack {
+                                Text("\(certificate.attempts)")
+                                Spacer()
+                                Text(" \(certificate.time.formatted(date: .abbreviated, time: .shortened))")
+                            }
+                            .foregroundColor(Color("Bistre"))
+                        }
+                        .listRowBackground(Color("Peach"))
+                    }
+                }
+                .scrollContentBackground(.hidden)
+                Spacer()
             }
         }
     }

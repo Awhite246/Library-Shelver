@@ -15,7 +15,7 @@ struct FictionView: View {
     @State var correct = false
     @State var showCertificate = false
     @State var attempts = 0
-    
+    @State var date = Date.now
     //PLACE HOLDER FOR REAL LIST
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: -1, author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) }
     
@@ -38,6 +38,7 @@ struct FictionView: View {
                 Button {
                     attempts += 1
                     if correct {
+                        date = Date.now
                         showCertificate = true
                         
                     }
@@ -72,8 +73,17 @@ struct FictionView: View {
                     .ignoresSafeArea()
             }
         )
-        .fullScreenCover(isPresented: $showCertificate) {
-            CertificateView(attempts: attempts, name: name, certificateList: certificateList)
+        .fullScreenCover(isPresented: $showCertificate, onDismiss: {
+            //When the cerficate is closed
+            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date))
+            attempts = 0
+            
+            //Re-shuffle list (and maybe do new books?)
+            //Temp solution
+            @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+        }) {
+            //When showCertifcate is true
+            CertificateView(attempts: attempts, name: name, date: date)
         }
     }
 }
