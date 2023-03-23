@@ -12,6 +12,7 @@ struct CertificateView: View {
     @State var name : String
     @State var date = Date.now
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var savedCertificate = false
     var body: some View {
         ZStack {
             Color("Lion")
@@ -38,7 +39,7 @@ struct CertificateView: View {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         HStack {
-                            if attempts > 0 {
+                            if attempts > 0 && !savedCertificate {
                                 Image(systemName: "arrow.counterclockwise.circle.fill")
                                 Text("Try Again?")
                             } else {

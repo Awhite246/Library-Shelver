@@ -22,12 +22,34 @@ struct ContentView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                 VStack {
-                    Text("Library Shelver")
-                        .fontWeight(.bold)
-                        .font(.system(size: 50))
-                        .foregroundColor(Color("Bistre"))
-                        .shadow(color: Color("Peach"),radius: 10)
-                        .shadow(color: Color("Peach"),radius: 2)
+                    HStack {
+                        Spacer()
+                        Spacer()
+                        Text("Library Shelver")
+                            .fontWeight(.bold)
+                            .font(.system(size: 50))
+                            .foregroundColor(Color("Bistre"))
+                            .shadow(color: Color("Peach"),radius: 10)
+                            .shadow(color: Color("Peach"),radius: 2)
+                            .multilineTextAlignment(.center)
+                        Spacer()
+                        Button {
+                            //Setting View
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(Color("Peach"))
+                                    .frame(width: 30, height: 30)
+                                    .shadow(color: Color("Bistre"),radius: 15)
+                                    .shadow(color: Color("Bistre"),radius: 5)
+                                Image(systemName: "gearshape.fill")
+                                    .resizable()
+                                    .foregroundColor(Color("Bistre"))
+                                    .frame(width: 25, height: 25)
+                            }
+                        }
+                        Spacer()
+                    }
                     ZStack {
                         if !submit {
                             VStack {
@@ -100,7 +122,7 @@ struct ContentView: View {
         }
         .onAppear {
             if !certificateList.certifcates.isEmpty {
-                name = certificateList.certifcates.first!.name
+                name = certificateList.certifcates.last!.name
                 submit = true
             }
         }

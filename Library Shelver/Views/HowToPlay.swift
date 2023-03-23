@@ -24,7 +24,7 @@ struct HowToPlay: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        BackButton(background: Color("Bistre"),shadow: Color("Peach"))
+                        BackButton(background: Color("Bistre"),shadow: Color("Lion"))
                     }
                     Spacer()
                     Text("How To Play?")

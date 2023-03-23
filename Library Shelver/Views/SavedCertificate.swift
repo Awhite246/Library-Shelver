@@ -45,7 +45,7 @@ struct SavedCertificate: View {
                     .listRowBackground(Color("Peach"))
                     ForEach(certificateList.certifcates) { certificate in
                         NavigationLink {
-                            CertificateView(attempts: certificate.attempts, name: certificate.name)
+                            CertificateView(attempts: certificate.attempts, name: certificate.name, date: certificate.time, savedCertificate: true)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             HStack {

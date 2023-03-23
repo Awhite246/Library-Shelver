@@ -74,6 +74,12 @@ struct BookView: View { //Book View displays an individual book, which is then u
         .frame(width: book.width, height: book.height)
         .border(Color.black, width: 2)
     }
+    
+    //Grows the size of the book
+    //Activated when book is being dragged
+    func grow() {
+        
+    }
 }
 
 struct BookView_Previews: PreviewProvider {
