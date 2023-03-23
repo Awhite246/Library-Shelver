@@ -40,7 +40,9 @@ struct FictionView: View {
                     if correct {
                         date = Date.now
                         showCertificate = true
-                        
+                        playSounds(sound: "winning")
+                    } else {
+                        playSounds(sound: "wrong")
                     }
                 } label: {
                     VStack (spacing: 0) {
@@ -84,6 +86,18 @@ struct FictionView: View {
         }) {
             //When showCertifcate is true
             CertificateView(attempts: attempts, name: name, date: date)
+        }
+    }
+    private func playSounds(sound: String) {
+        if let asset = NSDataAsset(name: sound){
+            do {
+                // Use NSDataAsset's data property to access the audio file stored in Sound.
+                player = try AVAudioPlayer(data:asset.data, fileTypeHint:"wav")
+                // Play the above sound file.
+                player?.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
     }
 }
