@@ -24,6 +24,7 @@
 		E39DDAB529915ADC00D81486 /* ShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DDAB429915ADC00D81486 /* ShelfView.swift */; };
 		E3A5497329CC8DA3002931C3 /* SaveCertifcate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */; };
 		E3A5497529CC9078002931C3 /* SavedCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497429CC9078002931C3 /* SavedCertificate.swift */; };
+		E3A5497729DB1A5D002931C3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497629DB1A5D002931C3 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		E39DDAB429915ADC00D81486 /* ShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfView.swift; sourceTree = "<group>"; };
 		E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCertifcate.swift; sourceTree = "<group>"; };
 		E3A5497429CC9078002931C3 /* SavedCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCertificate.swift; sourceTree = "<group>"; };
+		E3A5497629DB1A5D002931C3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				E31BFF35298C11D400F213D2 /* ContentView.swift */,
+				E3A5497629DB1A5D002931C3 /* SettingView.swift */,
 				E39DDAB429915ADC00D81486 /* ShelfView.swift */,
 				400743EC29AD045F002A2EEB /* CertificateView.swift */,
 				400743E4299D2FE5002A2EEB /* DeweyView.swift */,
@@ -207,6 +210,7 @@
 				E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
+				E3A5497729DB1A5D002931C3 /* SettingView.swift in Sources */,
 				400743ED29AD045F002A2EEB /* CertificateView.swift in Sources */,
 				E331CD1B29B8E6CC009014C3 /* Sticker.swift in Sources */,
 				E39DDAB529915ADC00D81486 /* ShelfView.swift in Sources */,

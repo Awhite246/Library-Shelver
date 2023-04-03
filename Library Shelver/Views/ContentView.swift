@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("Wood Background")
+                Image("Wood Background 2")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
@@ -33,8 +33,9 @@ struct ContentView: View {
                             .shadow(color: Color("Peach"),radius: 2)
                             .multilineTextAlignment(.center)
                         Spacer()
-                        Button {
-                            //Setting View
+                        NavigationLink {
+                            SettingView(certificateList: certificateList, name: $name)
+                                .navigationBarBackButtonHidden()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)
