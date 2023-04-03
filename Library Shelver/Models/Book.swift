@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Book : Identifiable {
     var id = UUID()
@@ -27,9 +28,8 @@ struct BookInfo : Hashable, Codable, Identifiable {
     var author : String
 }
 
-import SwiftUI
 
-struct BookView: View { //Book View displays an individual book, which is then used multiple times to display multiple books in ShelfView
+struct BookView: View { var bookInfo : BookInfo //Book View displays an individual book, which is then used multiple times to display multiple books in ShelfView
     let book : Book
     var body: some View {
         //tempory place holder in place of a book image
@@ -66,7 +66,7 @@ struct BookView: View { //Book View displays an individual book, which is then u
                     .font(.title3)
                     .fontWeight(.semibold)
                 Spacer()
-                Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
+                Sticker(author: book.info.author.prefix(3).uppercased(), dewey: BookInfo.dewey)
                     .padding(.vertical)
                 
             }
