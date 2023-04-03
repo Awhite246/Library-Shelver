@@ -20,7 +20,7 @@ struct Book : Identifiable {
     var color1 : Color = .green
     var color2 : Color = .blue
 }
-struct BookInfo : Codable, Identifiable {
+struct BookInfo : Hashable, Codable, Identifiable {
     var id : Int
     var title : String
     var dewey : Double
