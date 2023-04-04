@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import UIKit
 
-var books: [BookInfo] = load("booksData.json")
+/*var books: [BookInfo] = load("booksData.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -32,6 +32,22 @@ func load<T: Decodable>(_ filename: String) -> T {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }
+ */
+func readJSONFile(forName name: String) {
+    do {
+        if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
+           let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+            if let json = try JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves) as? [String: Any] {
+                print("JSON: \(json)")
+            } else {
+                print("Given JSON is not a valid dictionary object.")
+            }
+        }
+    } catch {
+        print(error)
+    }
+}
+
 
     // here is link for this https://stackoverflow.com/questions/73939302/can-i-use-a-string-in-a-json-file-to-access-a-swift-view-from-within-another-vie
 
