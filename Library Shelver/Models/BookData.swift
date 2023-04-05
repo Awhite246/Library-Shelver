@@ -30,6 +30,12 @@ var colorList : [Color] = [
     Color(red: 114, green: 221, blue: 247) //Sky blue
 ]
 
+/*
+ Personal links for me so i can try to figure out colors/text cut off
+ https://stackoverflow.com/questions/60184145/swiftui-modifier-inside-array
+ https://www.hackingwithswift.com/forums/swiftui/text-cutting-subscript-character/6672
+ */
+
 var deweyData : [BookInfo] = [
     BookInfo(id: 0, title: "Wizard Book", dewey: 069.32, author: "Sussman"),
     BookInfo(id: 1, title: "Behind the Door", dewey: 083.92, author: "Gonzales"),
