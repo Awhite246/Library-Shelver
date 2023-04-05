@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Book : Identifiable {
     var id = UUID()
@@ -20,16 +21,15 @@ struct Book : Identifiable {
     var color1 : Color = .green
     var color2 : Color = .blue
 }
-struct BookInfo : Codable, Identifiable {
+struct BookInfo : Hashable, Codable, Identifiable {
     var id : Int
     var title : String
     var dewey : Double
     var author : String
 }
 
-import SwiftUI
 
-struct BookView: View { //Book View displays an individual book, which is then used multiple times to display multiple books in ShelfView
+struct BookView: View { //var bookInfo : BookInfo //Book View displays an individual book, which is then used multiple times to display multiple books in ShelfView
     let book : Book
     var body: some View {
         //tempory place holder in place of a book image
@@ -87,4 +87,3 @@ struct BookView_Previews: PreviewProvider {
         BookView(book: Book(info: BookInfo(id: 0, title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
     }
 }
-

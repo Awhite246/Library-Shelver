@@ -9,16 +9,23 @@ import SwiftUI
 import Foundation
 import UIKit
 
-extension Bundle {
-    func decode<T: Decodable>(_ type: T.Type, from file: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
-        guard let url = self.url(forResource: file, withExtension: nil) else {
-            fatalError("Failed to locate \(file) in bundle.")
-        }
+/*var books: [BookInfo] = load("booksData.json")
 
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load \(file) from bundle.")
-        }
-
+func load<T: Decodable>(_ filename: String) -> T {
+    let data: Data
+    
+    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+    else {
+        fatalError("Couldn't find \(filename) in main bundle.")
+    }
+    
+    do {
+        data = try Data(contentsOf: file)
+    } catch {
+        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    }
+    
+    do {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = dateDecodingStrategy
         decoder.keyDecodingStrategy = keyDecodingStrategy
@@ -38,5 +45,24 @@ extension Bundle {
         }
     }
 }
+ */
+// https://www.tutorialspoint.com/reading-a-json-file-using-swift
+func readJSONFile(forName name: String) {
+    do {
+        if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
+           let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+            if let json = try JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves) as? [String: Any] {
+                print("JSON: \(json)")
+            } else {
+                print("Given JSON is not a valid dictionary object.")
+            }
+        }
+    } catch {
+        print(error)
+    }
+}
 
-//https://www.hackingwithswift.com/example-code/system/how-to-decode-json-from-your-app-bundle-the-easy-way
+
+    // here is link for top json https://stackoverflow.com/questions/73939302/can-i-use-a-string-in-a-json-file-to-access-a-swift-view-from-within-another-vie
+
+// additional link incase if first link doesnt work in  our code. https://www.hackingwithswift.com/forums/swiftui/is-it-possible-to-use-a-variable-string-to-read-a-json-file/20244/20251
