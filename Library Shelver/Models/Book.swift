@@ -14,6 +14,14 @@ struct Book : Identifiable {
     var xPosition : CGFloat = 0
     var width : CGFloat = 100
     var height: CGFloat = 300
+    /*var textcolor: Color
+        var textfont: Font
+        var height: CGFloat
+        var width: CGFloat
+        var alignment: Alignment
+        var textbackcolor: Color
+        var corner: CGFloat
+     */
     
     var horizontal = false
     //Colors
@@ -26,6 +34,7 @@ struct BookInfo : Hashable, Codable, Identifiable {
     var title : String
     var dewey : Double
     var author : String
+    
 }
 
 
