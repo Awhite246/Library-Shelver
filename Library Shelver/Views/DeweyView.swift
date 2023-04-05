@@ -29,7 +29,7 @@ struct DeweyView: View {
                     BackButton()
                 }
                 Spacer()
-                Text("Dewey Sorter")
+                Text("Non-Fiction Sorter")
                     .foregroundColor(Color("Peach"))
                     .shadow(color: Color("Peach"), radius: 20)
                     .fontWeight(.bold)
@@ -81,24 +81,9 @@ struct DeweyView: View {
                     .ignoresSafeArea()
             }
         )
-        .fullScreenCover(isPresented: $showCertificate, onDismiss: {
-            //When the cerficate is closed
-            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date))
-            attempts = 0
-            
-            //Re-shuffle list (and maybe do new books?)
-            //Temp solution
-            @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-            
-            //            for i in 0..<bookList.count {
-            //                var newBook = bookList[i]
-            //                newBook.xPosition = 0
-            //                bookList[i] = newBook
-            //            }
-            //            bookList.shuffle()
-        }) {
+        .fullScreenCover(isPresented: $showCertificate) {
             //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, date: date)
+            CertificateView(attempts: attempts, name: name, date: date, certificateList: certificateList, type: "Non-Fiction")
         }
     }
     func delay(_ delay:Double, closure:@escaping ()->()) {

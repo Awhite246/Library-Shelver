@@ -11,31 +11,32 @@ struct HowToPlay: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
-            Color("Lion")
-                .ignoresSafeArea()
+            Image("Wood Background 2")
+                .resizable()
                 .scaledToFill()
+                .ignoresSafeArea()
             Color("Peach")
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(height: 350)
                 .offset(x: -10, y: 10)
             VStack {
                 HStack {
-                    Spacer()
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         BackButton(background: Color("Bistre"),shadow: Color("Lion"))
                     }
+                    .offset(x: 50)
                     Spacer()
                     Text("How To Play?")
                         .fontWeight(.bold)
                         .font(.system(size: 50))
                         .foregroundColor(Color("Bistre"))
-                        .padding(.vertical, 30)
                         .multilineTextAlignment(.center)
                     Spacer()
-                    Spacer()
                 }
+                .padding(.vertical, 5)
+                .padding(.top)
                 Text("""
 • There are two gamemodes: Dewey and Fiction
 
@@ -43,19 +44,11 @@ struct HowToPlay: View {
 
 • Once you completed both games, you will recieve a certificate
 
-""") .fontWeight(.bold)
-                    .font(.title)
-                    .foregroundColor(Color("Bistre"))
-                
-            
-            } .background(
-                ZStack {
-                    Image("peach")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 750, height: 200)
-                }
-            )
+""")
+                .fontWeight(.bold)
+                .font(.title)
+                .foregroundColor(Color("Bistre"))
+            }
         }
     }
 }

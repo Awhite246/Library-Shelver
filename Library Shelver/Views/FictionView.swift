@@ -81,17 +81,9 @@ struct FictionView: View {
                     .ignoresSafeArea()
             }
         )
-        .fullScreenCover(isPresented: $showCertificate, onDismiss: {
-            //When the cerficate is closed
-            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date))
-            attempts = 0
-            
-            //Re-shuffle list (and maybe do new books?)
-            //Temp solution
-            @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-        }) {
+        .fullScreenCover(isPresented: $showCertificate) {
             //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, date: date)
+            CertificateView(attempts: attempts, name: name, date: date, certificateList: certificateList, type: "Fiction")
         }
     }
     private func playSounds(sound: String) {

@@ -33,4 +33,5 @@ struct Certificate : Identifiable, Codable {
     var attempts : Int
     var name : String
     var time : Date
+    var type : String
 }

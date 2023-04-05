@@ -13,11 +13,14 @@ struct CertificateView: View {
     @State var date = Date.now
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var savedCertificate = false
+    @ObservedObject var certificateList : CertificateList
+    @State var type : String
     var body: some View {
         ZStack {
-            Color("Lion")
-                .ignoresSafeArea()
+            Image("Wood Background")
+                .resizable()
                 .scaledToFill()
+                .ignoresSafeArea()
             Color("Peach")
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(height: 350)
@@ -31,11 +34,14 @@ struct CertificateView: View {
                 Group {
                     Text(name)
                         .font(.system(size: 40))
-                    Text("Has Completed the Fiction Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
+                    Text("Has Completed the \(type) Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .padding(.bottom, 10)
                     Button {
+                        if attempts > 0 && !savedCertificate {
+                            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: type))
+                        }
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         HStack {
@@ -72,6 +78,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView(attempts: 1, name: "George")
+        CertificateView(attempts: 1, name: "George", certificateList: CertificateList(), type: "Fiction")
     }
 }
