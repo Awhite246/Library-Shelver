@@ -41,6 +41,7 @@ struct SettingView: View {
                     Spacer()
                 }
                 .padding(.top)
+                // add an alert here
                 Button {
                     certificateList.certifcates.removeAll()
                 } label: {
