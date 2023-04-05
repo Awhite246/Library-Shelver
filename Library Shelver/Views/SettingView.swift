@@ -14,6 +14,7 @@ struct SettingView: View {
     @Binding var name : String
     @State var tempName = ""
     @State var shake = false
+    @State private var showingAlert = false
     var body: some View {
         ZStack {
             Image("Wood Background")
@@ -43,7 +44,8 @@ struct SettingView: View {
                 .padding(.top)
                 // add an alert here
                 Button {
-                    certificateList.certifcates.removeAll()
+                    showingAlert = true
+                   // certificateList.certifcates.removeAll()
                 } label: {
                     CustomButton(text: "Clear Save")
                 }
@@ -88,6 +90,16 @@ struct SettingView: View {
                 }
                 Spacer()
             }
+            .alert(isPresented: $showingAlert){
+                Alert(
+                    title: Text("Are you sure you want to CLEAR your saves?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        certificateList.certifcates.removeAll()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        // link for double button alert https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-actions-to-alert-buttons
         }
     }
 }
