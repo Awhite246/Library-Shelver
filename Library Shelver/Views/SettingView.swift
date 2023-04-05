@@ -22,7 +22,6 @@ struct SettingView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack {
-                    Spacer()
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
@@ -37,7 +36,6 @@ struct SettingView: View {
                         .shadow(color: Color("Peach"),radius: 2)
                         .multilineTextAlignment(.center)
                         .padding(.trailing)
-                    Spacer()
                     Spacer()
                 }
                 .padding(.top)

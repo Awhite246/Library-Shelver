@@ -13,7 +13,8 @@ struct ContentView: View {
     @State private var player: AVAudioPlayer!
     @State var name = ""
     @State var submit = false
-    @State var shake = false
+    @State var submitShake = false
+    @State var settingShake = false
     @State var deweyList = [Book]()
     var body: some View {
         NavigationView {
@@ -71,12 +72,12 @@ struct ContentView: View {
                                     if name.count > 1 {
                                         submit = true
                                     } else {
-                                        shake = true
+                                        submitShake = true
                                     }
                                 } label: {
                                     CustomButton(text: "Submit")
                                 }
-                                .shake($shake) {
+                                .shake($submitShake) {
                                     print("Finished")
                                 }
                                 
