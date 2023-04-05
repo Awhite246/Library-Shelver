@@ -25,6 +25,7 @@
 		E3A5497329CC8DA3002931C3 /* SaveCertifcate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */; };
 		E3A5497529CC9078002931C3 /* SavedCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497429CC9078002931C3 /* SavedCertificate.swift */; };
 		E3A5497729DB1A5D002931C3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497629DB1A5D002931C3 /* SettingView.swift */; };
+		E3A5497929DC702B002931C3 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497829DC702B002931C3 /* BookData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCertifcate.swift; sourceTree = "<group>"; };
 		E3A5497429CC9078002931C3 /* SavedCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCertificate.swift; sourceTree = "<group>"; };
 		E3A5497629DB1A5D002931C3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		E3A5497829DC702B002931C3 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				E331CD1E29C0C488009014C3 /* JSONreader.swift */,
 				E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */,
 				E34BD65929CA0B22004DFE88 /* ShakeAnimation.swift */,
+				E3A5497829DC702B002931C3 /* BookData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				400743E5299D2FE5002A2EEB /* DeweyView.swift in Sources */,
 				E3A5497329CC8DA3002931C3 /* SaveCertifcate.swift in Sources */,
 				E34BD65A29CA0B22004DFE88 /* ShakeAnimation.swift in Sources */,
+				E3A5497929DC702B002931C3 /* BookData.swift in Sources */,
 				E3A5497529CC9078002931C3 /* SavedCertificate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

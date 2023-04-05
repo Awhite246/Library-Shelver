@@ -1,156 +1,158 @@
 [
     {
-        "id": 0
+        "id": 000,
         "title": "The Black Hole Paradox",
         "dewey": 223.8,
         "author": "Parker"
     },
     {
-        "id": 0
+        "id": 001,
         "title": "Quantum Entanglement for Beginners",
         "dewey": 302.1,
         "author": "Mitchell"
     },
     {
-        "id": 0
+        "id": 002,
         "title": "The Time Traveler's Guide to the Universe",
         "dewey": 288.1,
         "author": "Green"
     },
     {
-        "id": 0
+        "id": 003,
         "title": "The Life and Death of Stars",
         "dewey": 400.1,
         "author": "Richards"
     },
     {
-        "id": 0
+        "id": 004,
         "title": "Quantum Multiverse",
         "dewey": 374.12,
         "author": "Patel"
     },
     {
-        "id": 0
+        "id": 005,
         "title": "Galactic Evolution",
         "dewey": 512.1,
         "author": "Wong"
     },
     {
-        "id": 0
+        "id": 006,
         "title": "The Fabric of Spacetime",
         "dewey": 512.1,
         "author": "Singh"
     },
     {
+        "id": 007,
         "title": "The Big Bang and Beyond",
         "dewey": 545.1,
         "author": "Chen"
     },
     {
-        "id": 0
+        "id": 008,
         "title": "Astrophotography, A Beginner's Guide",
         "dewey": 577.01,
         "author": "Reynolds"
     },
     {
-        "id": 0
+        "id": 009,
         "title": "Einstein's Theory of Relativity",
         "dewey": 577.12,
         "author": "Rodriguez"
     },
     {
-        "id": 0
+        "id": 010,
         "title": "Exploring the Cosmic Microwave Background",
         "dewey": 599.1,
         "author": "Lee"
     },
     {
-        "id": 0
+        "id": 011,
         "title": "Dark Matter, The Search Continues",
         "dewey": 612.8,
         "author": "Garcia"
     },
     {
-        "id": 0
+        "id": 012,
         "title": "Quantum Field Theory, An Introduction",
         "dewey": 633.12,
         "author": "Park"
     },
     {
-        "id": 0
+        "id": 013,
         "title": "Beyond the Event Horizon, A Journey into the Unknown",
         "dewey": 655.8,
         "author": "Kim"
     },
     {
-        "id": 0
+        "id": 014,
         "title": "Galactic Ecology, The Interconnectedness of Space and Life",
         "dewey": 655.1,
         "author": "Chen"
     },
     {
-        "id": 0
+        "id": 015,
         "title": "The Space-Time Conundrum, A Philosophical Exploration",
         "dewey": 677.12,
         "author": "Park"
     },
     {
-        "id": 0
+        "id": 016,
         "title": "Black Hole Paradox, What Happens to Information?",
         "dewey": 677.12,
         "author": "Lee"
     },
     {
-        "id": 0
+        "id": 017,
         "title": "The Multiverse Hypothesis, Is There More Than One Universe?",
         "dewey": 700.1,
         "author": "Chen"
     },
     {
-        "id": 0
+        "id": 018,
         "title": "Chasing the Gravitational Waves, A Personal Account",
         "dewey": 704.12,
         "author": "Mclaughlin"
     },
     {
-        "id": 0
+        "id": 019,
         "title": "Quantum Entanglement, The Mysterious Link between Particles",
         "dewey": 724.12,
         "author": "Goodman"
     },
     {
-        "id": 0
+        "id": 020,
         "title": "The Mysteries of Dark Matter, What We Don't Know",
         "dewey": 736.1,
         "author": "Burke"
     },
     {
+        "id": 021,
         "title": "Alien Contact, How Would We Communicate?",
         "dewey": 747.44,
         "author": "Bennett"
     },
     {
-        "id": 0
-        "title": "The Evolution of Stars, From Birth to Death",
-        "dewey": 777.1,
-        "author": "Fitzpatrick"
-    },
-    {
-        "id": 0
+        "id": 022,
         "title": "Navigating the Cosmos, A Guide to Space Travel",
         "dewey": 788.1,
         "author": "Scott"
     },
     {
-        "id": 0
+        "id": 023,
         "title": "The Search for Extraterrestrial Life, Are We Alone?",
         "dewey": 796.44,
         "author": "Prince"
     },
     {
-        "id": 0
+        "id": 024,
         "title": "Quantum Mind, How Consciousness Arises from Physics",
         "dewey": 800.12,
         "author": "Liu"
+    },
+    {
+        "id": 025,
+        "title": "The Evolution of Stars, From Birth to Death",
+        "dewey": 777.1,
+        "author": "Fitzpatrick"
     }
 ]

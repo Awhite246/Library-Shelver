@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var name = ""
     @State var submit = false
     @State var shake = false
+    @State var deweyList = [Book]()
     var body: some View {
         NavigationView {
             ZStack {
@@ -84,7 +85,7 @@ struct ContentView: View {
                         else {
                             VStack {
                                 NavigationLink {
-                                    DeweyView(name: name, certificateList: certificateList)
+                                    DeweyView(name: name, certificateList: certificateList, bookList: deweyList)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Dewey")
@@ -122,13 +123,23 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            deweyList = fillList()
             if !certificateList.certifcates.isEmpty {
                 name = certificateList.certifcates.last!.name
                 submit = true
             }
         }
     }
-    
+    func fillList() -> [Book] {
+        let bookInfo = deweyData.shuffled().prefix(7)
+        var bookInfoList = [Book]()
+        for info in bookInfo {
+            let isHalved = Bool.random()
+            let baseColor = colorList.randomElement()
+            bookInfoList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor!, color1: (isHalved ? colorList.randomElement() : baseColor)!, color2: (isHalved ? colorList.randomElement() : baseColor)!))
+        }
+        return bookInfoList
+    }
     func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
