@@ -20,12 +20,11 @@ struct Sticker: View {
                     .foregroundColor(.black)
                     .font(.system(size: 30).bold())
                 if dewey > -1 {
-                    Text("\(dewey)")
+                    Text("\(dewey, specifier: "%.2f")")
                         .foregroundColor(.black)
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
                         .padding(.top, 10)
-                    
                 } else {
                     Text("FIC")
                         .foregroundColor(.black)
@@ -33,7 +32,6 @@ struct Sticker: View {
                         .fontWeight(.semibold)
                         .padding(.top, 10)
                 }
-                
             }
         }
         .frame(width:70, height: 100)
