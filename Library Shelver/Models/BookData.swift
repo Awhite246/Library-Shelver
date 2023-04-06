@@ -63,6 +63,17 @@ var deweyData : [BookInfo] = [
     BookInfo(id: 23, title: "Cake Decorating", dewey: 641.86, author: "Adams")
 ]
 
+var fictionData : [BookInfo] = [
+    BookInfo(id: 0, title: "Ms. B's Book Club", dewey: -1, author: "Karam"),
+    BookInfo(id: 1, title: "Gona Fishing", dewey: -1, author: "Francis"),
+    BookInfo(id: 2, title: "The Mad Scientist", dewey: -1, author: "Turner"),
+    BookInfo(id: 3, title: "Superhero Book", dewey: -1, author: "Lundquist"),
+    BookInfo(id: 4, title: "When Pigs Fly", dewey: -1, author: "West"),
+    BookInfo(id: 5, title: "Sunshine Fairies", dewey: -1, author: "Carrell"),
+    BookInfo(id: 6, title: "The Red Queen", dewey: -1, author: "Gardner"),
+    BookInfo(id: 7, title: "A Magic Wand", dewey: -1, author: "Patel"),
+    BookInfo(id: 2, title: "Superhero Book", dewey: -1, author: "Lundquist"),
+]
     /*
     Book(bookTitle: "Wizard Book", bookColor: greenColor, authorName: "H. Abelson & G. Sussman", callID: "ABE", deweyDecimalNumber: 069.32), // 1
     Book(bookTitle: "Behind the Door", bookColor: greenColor, authorName: "Xavier Gonzales", callID: "GON", deweyDecimalNumber: 083.92), // 2

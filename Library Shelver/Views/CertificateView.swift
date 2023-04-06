@@ -13,7 +13,6 @@ struct CertificateView: View {
     @State var date = Date.now
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var savedCertificate = false
-    @ObservedObject var certificateList : CertificateList
     @State var type : String
     var body: some View {
         NavigationView {
@@ -94,6 +93,6 @@ struct CertificateView: View {
 
 struct CertificateView_Previews: PreviewProvider {
     static var previews: some View {
-        CertificateView(attempts: 1, name: "George", certificateList: CertificateList(), type: "Fiction")
+        CertificateView(attempts: 1, name: "George", type: "Fiction")
     }
 }

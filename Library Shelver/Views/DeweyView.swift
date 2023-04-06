@@ -84,7 +84,7 @@ struct DeweyView: View {
         )
         .fullScreenCover(isPresented: $showCertificate) {
             //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, date: date, certificateList: certificateList, type: "Non-Fiction")
+            CertificateView(attempts: attempts, name: name, date: date, type: "Non-Fiction")
         }
     }
     func delay(_ delay:Double, closure:@escaping ()->()) {

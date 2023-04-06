@@ -84,7 +84,7 @@ struct FictionView: View {
         )
         .fullScreenCover(isPresented: $showCertificate) {
             //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, date: date, certificateList: certificateList, type: "Fiction")
+            CertificateView(attempts: attempts, name: name, date: date, type: "Fiction")
         }
     }
     private func playSounds(sound: String) {

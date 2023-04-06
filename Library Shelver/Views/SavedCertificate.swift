@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SavedCertificate: View {
     @ObservedObject var certificateList : CertificateList
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack {
@@ -45,7 +44,7 @@ struct SavedCertificate: View {
                     .listRowBackground(Color("Peach"))
                     ForEach(certificateList.certifcates) { certificate in
                         NavigationLink {
-                            CertificateView(attempts: certificate.attempts, name: certificate.name, date: certificate.time, savedCertificate: true, certificateList: certificateList, type: certificate.type)
+                            CertificateView(attempts: certificate.attempts, name: certificate.name, date: certificate.time, savedCertificate: true, type: certificate.type)
                                 .navigationBarBackButtonHidden()
                         } label: {
                             HStack {
