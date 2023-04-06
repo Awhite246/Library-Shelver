@@ -15,12 +15,12 @@ struct Book : Identifiable {
     var width : CGFloat = 100
     var height: CGFloat = 300
     /*var textcolor: Color
-        var textfont: Font
-        var height: CGFloat
-        var width: CGFloat
-        var alignment: Alignment
-        var textbackcolor: Color
-        var corner: CGFloat
+     var textfont: Font
+     var height: CGFloat
+     var width: CGFloat
+     var alignment: Alignment
+     var textbackcolor: Color
+     var corner: CGFloat
      */
     
     var horizontal = false
@@ -61,18 +61,23 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 }
             }
             .frame(width: book.width, height: book.height)
+            .padding()
             VStack {
                 Text("\(book.info.author)")
+                    .font(.custom("AmericanTypewriter", fixedSize: 15))
+                    .minimumScaleFactor(1.0)
                     .multilineTextAlignment(.center)
                     .foregroundColor(book.barColor)
                     .fontWeight(.semibold)
+                    .padding()
                     .padding(.vertical, 1)
-                    .padding(.bottom, 35)
+                    .padding(.bottom, 1)
                     .colorInvert()
+                Spacer()
                 Text("\(book.info.title)")
-                    .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
-                    .frame(width: 100)
+                    .frame(width: 200)
+                    .font(.custom("AmericanTypewriter", fixedSize: 15))
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
                     .font(.title3)
@@ -80,8 +85,10 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 Spacer()
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
                     .padding(.vertical)
+                    
                 
             }
+            
         }
         .frame(width: book.width, height: book.height)
         .border(Color.black, width: 2)
