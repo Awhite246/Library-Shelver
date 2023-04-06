@@ -90,7 +90,7 @@ struct ContentView: View {
                                     DeweyView(name: name, certificateList: certificateList, bookList: deweyList)
                                         .navigationBarBackButtonHidden()
                                 } label: {
-                                    CustomButton(text: "Dewey")
+                                    CustomButton(text: "Non-Fiction")
                                 }
                                 .padding(.bottom, 5)
                                 NavigationLink {
