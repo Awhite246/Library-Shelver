@@ -23,12 +23,14 @@ struct SettingView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack {
+                    //Back button
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         BackButton()
                     }
                     Spacer()
+                    //Title
                     Text("Settings")
                         .fontWeight(.bold)
                         .font(.system(size: 50))
@@ -40,7 +42,7 @@ struct SettingView: View {
                     Spacer()
                 }
                 .padding(.top)
-                // add an alert here
+                //Remove Data Button
                 Button {
                     showingAlert = true
                    // certificateList.certifcates.removeAll()
@@ -48,6 +50,7 @@ struct SettingView: View {
                     CustomButton(text: "Clear Save")
                 }
                 .padding(.vertical)
+                //Change Name Button
                 if changeName {
                     VStack {
                         TextField("Enter your name here", text: $tempName)
@@ -88,6 +91,7 @@ struct SettingView: View {
                 }
                 Spacer()
             }
+            //Confirm Alert
             .alert(isPresented: $showingAlert){
                 Alert(
                     title: Text("Are you sure you want to CLEAR your saves?"),
