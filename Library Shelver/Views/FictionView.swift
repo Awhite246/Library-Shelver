@@ -41,6 +41,7 @@ struct FictionView: View {
                     attempts += 1
                     if correct {
                         date = Date.now
+                        certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: "iction"))
                         showCertificate = true
                         playSounds(sound: "winning")
                     } else {

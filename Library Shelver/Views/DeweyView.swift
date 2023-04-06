@@ -40,6 +40,7 @@ struct DeweyView: View {
                     attempts += 1
                     if correct {
                         date = Date.now
+                        certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: "Non-Fiction"))
                         showCertificate = true
                         playSounds(sound: "winning")
                     } else {

@@ -16,61 +16,77 @@ struct CertificateView: View {
     @ObservedObject var certificateList : CertificateList
     @State var type : String
     var body: some View {
-        ZStack {
-            Image("Wood Background")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-            Color("Peach")
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(height: 350)
-                .offset(x: -10, y: 10)
-            VStack {
-                Text("Congratulations!")
-                    .font(.system(size: 80))
-                    .foregroundColor(Color("Bistre"))
-                    .bold()
-                    .shadow(color: .yellow, radius: 50)
-                Group {
-                    Text(name)
-                        .font(.system(size: 40))
-                    Text("Has Completed the \(type) Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .padding(.bottom, 10)
-                    Button {
+        NavigationView {
+            ZStack {
+                Image("Wood Background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                Color("Peach")
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .frame(height: 350)
+                    .offset(x: -10, y: 10)
+                VStack {
+                    Text("Congratulations!")
+                        .font(.system(size: 80))
+                        .foregroundColor(Color("Bistre"))
+                        .bold()
+                        .shadow(color: .yellow, radius: 50)
+                    Group {
+                        Text(name)
+                            .font(.system(size: 40))
+                        Text("Has Completed the \(type) Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
+                            .multilineTextAlignment(.center)
+                            .font(.title)
+                            .padding(.bottom, 10)
                         if attempts > 0 && !savedCertificate {
-                            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: type))
-                        }
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        HStack {
-                            if attempts > 0 && !savedCertificate {
-                                Image(systemName: "arrow.counterclockwise.circle.fill")
-                                Text("Try Again?")
-                            } else {
-                                Image(systemName: "arrow.backward.square.fill")
-                                Text("Go Back")
+                            NavigationLink {
+                                ContentView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "arrow.counterclockwise.circle.fill")
+                                    Text("Try Again?")
+                                }
+                                .foregroundColor(Color("Peach"))
+                                .shadow(color: Color("Falu Red"),radius: 1)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(Color("Lion"))
+                                        .padding(.horizontal, -10)
+                                        .padding(.vertical, -5)
+                                }
                             }
+                            .padding(10)
+                            .font(.title2)
+                        } else {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "arrow.backward.square.fill")
+                                    Text("Go Back")
+                                    
+                                }
+                                .foregroundColor(Color("Peach"))
+                                .shadow(color: Color("Falu Red"),radius: 1)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(Color("Lion"))
+                                        .padding(.horizontal, -10)
+                                        .padding(.vertical, -5)
+                                }
+                            }
+                            .padding(10)
+                            .font(.title2)
                         }
-                        .foregroundColor(Color("Peach"))
-                        .shadow(color: Color("Falu Red"),radius: 1)
-                        .background {
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(Color("Lion"))
-                                .padding(.horizontal, -10)
-                                .padding(.vertical, -5)
-                        }
+                        Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
+                            .multilineTextAlignment(.center)
+                            .font(.title3)
                     }
-                    .padding(10)
-                    .font(.title2)
-                    
-                    Text("Completion Date:\n \(date.formatted(date: .abbreviated, time: .shortened))")
-                        .multilineTextAlignment(.center)
-                        .font(.title3)
+                    .foregroundColor(Color("Brown"))
+                    .fontWeight(.semibold)
                 }
-                .foregroundColor(Color("Brown"))
-                .fontWeight(.semibold)
             }
         }
     }
