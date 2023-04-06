@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var submitShake = false
     @State var settingShake = false
     @State var deweyList = [Book]()
+    @State var fictionList = [Book]()
     var body: some View {
         NavigationView {
             ZStack {
@@ -93,7 +94,7 @@ struct ContentView: View {
                                 }
                                 .padding(.bottom, 5)
                                 NavigationLink {
-                                    FictionView(name: name, certificateList: certificateList)
+                                    FictionView(name: name, certificateList: certificateList, bookList: fictionList)
                                         .navigationBarBackButtonHidden()
                                 } label: {
                                     CustomButton(text: "Fiction")
@@ -124,22 +125,34 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            deweyList = fillList()
+            deweyList = fillDeweyList()
+            fictionList = fillFictionList()
             if !certificateList.certifcates.isEmpty {
                 name = certificateList.certifcates.last!.name
                 submit = true
             }
         }
     }
-    func fillList() -> [Book] {
-        let bookInfo = deweyData.shuffled().prefix(7)
-        var bookInfoList = [Book]()
-        for info in bookInfo {
+    
+    func fillDeweyList() -> [Book] {
+        let deweyInfo = deweyData.shuffled().prefix(7)
+        var deweyList = [Book]()
+        for info in deweyInfo {
             let isHalved = Bool.random()
-            let baseColor = colorList.randomElement()
-            bookInfoList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor!, color1: (isHalved ? colorList.randomElement() : baseColor)!, color2: (isHalved ? colorList.randomElement() : baseColor)!))
+            let baseColor = colorList.randomElement()!
+            deweyList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
         }
-        return bookInfoList
+        return deweyList
+    }
+    func fillFictionList() -> [Book] {
+        let fictionInfo = fictionData.shuffled().prefix(7)
+        var fictonList = [Book]()
+        for info in fictionInfo {
+            let isHalved = Bool.random()
+            let baseColor = colorList.randomElement()!
+            fictonList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
+        }
+        return fictonList
     }
     func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
