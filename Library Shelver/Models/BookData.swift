@@ -72,7 +72,22 @@ var fictionData : [BookInfo] = [
     BookInfo(id: 5, title: "Sunshine Fairies", dewey: -1, author: "Carrell"),
     BookInfo(id: 6, title: "The Red Queen", dewey: -1, author: "Gardner"),
     BookInfo(id: 7, title: "A Magic Wand", dewey: -1, author: "Patel"),
-    BookInfo(id: 2, title: "Superhero Book", dewey: -1, author: "Lundquist"),
+    BookInfo(id: 8, title: "The Last Dragon Rider", dewey: -1, author: "Hawthorne"),
+    BookInfo(id: 9, title: "Enchantress's Curse", dewey: -1, author: "Stone"),
+    BookInfo(id: 10, title: "War of the Worlds", dewey: -1, author: "Wells"),
+    BookInfo(id: 11, title: "Ghost of Graystone Manor", dewey: -1, author: "Greene"),
+    BookInfo(id: 12, title: "Island of Dr. Moreau", dewey: -1, author: "Wells"),
+    BookInfo(id: 13, title: "Sherlock Holmes Mystery", dewey: -1, author: "Mitchell"),
+    BookInfo(id: 14, title: "Flying Dolphins with Lazers", dewey: -1, author: "Dantes"),
+    BookInfo(id: 15, title: "The Burnt Toast that Could", dewey: -1, author: "Backwood"),
+    BookInfo(id: 16, title: "Gandolf Becomes a Farmer", dewey: -1, author: "Hyde"),
+    BookInfo(id: 17, title: "Spooky Ghosts at Spooky Town", dewey: -1, author: "Irving"),
+    BookInfo(id: 18, title: "The Stone King", dewey: -1, author: "Grayson"),
+    BookInfo(id: 19, title: "Batman goes on Vacation", dewey: -1, author: "Wilde"),
+    BookInfo(id: 20, title: "Super Secret Mission 5", dewey: -1, author: "Tate"),
+    BookInfo(id: 21, title: "Super Secret Mission 3", dewey: -1, author: "Tate"),
+    BookInfo(id: 22, title: "The Invisible Man", dewey: -1, author: "Fenton"),
+    BookInfo(id: 23, title: "Ghost Hunter's Diary", dewey: -1, author: "Quinn")
 ]
     /*
     Book(bookTitle: "Wizard Book", bookColor: greenColor, authorName: "H. Abelson & G. Sussman", callID: "ABE", deweyDecimalNumber: 069.32), // 1
