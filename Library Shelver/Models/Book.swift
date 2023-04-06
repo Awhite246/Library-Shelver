@@ -67,9 +67,12 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                     .foregroundColor(book.barColor)
                     .fontWeight(.semibold)
                     .padding(.vertical, 1)
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 35)
                     .colorInvert()
                 Text("\(book.info.title)")
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(width: 100)
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
                     .font(.title3)
@@ -93,6 +96,6 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(info: BookInfo(id: 0, title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
+        BookView(book: Book(info: BookInfo(id: 0, title: "Countries of the World: Chile", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 80, height: 250))
     }
 }
