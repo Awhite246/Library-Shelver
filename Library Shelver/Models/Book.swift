@@ -86,6 +86,7 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
                     .padding(.vertical)
                     
+                    
                 
             }
             
