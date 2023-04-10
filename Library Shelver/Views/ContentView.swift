@@ -17,6 +17,27 @@ struct ContentView: View {
     @State var settingShake = false
     @State var deweyList = [Book]()
     @State var fictionList = [Book]()
+    @State var colorList : [Color] = [
+        Color(red: 251, green: 80, blue: 18), //Tangelo
+        Color(red: 1, green: 253, blue: 246), //Fluorescent cyan
+        Color(red: 203, green: 186, blue: 237), //Periwinkle
+        Color(red: 233, green: 233, blue: 0), //Aureolin
+        Color(red: 3, green: 252, blue: 186), //Aquamarine
+        Color(red: 42, green: 157, blue: 143), //Persian green
+        Color(red: 233, green: 196, blue: 106), //Saffron
+        Color(red: 244, green: 162, blue: 97), //Sandy Brown
+        Color(red: 231, green: 111, blue: 81), //Burnt sienna
+        Color(red: 34, green: 116, blue: 165), //UCLA Blue
+        Color(red: 247, green: 92, blue: 3), //Orange (Pantone)
+        Color(red: 241, green: 196, blue: 15), //Jonquil
+        Color(red: 217, green: 3, blue: 104), //Dogwood rose
+        Color(red: 0, green: 204, blue: 102), //Emerald
+        Color(red: 253, green: 197, blue: 245), //Pink lavender
+        Color(red: 247, green: 174, blue: 248), //Plum (web)
+        Color(red: 179, green: 136, blue: 235), //Lavender (floral)
+        Color(red: 128, green: 147, blue: 241), //Vista Blue
+        Color(red: 114, green: 221, blue: 247) //Sky blue
+    ]
     var body: some View {
         NavigationView {
             ZStack {

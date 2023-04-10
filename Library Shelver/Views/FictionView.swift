@@ -71,7 +71,7 @@ struct FictionView: View {
             .padding()
             ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
         }
-        .alert("Close One! Try it again. You Got This!", isPresented: $showingAlert){
+        .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
             Button("OK", role: .cancel) { }
         }
         .background(

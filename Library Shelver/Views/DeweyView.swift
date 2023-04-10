@@ -17,6 +17,7 @@ struct DeweyView: View {
     @State var showCertificate = false
     @State var date = Date.now
     @State private var showingAlert = false
+    @State var tryAgainMessage = ""
     let delayTime = DispatchTime.now
     
     @State var bookList = (0..<7).map { num in Book(info: BookInfo(id: 0, title: "Book \(num)", dewey: (Bool.random() ? Double(num) : 1.0), author: "\(num % 2 == 0 ? (Bool.random() ? "Dabbin" : "Dabage") : "Smith")"), width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) }
@@ -71,7 +72,7 @@ struct DeweyView: View {
             ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
             
         }
-        .alert("Close One! Try it again. You Got This!", isPresented: $showingAlert){
+        .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
             Button("OK", role: .cancel) { }
         }
         .background(
