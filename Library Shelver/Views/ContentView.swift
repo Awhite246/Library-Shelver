@@ -18,7 +18,6 @@ struct ContentView: View {
     @State var deweyList = [Book]()
     @State var fictionList = [Book]()
     @State var colorList : [Color] = [
-        Color(red: 251/255, green: 80/255, blue: 18/255), //Tangelo
         Color(red: 1/255, green: 253/255, blue: 246/255), //Fluorescent cyan
         Color(red: 203/255, green: 186/255, blue: 237/255), //Periwinkle
         Color(red: 233/255, green: 233/255, blue: 0), //Aureolin
@@ -28,9 +27,7 @@ struct ContentView: View {
         Color(red: 244/255, green: 162/255, blue: 97/255), //Sandy Brown
         Color(red: 231/255, green: 111/255, blue: 81/255), //Burnt sienna
         Color(red: 34/255, green: 116/255, blue: 165/255), //UCLA Blue
-        Color(red: 247/255, green: 92/255, blue: 3/255), //Orange (Pantone)
         Color(red: 241/255, green: 196/255, blue: 15/255), //Jonquil
-        Color(red: 217/255, green: 3/255, blue: 104/255), //Dogwood rose
         Color(red: 0, green: 204/255, blue: 102/255), //Emerald
         Color(red: 253/255, green: 197/255, blue: 245/255), //Pink lavender
         Color(red: 247/255, green: 174/255, blue: 248/255), //Plum (web)
