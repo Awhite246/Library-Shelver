@@ -49,13 +49,13 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 if book.horizontal {
                     VStack(spacing: 0) {
                         book.color1
-                        book.color2
+                        book.barColor
                     }
                 } else {
                     VStack {
                         HStack(spacing: 0) {
+                            book.barColor
                             book.color1
-                            book.color2
                         }
                     }
                 }
@@ -64,11 +64,10 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
             VStack {
                 Text("\(book.info.author)")
                     .multilineTextAlignment(.center)
-                    .foregroundColor(book.barColor)
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .padding(.vertical, 1)
                     .padding(.bottom, 50)
-                    .colorInvert()
                 Text("\(book.info.title)")
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
