@@ -88,6 +88,7 @@ struct CertificateView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

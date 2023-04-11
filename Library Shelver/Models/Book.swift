@@ -54,7 +54,7 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 } else {
                     VStack {
                         HStack(spacing: 0) {
-                            if Bool.random() {
+                            if book.horizontal {
                                 book.barColor
                                 book.color1
                             } else {
