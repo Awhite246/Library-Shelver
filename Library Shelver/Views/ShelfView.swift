@@ -30,114 +30,109 @@ struct ShelfView: View {
     @State var startingPos : CGFloat = 0 //Position of the first book
     
     var body: some View {
-        VStack {
-//            HStack {
-//                //Displays 'correct' when check == true, 'wrong' when check == false
-//                Text("\(check ? "Correct" : "Wrong")")
-//                    .foregroundColor(check ? .green : .red)
-//                Text("Attemps: \(timesChecked)")
-//                    .foregroundColor(.white)
-//            }
-//            .foregroundColor(.blue)
-//            .background(.black)
-            ZStack {
-                ForEach(0..<arraySize) { i in
-                    BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
-                        .position(x: bookList[i].xPosition, y: 300 - (bookList[i].height / 2))
-                        .zIndex(i == currentBook ? 10 : 0) //Makes sure currentBook is dislplayed ontop of all books
-                        .gesture( DragGesture()
-                            .onChanged { gesture in //When user is dragging on screen
-                                
-                                //Runs once, when book first starts getting dragged
-                                if currentBook < 0 {
-                                    //Update index storing values
-                                    currentBook = i
-                                    frontBook = i + 1
-                                    backBook = i - 1
+        GeometryReader { geometry in
+            let screenWidth = geometry.size.width
+            let screenHeight = geometry.size.height
+            VStack {
+                ZStack {
+                    ForEach(0..<arraySize) { i in
+                        BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
+                            .position(x: bookList[i].xPosition, y: 300 - (bookList[i].height / 2))
+                            .zIndex(i == currentBook ? 10 : 0) //Makes sure currentBook is dislplayed ontop of all books
+                            .gesture( DragGesture()
+                                .onChanged { gesture in //When user is dragging on screen
                                     
-                                    //Plays the sound
-                                    DispatchQueue.main.asyncAfter(deadline: .now()){
-                                        playSounds(sound: "click")
+                                    //Runs once, when book first starts getting dragged
+                                    if currentBook < 0 {
+                                        //Update index storing values
+                                        currentBook = i
+                                        frontBook = i + 1
+                                        backBook = i - 1
+                                        
+                                        //Plays the sound
+                                        DispatchQueue.main.asyncAfter(deadline: .now()){
+                                            playSounds(sound: "click")
                                             
+                                        }
+                                        
+                                        //Increases the dragged book size with an animation
+                                        withAnimation(.linear(duration: 0.05)) {
+                                            bookList[i].height += CGFloat(bookList[i].height / 15)
+                                            bookList[i].width += CGFloat(bookList[i].width / 15)
+                                        }
                                     }
                                     
-                                    //Increases the dragged book size with an animation
-                                    withAnimation(.linear(duration: 0.05)) {
-                                        bookList[i].height += CGFloat(bookList[i].height / 15)
-                                        bookList[i].width += CGFloat(bookList[i].width / 15)
-                                    }
-                                }
-                                
-                                //Checks if the book is the currentBook so only one book can be dragged at a time
-                                if i == currentBook {
-                                    bookList[i].xPosition = gesture.location.x //Updates the x position of the book
-                                }
-                                
-                                //Moving left
-                                if backBook >= 0 && bookList[i].xPosition - (bookList[i].width / 2) < bookList[backBook].xPosition { //Checks if the currentBook is halfway past the left book
-                                    withAnimation(.linear(duration: 0.1)) {
-                                        bookList[backBook].xPosition = startingPos + widthToLeft(index: backBook, includeCurrent: true) + (bookList[backBook].width / 2) //Moves the left book to where the currentBook used to be
+                                    //Checks if the book is the currentBook so only one book can be dragged at a time
+                                    if i == currentBook {
+                                        bookList[i].xPosition = gesture.location.x //Updates the x position of the book
                                     }
                                     
-                                    //Update index storing values
-                                    frontBook = backBook
-                                    backBook -= 1
-                                    
-                                    //Makes sure the left book index never equals the currentBook index
-                                    if backBook == currentBook {
+                                    //Moving left
+                                    if backBook >= 0 && bookList[i].xPosition - (bookList[i].width / 2) < bookList[backBook].xPosition { //Checks if the currentBook is halfway past the left book
+                                        withAnimation(.linear(duration: 0.1)) {
+                                            bookList[backBook].xPosition = startingPos + widthToLeft(index: backBook, includeCurrent: true) + (bookList[backBook].width / 2) //Moves the left book to where the currentBook used to be
+                                        }
+                                        
+                                        //Update index storing values
+                                        frontBook = backBook
                                         backBook -= 1
-                                    }
-                                }
-                                
-                                //Moving right
-                                if frontBook < arraySize && bookList[i].xPosition + (bookList[i].width / 2) > bookList[frontBook].xPosition { //Checks if the currentBook is halfway past the right book
-                                    withAnimation(.linear(duration: 0.1)) {
-                                        bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2) //Moves the right book to where the currentBook used to be
+                                        
+                                        //Makes sure the left book index never equals the currentBook index
+                                        if backBook == currentBook {
+                                            backBook -= 1
+                                        }
                                     }
                                     
-                                    //Update index storing values
-                                    backBook = frontBook
-                                    frontBook += 1
-                                    
-                                    //Makes sure the right book index never equals the currentBook index
-                                    if frontBook == currentBook {
+                                    //Moving right
+                                    if frontBook < arraySize && bookList[i].xPosition + (bookList[i].width / 2) > bookList[frontBook].xPosition { //Checks if the currentBook is halfway past the right book
+                                        withAnimation(.linear(duration: 0.1)) {
+                                            bookList[frontBook].xPosition = startingPos +  widthToLeft(index: frontBook) + (bookList[frontBook].width / 2) //Moves the right book to where the currentBook used to be
+                                        }
+                                        
+                                        //Update index storing values
+                                        backBook = frontBook
                                         frontBook += 1
+                                        
+                                        //Makes sure the right book index never equals the currentBook index
+                                        if frontBook == currentBook {
+                                            frontBook += 1
+                                        }
                                     }
                                 }
-                            }
-                                  
-                            .onEnded { _ in //When user releases touch from screen
-                                playSounds(sound: "click")
-                                //Resets the book height and width
-                                bookList[i].height -= CGFloat(bookList[i].height / 15)
-                                bookList[i].width -= CGFloat(bookList[i].width / 15)
-                                
-                                //Resets all index storing values
-                                currentBook = -1
-                                frontBook = -1
-                                backBook = -1
-                                
-                                sortByPosition()
-                                
-                                check = checkOrder()
-                            }
-                        )
+                                      
+                                .onEnded { _ in //When user releases touch from screen
+                                    playSounds(sound: "click")
+                                    //Resets the book height and width
+                                    bookList[i].height -= CGFloat(bookList[i].height / 15)
+                                    bookList[i].width -= CGFloat(bookList[i].width / 15)
+                                    
+                                    //Resets all index storing values
+                                    currentBook = -1
+                                    frontBook = -1
+                                    backBook = -1
+                                    
+                                    sortByPosition()
+                                    
+                                    check = checkOrder()
+                                }
+                            )
+                    }
                 }
             }
-        }
-        .onAppear {
-            //Calculates total width of all the books
-            for i in 0..<arraySize {
-                totalWidth += bookList[i].width
-                totalWidth += offSet
+            .onAppear {
+                //Calculates total width of all the books
+                for i in 0..<arraySize {
+                    totalWidth += bookList[i].width
+                    totalWidth += offSet
+                }
+                totalWidth -= offSet
+                startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
+                
+                bookList.shuffle()
+                sortByPosition()
+                
+                check = checkOrder()
             }
-            totalWidth -= offSet
-            startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
-            
-            bookList.shuffle()
-            sortByPosition()
-            
-            check = checkOrder()
         }
     }
     //Makes sure array isn't already sorted by chance (maybe not needed?)
