@@ -37,6 +37,10 @@ struct SavedCertificate: View {
                     HStack {
                         Text("Attempts")
                         Spacer()
+                        Text("Type")
+                            .padding(.trailing, 75)
+                            .padding(.leading, -75)
+                        Spacer()
                         Text("Completion Date")
                     }
                     .bold()
@@ -49,6 +53,8 @@ struct SavedCertificate: View {
                         } label: {
                             HStack {
                                 Text("\(certificate.attempts)")
+                                Spacer()
+                                Text("\(certificate.type)")
                                 Spacer()
                                 Text(" \(certificate.time.formatted(date: .abbreviated, time: .shortened))")
                             }

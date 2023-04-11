@@ -161,7 +161,7 @@ struct ContentView: View {
         for info in deweyInfo {
             let isHalved = Bool.random()
             let baseColor = colorList.randomElement()!
-            deweyList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
+            deweyList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: false, barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
         }
         return deweyList
     }
@@ -171,7 +171,7 @@ struct ContentView: View {
         for info in fictionInfo {
             let isHalved = Bool.random()
             let baseColor = colorList.randomElement()!
-            fictonList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
+            fictonList.append(Book(info: info, width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: false, barColor: baseColor, color1: (isHalved ? colorList.randomElement()! : baseColor), color2: (isHalved ? colorList.randomElement()! : baseColor)))
         }
         return fictonList
     }

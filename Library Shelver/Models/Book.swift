@@ -54,8 +54,13 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 } else {
                     VStack {
                         HStack(spacing: 0) {
-                            book.barColor
-                            book.color1
+                            if Bool.random() {
+                                book.barColor
+                                book.color1
+                            } else {
+                                book.color2
+                                book.barColor
+                            }
                         }
                     }
                 }
@@ -72,19 +77,21 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                     .padding()
                     .padding(.vertical, 1)
                     .padding(.bottom, 1)
-                    .colorInvert()
                 Spacer()
                 Text("\(book.info.title)")
                     .fixedSize(horizontal: false, vertical: true)
-                    .frame(width: 200)
+                    .frame(width: 120)
                     .font(.custom("AmericanTypewriter", fixedSize: 15))
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
                     .font(.title3)
                     .fontWeight(.semibold)
+                    .shadow(color: .white, radius: 1)
+                    .shadow(color: .white, radius: 1)
                 Spacer()
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
                     .padding(.vertical)
+                    .padding(.bottom, 6)
             }
             
         }
@@ -101,6 +108,6 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(info: BookInfo(id: 0, title: "Countries of the World: Chile", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 80, height: 250))
+        BookView(book: Book(info: BookInfo(id: 0, title: "Spooky Ghosts at Spooky Town", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 80, height: 250))
     }
 }
