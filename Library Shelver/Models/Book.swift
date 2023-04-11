@@ -15,12 +15,12 @@ struct Book : Identifiable {
     var width : CGFloat = 100
     var height: CGFloat = 300
     /*var textcolor: Color
-        var textfont: Font
-        var height: CGFloat
-        var width: CGFloat
-        var alignment: Alignment
-        var textbackcolor: Color
-        var corner: CGFloat
+     var textfont: Font
+     var height: CGFloat
+     var width: CGFloat
+     var alignment: Alignment
+     var textbackcolor: Color
+     var corner: CGFloat
      */
     
     var horizontal = false
@@ -61,14 +61,23 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 }
             }
             .frame(width: book.width, height: book.height)
+            .padding()
             VStack {
                 Text("\(book.info.author)")
+                    .font(.custom("AmericanTypewriter", fixedSize: 15))
+                    .minimumScaleFactor(1.0)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                     .fontWeight(.semibold)
+                    .padding()
                     .padding(.vertical, 1)
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 1)
+                    .colorInvert()
+                Spacer()
                 Text("\(book.info.title)")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(width: 200)
+                    .font(.custom("AmericanTypewriter", fixedSize: 15))
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
                     .font(.title3)
@@ -76,8 +85,8 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                 Spacer()
                 Sticker(author: book.info.author.prefix(3).uppercased(), dewey: book.info.dewey)
                     .padding(.vertical)
-                
             }
+            
         }
         .frame(width: book.width, height: book.height)
         .border(Color.black, width: 2)
@@ -92,6 +101,6 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView(book: Book(info: BookInfo(id: 0, title: "How to fry your eggs", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 100, height: 300))
+        BookView(book: Book(info: BookInfo(id: 0, title: "Countries of the World: Chile", dewey: 031.1, author: "Joseph"), xPosition: 0, width: 80, height: 250))
     }
 }
