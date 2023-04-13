@@ -37,7 +37,7 @@ struct ShelfView: View {
                 ZStack {
                     ForEach(0..<arraySize) { i in
                         BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
-                            .position(x: bookList[i].xPosition, y: 300 - (bookList[i].height / 2))
+                            .position(x: bookList[i].xPosition, y: screenHeight - (bookList[i].height / 2))
                             .zIndex(i == currentBook ? 10 : 0) //Makes sure currentBook is dislplayed ontop of all books
                             .gesture( DragGesture()
                                 .onChanged { gesture in //When user is dragging on screen
@@ -126,7 +126,7 @@ struct ShelfView: View {
                     totalWidth += offSet
                 }
                 totalWidth -= offSet
-                startingPos = (730 - totalWidth) / 2 //730 is width of iPhone 14 Pro, will need to change to work dynamically
+                startingPos = (screenWidth - totalWidth) / 2
                 
                 bookList.shuffle()
                 sortByPosition()
