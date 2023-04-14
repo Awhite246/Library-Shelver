@@ -126,7 +126,7 @@ struct ShelfView: View {
                     totalWidth += offSet
                 }
                 totalWidth -= offSet
-                startingPos = (screenWidth - totalWidth) / 2
+                startingPos = ((screenWidth - totalWidth) / 2) - 100
                 
                 bookList.shuffle()
                 sortByPosition()

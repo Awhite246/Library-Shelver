@@ -46,21 +46,14 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
             VStack(spacing: 0) {
                 book.barColor
                     .frame(height: 20)
-                if book.horizontal {
-                    VStack(spacing: 0) {
-                        book.color1
-                        book.barColor
-                    }
-                } else {
-                    VStack {
-                        HStack(spacing: 0) {
-                            if book.horizontal {
-                                book.barColor
-                                book.color1
-                            } else {
-                                book.color2
-                                book.barColor
-                            }
+                VStack {
+                    HStack(spacing: 0) {
+                        if book.horizontal {
+                            book.barColor
+                            book.color1
+                        } else {
+                            book.color2
+                            book.barColor
                         }
                     }
                 }
