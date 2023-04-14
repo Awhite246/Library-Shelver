@@ -30,7 +30,7 @@ struct HowToPlay: View {
                     Spacer()
                     Text("How To Play?")
                         .fontWeight(.bold)
-                        .font(.system(size: 40))
+                        .font(.system(size: 35))
                         .foregroundColor(Color("Bistre"))
                         .multilineTextAlignment(.center)
                     Spacer()
