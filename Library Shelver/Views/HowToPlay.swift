@@ -30,7 +30,7 @@ struct HowToPlay: View {
                     Spacer()
                     Text("How To Play?")
                         .fontWeight(.bold)
-                        .font(.system(size: 50))
+                        .font(.system(size: 40))
                         .foregroundColor(Color("Bistre"))
                         .multilineTextAlignment(.center)
                     Spacer()
@@ -38,14 +38,17 @@ struct HowToPlay: View {
                 .padding(.vertical, 5)
                 .padding(.top)
                 Text("""
-• There are two gamemodes: Dewey and Fiction
+Welcome to Library Shelver!
 
-• Drag the books to the correct order, then press the button CHECK
+In this game, there are two gamemodes: Dewey and Fiction.
 
-• Once you completed both games, you will recieve a certificate
+Drag the books to the correct order, then press the button CHECK
+
+Once you have completed both games, you will recieve a certificate of completion.
 
 """)
                 .fontWeight(.bold)
+                .font(.system(size: 25))
                 .font(.title)
                 .foregroundColor(Color("Bistre"))
             }
