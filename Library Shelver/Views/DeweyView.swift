@@ -79,8 +79,9 @@ struct DeweyView: View {
             ZStack {
                 Image("Shelf Background")
                     .resizable()
-                    .scaledToFill()
+                   // .scaledToFill()
                     .ignoresSafeArea()
+                    .frame(height: 850)
             }
         )
         .fullScreenCover(isPresented: $showCertificate) {
