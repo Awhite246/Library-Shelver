@@ -173,9 +173,6 @@ struct ContentView: View {
         }
         return fictonList
     }
-    if #available(iOS 11.0, *) {
-         self.additionalSafeAreaInsets.top = 20
-    } // ios 11 workthrough
     func playSounds(sound: String) {
         if let asset = NSDataAsset(name: sound){
             do {
