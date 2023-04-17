@@ -40,7 +40,7 @@ struct ContentView: View {
             ZStack {
                 Image("Wood Background 2")
                     .resizable()
-                    .scaledToFill()
+                    //.scaledToFill()
                     .ignoresSafeArea()
                 VStack {
                     HStack {
