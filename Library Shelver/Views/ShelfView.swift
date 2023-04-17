@@ -37,7 +37,7 @@ struct ShelfView: View {
                 ZStack {
                     ForEach(0..<arraySize) { i in
                         BookView(book: bookList[i]) //Displays a book with title, author, and dewy number. Book is horizontally draggable
-                            .position(x: bookList[i].xPosition, y: screenHeight - (bookList[i].height / 2))
+                            .position(x: bookList[i].xPosition, y: screenHeight - (bookList[i].height / 2) - 20)
                             .zIndex(i == currentBook ? 10 : 0) //Makes sure currentBook is dislplayed ontop of all books
                             .gesture( DragGesture()
                                 .onChanged { gesture in //When user is dragging on screen
@@ -126,7 +126,7 @@ struct ShelfView: View {
                     totalWidth += offSet
                 }
                 totalWidth -= offSet
-                startingPos = ((screenWidth - totalWidth) / 2) - 10
+                startingPos = ((screenWidth - totalWidth) / 2)
                 
                 bookList.shuffle()
                 sortByPosition()
@@ -134,6 +134,7 @@ struct ShelfView: View {
                 check = checkOrder()
             }
         }
+        .ignoresSafeArea()
     }
     //Makes sure array isn't already sorted by chance (maybe not needed?)
     private func fixPresortedArray() {

@@ -70,7 +70,6 @@ struct DeweyView: View {
             }
             .padding()
             ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
-                .padding(.trailing)
             
         }
         .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
