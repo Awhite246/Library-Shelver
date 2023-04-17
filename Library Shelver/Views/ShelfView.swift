@@ -51,7 +51,7 @@ struct ShelfView: View {
                                         
                                         //Plays the sound
                                         DispatchQueue.main.asyncAfter(deadline: .now()){
-                                            playSounds(sound: "click")
+                                            playSounds(sound: "clicks")
                                             
                                         }
                                         
@@ -101,7 +101,7 @@ struct ShelfView: View {
                                 }
                                       
                                 .onEnded { _ in //When user releases touch from screen
-                                    playSounds(sound: "click")
+                                    playSounds(sound: "clicks")
                                     //Resets the book height and width
                                     bookList[i].height -= CGFloat(bookList[i].height / 15)
                                     bookList[i].width -= CGFloat(bookList[i].width / 15)
