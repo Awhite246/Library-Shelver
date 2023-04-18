@@ -14,7 +14,6 @@ struct SavedCertificate: View {
         ZStack {
             Image("Wood Background 2")
                 .resizable()
-                .scaledToFill()
                 .ignoresSafeArea()
             VStack {
                 HStack {

@@ -19,12 +19,11 @@ struct CertificateView: View {
             ZStack {
                 Image("Wood Background")
                     .resizable()
-                    .scaledToFill()
                     .ignoresSafeArea()
                 Color("Peach")
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .frame(height: 350)
-                    .offset(x: -10, y: 10)
+                    .padding(.horizontal)
                 VStack {
                     Text("Congratulations!")
                         .font(.system(size: 80))

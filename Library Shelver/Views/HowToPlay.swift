@@ -13,12 +13,11 @@ struct HowToPlay: View {
         ZStack {
             Image("Wood Background 2")
                 .resizable()
-                .scaledToFill()
                 .ignoresSafeArea()
             Color("Peach")
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(height: 350)
-                .offset(x: -10, y: 10)
+                .padding(.horizontal)
             VStack {
                 HStack {
                     Button {
