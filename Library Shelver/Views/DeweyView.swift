@@ -78,19 +78,13 @@ struct DeweyView: View {
             }
             .background(
                 ZStack {
-                    Image("Shelf Background")
+                    Image("Wood Background 2")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                    .scaledToFill()
-                    .ignoresSafeArea()
+                        //.aspectRatio(contentMode: .fill)
+                        //.frame(width: geo.size.width, height: geo.size.height)
+                    //.scaledToFill()
+                        .ignoresSafeArea()
                     //.frame(height: 850)
-                }
-            )
-            .background(
-                ZStack {
-                    Color.brown
-                        .frame(width: 10000, height: 10000)
                 }
             )
             

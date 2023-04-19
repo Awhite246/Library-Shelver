@@ -76,11 +76,11 @@ struct FictionView: View {
         }
         .background(
             ZStack {
-                Image("Shelf Background")
+                Image("Wood Background 2")
                     .resizable()
                     //.scaledToFill()
                     .ignoresSafeArea()
-                    .frame(height: 850)
+                    //.frame(height: 850)
             }
         )
         .fullScreenCover(isPresented: $showCertificate) {
