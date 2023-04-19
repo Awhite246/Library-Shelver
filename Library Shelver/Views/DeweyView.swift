@@ -22,55 +22,57 @@ struct DeweyView: View {
     
     @State var bookList = (0..<7).map { num in Book(info: deweyData[num], width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) }
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    BackButton()
-                }
-                Spacer()
-                Text("Non-Fiction Sorter")
-                    .foregroundColor(Color("Peach"))
-                    .shadow(color: Color("Peach"), radius: 20)
-                    .fontWeight(.bold)
-                    .font(.title)
-                    .frame(alignment: .center)
-                Spacer()
-                Button {
-                    attempts += 1
-                    if correct {
-                        date = Date.now
-                        certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: "Non-Fiction"))
-                        showCertificate = true
-                        playSounds(sound: "winning")
-                    } else {
-                        playSounds(sound: "wrong")
-                        showingAlert = true
+        GeometryReader { geo in
+            VStack {
+                HStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        BackButton()
                     }
-                } label: {
-                    VStack (spacing: 0) {
-                        Image(systemName: "person.fill.checkmark")
-                            .resizable()
-                            .frame(width: 35, height: 25)
-                        HStack {
-                            Text("Check")
-                                .shadow(radius: 40)
-                                .font(.caption)
-                            Text("\(attempts)")
-                                .font(.system(size: 0))
-                                .hidden()
+                    Spacer()
+                    Text("Non-Fiction Sorter")
+                        .foregroundColor(Color("Peach"))
+                        .shadow(color: Color("Peach"), radius: 20)
+                        .fontWeight(.bold)
+                        .font(.title)
+                        .frame(alignment: .center)
+                    Spacer()
+                    Button {
+                        attempts += 1
+                        if correct {
+                            date = Date.now
+                            certificateList.certifcates.append(Certificate(attempts: attempts, name: name, time: date, type: "Non-Fiction"))
+                            showCertificate = true
+                            playSounds(sound: "winning")
+                        } else {
+                            playSounds(sound: "wrong")
+                            showingAlert = true
                         }
-                        
+                    } label: {
+                        VStack (spacing: 0) {
+                            Image(systemName: "person.fill.checkmark")
+                                .resizable()
+                                .frame(width: 35, height: 25)
+                            HStack {
+                                Text("Check")
+                                    .shadow(radius: 40)
+                                    .font(.caption)
+                                Text("\(attempts)")
+                                    .font(.system(size: 0))
+                                    .hidden()
+                            }
+                            
+                        }
+                        .foregroundColor(Color("Peach"))
                     }
-                    .foregroundColor(Color("Peach"))
+                    .offset(y: 5)
+                    
                 }
-                .offset(y: 5)
+                .padding()
+                ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
                 
             }
-            .padding()
-            ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
-            
         }
         .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
             Button("OK", role: .cancel) { }
