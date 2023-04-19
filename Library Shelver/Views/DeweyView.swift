@@ -73,22 +73,26 @@ struct DeweyView: View {
                 ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
                 
             }
-        }
-        .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
-            Button("OK", role: .cancel) { }
-        }
-        .background(
-            ZStack {
-                Image("Shelf Background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    //.frame(height: 850)
+            
+            .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
+                Button("OK", role: .cancel) { }
             }
-        )
-        .fullScreenCover(isPresented: $showCertificate) {
-            //When showCertifcate is true
-            CertificateView(attempts: attempts, name: name, date: date, type: "Non-Fiction")
+            .background(
+                ZStack {
+                    Image("Shelf Background")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                    //.scaledToFill()
+                    //.ignoresSafeArea()
+                    //.frame(height: 850)
+                }
+            )
+            
+            .fullScreenCover(isPresented: $showCertificate) {
+                //When showCertifcate is true
+                CertificateView(attempts: attempts, name: name, date: date, type: "Non-Fiction")
+            }
         }
     }
     func delay(_ delay:Double, closure:@escaping ()->()) {
