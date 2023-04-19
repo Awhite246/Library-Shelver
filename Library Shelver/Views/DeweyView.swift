@@ -88,6 +88,12 @@ struct DeweyView: View {
                     //.frame(height: 850)
                 }
             )
+            .background(
+                ZStack {
+                    Color.brown
+                        .frame(width: 10000, height: 10000)
+                }
+            )
             
             .fullScreenCover(isPresented: $showCertificate) {
                 //When showCertifcate is true
