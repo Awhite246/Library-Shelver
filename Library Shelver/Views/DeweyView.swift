@@ -73,7 +73,6 @@ struct DeweyView: View {
                 ShelfView(bookList: bookList, check: $correct) //displays the shelf of draggable books
                 
             }
-            
             .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
                 Button("OK", role: .cancel) { }
             }
@@ -83,8 +82,8 @@ struct DeweyView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: geo.size.width, height: geo.size.height)
-                    //.scaledToFill()
-                    //.ignoresSafeArea()
+                    .scaledToFill()
+                    .ignoresSafeArea()
                     //.frame(height: 850)
                 }
             )
@@ -126,5 +125,6 @@ struct DeweyView: View {
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {
         DeweyView(name : "George", certificateList: CertificateList())
+        
     }
 }
