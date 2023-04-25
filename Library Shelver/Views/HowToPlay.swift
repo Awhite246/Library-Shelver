@@ -19,6 +19,7 @@ struct HowToPlay: View {
                 .frame(height: 350)
                 .padding(.horizontal)
             VStack {
+                Spacer()
                 HStack {
                     Button {
                         presentationMode.wrappedValue.dismiss()
@@ -34,22 +35,15 @@ struct HowToPlay: View {
                         .multilineTextAlignment(.center)
                     Spacer()
                 }
-                .padding(.vertical, 5)
-                .padding(.top)
-                Text("""
-Welcome to Library Shelver!
-
-In this game, there are two gamemodes: Dewey and Fiction.
-
-Drag the books to the correct order, then press the button CHECK
-
-Once you have completed both games, you will recieve a certificate of completion.
-
-""")
-                .fontWeight(.bold)
-                .font(.system(size: 25))
-                .font(.title)
-                .foregroundColor(Color("Bistre"))
+                Text("Welcome to Library Shelver!\nIn this game, there are two gamemodes: Non-Fiction and Fiction.\nDrag the books to sort them numericaly and alphabetically.\nPress the button CHECK to check your answer.\nOnce you have completed either game, you will recieve a certificate of completion.\nGood Luck!!")
+                    .lineSpacing(10)
+                    .padding(.horizontal)
+                    .padding(.horizontal)
+                    .fontWeight(.bold)
+                    .font(.system(size: 25))
+                    .font(.title)
+                    .foregroundColor(Color("Bistre"))
+                Spacer()
             }
         }
     }
