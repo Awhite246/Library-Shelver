@@ -80,11 +80,8 @@ struct DeweyView: View {
                 ZStack {
                     Image("Wood Background 2")
                         .resizable()
-                        //.aspectRatio(contentMode: .fill)
-                        //.frame(width: geo.size.width, height: geo.size.height)
-                    //.scaledToFill()
                         .ignoresSafeArea()
-                    //.frame(height: 850)
+                    
                 }
             )
             
