@@ -63,7 +63,6 @@ struct SavedCertificate: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-                Spacer()
             }
         }
     }
