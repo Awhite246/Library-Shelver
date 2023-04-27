@@ -7,6 +7,11 @@
 
 import SwiftUI
 import AVFoundation
+
+extension Color {
+    static let AlertColor = Color(red: 1.0, green: 0.0, blue: 0.0)
+}
+
 struct DeweyView: View {
     let name : String
     @ObservedObject var certificateList : CertificateList
@@ -19,7 +24,6 @@ struct DeweyView: View {
     @State private var showingAlert = false
     @State var tryAgainMessage = ""
     let delayTime = DispatchTime.now
-    
     @State var bookList = (0..<7).map { num in Book(info: deweyData[num], width: CGFloat.random(in: 80...120), height: CGFloat.random(in: 250...300), horizontal: Bool.random(), barColor: Bool.random() ? .yellow : .green, color1: Bool.random() ? .blue : .cyan, color2: Bool.random() ? .blue : .cyan) }
     var body: some View {
         GeometryReader { geo in
@@ -76,6 +80,7 @@ struct DeweyView: View {
             .alert(tryAgainMessages.randomElement() ?? "Close One! Try it again. You Got This!", isPresented: $showingAlert){
                 Button("OK", role: .cancel) { }
             }
+            
             .background(
                 ZStack {
                     Image("Wood Background 2")
@@ -84,6 +89,7 @@ struct DeweyView: View {
                     
                 }
             )
+            
             
             .fullScreenCover(isPresented: $showCertificate) {
                 //When showCertifcate is true
@@ -111,8 +117,35 @@ struct DeweyView: View {
         }
     }
 }
-
-
+// https://stackoverflow.com/questions/63875176/swiftui-how-can-i-change-the-color-from-the-button-in-alert
+/*struct CustomAlert: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
+    @Binding var isPresented: Bool
+    var title: String
+    var bodyText: String
+    var buttonText: String
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                Text(title)
+                    .bold()
+                Text(bodyText)
+                Button(action: { self.isPresented = false}) {
+                    Text(buttonText)
+                        .foregroundColor(colorScheme == .light ? .blue : .green)
+                }
+            }
+            .padding(20)
+            .background(
+                Color.white
+                    .cornerRadius(10)
+            )
+        }
+    }
+}
+ */
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {
         DeweyView(name : "George", certificateList: CertificateList())
