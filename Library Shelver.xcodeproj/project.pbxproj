@@ -26,6 +26,7 @@
 		E3A5497529CC9078002931C3 /* SavedCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497429CC9078002931C3 /* SavedCertificate.swift */; };
 		E3A5497729DB1A5D002931C3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497629DB1A5D002931C3 /* SettingView.swift */; };
 		E3A5497929DC702B002931C3 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497829DC702B002931C3 /* BookData.swift */; };
+		E3BEB6762A0159F600F7659C /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEB6752A0159F600F7659C /* CustomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		E3A5497429CC9078002931C3 /* SavedCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCertificate.swift; sourceTree = "<group>"; };
 		E3A5497629DB1A5D002931C3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E3A5497829DC702B002931C3 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		E3BEB6752A0159F600F7659C /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				400743E02993FC89002A2EEB /* Buttons.swift */,
+				E3BEB6752A0159F600F7659C /* CustomAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			files = (
 				400743E12993FC89002A2EEB /* Buttons.swift in Sources */,
 				400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */,
+				E3BEB6762A0159F600F7659C /* CustomAlert.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
 				E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
