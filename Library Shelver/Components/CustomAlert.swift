@@ -13,32 +13,38 @@ struct CustomAlert: View {
     @State var message : String
     @State var backgroundColor : Color = Color.white
     var body: some View {
-        VStack {
-            Text(title)
-                .font(.title2).bold()
-                .foregroundColor(Color.black)
-            Text(message)
-                .foregroundColor(Color.black)
-                .padding(.bottom)
-            HStack {
-                //Left Button
-                Button {
-                    message += "Hi"
-                } label: {
-                    Text("Left Button")
+        ZStack {
+            //Used to check background visibility / opactiy testing
+            Color.red
+                .frame(width:50,height:50)
+            VStack {
+                Text(title)
+                    .font(.title2).bold()
+                    .foregroundColor(Color.black)
+                Text(message)
+                    .foregroundColor(Color.black)
+                    .padding(.bottom)
+                HStack {
+                    //Left Button
+                    Button {
+                        message += "Hi"
+                    } label: {
+                        Text("Left Button")
+                    }
+                    .padding(.horizontal)
+                    //Right Button
+                    Button {
+                        message.removeLast(2)
+                    } label: {
+                        Text("Right Button")
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                //Right Button
-                Button {
-                    message.removeLast(2)
-                } label: {
-                    Text("Right Button")
-                }
-                .padding(.horizontal)
             }
+            .padding(.all)
+            .background(RoundedRectangle(cornerRadius: 15).foregroundColor(backgroundColor))
+            .opacity(0.9)
         }
-        .padding(.all)
-        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(backgroundColor))
         .preferredColorScheme(.dark)
     }
 }
