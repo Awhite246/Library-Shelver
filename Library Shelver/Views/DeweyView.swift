@@ -119,32 +119,32 @@ struct DeweyView: View {
 }
 // https://stackoverflow.com/questions/63875176/swiftui-how-can-i-change-the-color-from-the-button-in-alert
 /*struct CustomAlert: View {
-    @Environment(\.colorScheme) private var colorScheme
-    
-    @Binding var isPresented: Bool
-    var title: String
-    var bodyText: String
-    var buttonText: String
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                Text(title)
-                    .bold()
-                Text(bodyText)
-                Button(action: { self.isPresented = false}) {
-                    Text(buttonText)
-                        .foregroundColor(colorScheme == .light ? .blue : .green)
-                }
-            }
-            .padding(20)
-            .background(
-                Color.white
-                    .cornerRadius(10)
-            )
-        }
-    }
-}
+ @Environment(\.colorScheme) private var colorScheme
+ 
+ @Binding var isPresented: Bool
+ var title: String
+ var bodyText: String
+ var buttonText: String
+ 
+ var body: some View {
+ ZStack {
+ VStack {
+ Text(title)
+ .bold()
+ Text(bodyText)
+ Button(action: { self.isPresented = false}) {
+ Text(buttonText)
+ .foregroundColor(colorScheme == .light ? .blue : .green)
+ }
+ }
+ .padding(20)
+ .background(
+ Color.white
+ .cornerRadius(10)
+ )
+ }
+ }
+ }
  */
 struct DeweyView_Previews: PreviewProvider {
     static var previews: some View {
