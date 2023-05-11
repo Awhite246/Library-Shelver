@@ -28,6 +28,7 @@ struct HowToPlay: View {
                     .offset(x: 50)
                     Spacer()
                     Text("How To Play?")
+                        .font(Font.custom("Baskerville", size: 35))
                         .fontWeight(.bold)
                         .font(.system(size: 35))
                         .foregroundColor(Color("Bistre"))
@@ -46,8 +47,9 @@ Drag the books to the correct order, then press the button CHECK
 Once you have completed both games, you will recieve a certificate of completion.
 
 """)
+                .font(Font.custom("Baskerville", size: 24))
                 .fontWeight(.bold)
-                .font(.system(size: 25))
+                .font(.system(size: 24))
                 .font(.title)
                 .foregroundColor(Color("Bistre"))
             }
