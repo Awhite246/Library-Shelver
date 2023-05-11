@@ -32,6 +32,7 @@ struct SettingView: View {
                     Spacer()
                     //Title
                     Text("Settings")
+                        .font(Font.custom("Baskerville", size: 70))
                         .fontWeight(.bold)
                         .font(.system(size: 50))
                         .foregroundColor(Color("Bistre"))
@@ -48,8 +49,6 @@ struct SettingView: View {
                    // certificateList.certifcates.removeAll()
                 } label: {
                     CustomButton(text: "Clear Save")
-                       
-                        .bold()
                 }
                 .padding(.vertical)
                 //Change Name Button

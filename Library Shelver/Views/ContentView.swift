@@ -76,6 +76,7 @@ struct ContentView: View {
                         if !submit {
                             VStack {
                                 TextField("Enter your name here", text: $name)
+                                    .font(Font.custom("Baskerville", size: 25))
                                     .multilineTextAlignment(.center)
                                     .font(.system(size: 25))
                                     .foregroundColor(Color("Falu Red"))
