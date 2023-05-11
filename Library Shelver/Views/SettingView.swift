@@ -48,7 +48,7 @@ struct SettingView: View {
                    // certificateList.certifcates.removeAll()
                 } label: {
                     CustomButton(text: "Clear Save")
-                        .font(Font.custom("Baskerville", size: 15))
+                       
                         .bold()
                 }
                 .padding(.vertical)
