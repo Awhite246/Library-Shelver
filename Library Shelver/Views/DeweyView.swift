@@ -36,6 +36,7 @@ struct DeweyView: View {
                     }
                     Spacer()
                     Text("Non-Fiction Sorter")
+                        .font(Font.custom("Baskerville", size: 40))
                         .foregroundColor(Color("Peach"))
                         .shadow(color: Color("Peach"), radius: 20)
                         .fontWeight(.bold)
