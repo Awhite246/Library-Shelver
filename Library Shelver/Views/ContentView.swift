@@ -47,12 +47,14 @@ struct ContentView: View {
                         Spacer()
                         Spacer()
                         Text("Library Shelver")
+                            .font(Font.custom("Baskerville", size: 55))
                             .fontWeight(.bold)
                             .font(.system(size: 50))
                             .foregroundColor(Color("Bistre"))
                             .shadow(color: Color("Peach"),radius: 10)
                             .shadow(color: Color("Peach"),radius: 2)
                             .multilineTextAlignment(.center)
+                        
                         Spacer()
                         NavigationLink {
                             SettingView(certificateList: certificateList, name: $name)
