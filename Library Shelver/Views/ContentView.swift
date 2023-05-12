@@ -35,12 +35,15 @@ struct ContentView: View {
         Color(red: 128/255, green: 147/255, blue: 241/255), //Vista Blue
         Color(red: 114/255, green: 221/255, blue: 247/255) //Sky blue
     ]
+    
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Image("Wood Background 2")
                     .resizable()
-                    //.scaledToFill()
+                //.scaledToFill()
                     .ignoresSafeArea()
                 VStack {
                     HStack {
@@ -63,13 +66,13 @@ struct ContentView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)
                                     .foregroundColor(Color("Peach"))
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 40, height: 40)
                                     .shadow(color: Color("Bistre"),radius: 15)
                                     .shadow(color: Color("Bistre"),radius: 5)
                                 Image(systemName: "gearshape.fill")
                                     .resizable()
                                     .foregroundColor(Color("Bistre"))
-                                    .frame(width: 25, height: 25)
+                                    .frame(width: 30, height: 30)
                             }
                         }
                         Spacer()
