@@ -16,7 +16,7 @@ struct HowToPlay: View {
                 .ignoresSafeArea()
             Color("Peach")
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(height: 350)
+                .frame(height: 360)
                 .padding(.horizontal)
             VStack {
                 Spacer()
@@ -29,6 +29,7 @@ struct HowToPlay: View {
                     .offset(x: 50)
                     Spacer()
                     Text("How To Play?")
+                        .font(Font.custom("Baskerville", size: 35))
                         .fontWeight(.bold)
                         .font(.system(size: 35))
                         .foregroundColor(Color("Bistre"))

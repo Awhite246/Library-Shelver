@@ -26,17 +26,21 @@ struct CertificateView: View {
                     .padding(.horizontal)
                 VStack {
                     Text("Congratulations!")
+                        .font(Font.custom("Baskerville", size: 80))
                         .font(.system(size: 80))
                         .foregroundColor(Color("Bistre"))
                         .bold()
                         .shadow(color: .yellow, radius: 50)
                     Group {
                         Text(name)
+                            .font(Font.custom("Baskerville", size: 50))
                             .font(.system(size: 40))
                         Text("Has Completed the \(type) Library Shelver in \n\(attempts) Attempt\(attempts > 1 ? "s" : "")")
                             .multilineTextAlignment(.center)
+                            .font(Font.custom("Baskerville", size: 28))
                             .font(.title)
                             .padding(.bottom, 10)
+                        
                         if attempts > 0 && !savedCertificate {
                             NavigationLink {
                                 ContentView()
@@ -45,6 +49,7 @@ struct CertificateView: View {
                                 HStack {
                                     Image(systemName: "arrow.counterclockwise.circle.fill")
                                     Text("Try Again?")
+                                        .font(Font.custom("Baskerville", size: 25))
                                 }
                                 .foregroundColor(Color("Peach"))
                                 .shadow(color: Color("Falu Red"),radius: 1)
