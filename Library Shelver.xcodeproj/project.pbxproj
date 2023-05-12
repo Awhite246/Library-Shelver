@@ -19,7 +19,6 @@
 		E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BFF43298D5F9D00F213D2 /* Book.swift */; };
 		E331CD1729B67A19009014C3 /* bookList.json in Resources */ = {isa = PBXBuildFile; fileRef = E331CD1629B67A19009014C3 /* bookList.json */; };
 		E331CD1B29B8E6CC009014C3 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E331CD1A29B8E6CC009014C3 /* Sticker.swift */; };
-		E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E331CD1E29C0C488009014C3 /* JSONreader.swift */; };
 		E34BD65A29CA0B22004DFE88 /* ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34BD65929CA0B22004DFE88 /* ShakeAnimation.swift */; };
 		E39DDAB529915ADC00D81486 /* ShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39DDAB429915ADC00D81486 /* ShelfView.swift */; };
 		E3A5497329CC8DA3002931C3 /* SaveCertifcate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */; };
@@ -43,7 +42,6 @@
 		E31BFF43298D5F9D00F213D2 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		E331CD1629B67A19009014C3 /* bookList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookList.json; sourceTree = "<group>"; };
 		E331CD1A29B8E6CC009014C3 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
-		E331CD1E29C0C488009014C3 /* JSONreader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONreader.swift; sourceTree = "<group>"; };
 		E34BD65929CA0B22004DFE88 /* ShakeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimation.swift; sourceTree = "<group>"; };
 		E39DDAB429915ADC00D81486 /* ShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfView.swift; sourceTree = "<group>"; };
 		E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCertifcate.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				E31BFF43298D5F9D00F213D2 /* Book.swift */,
 				E331CD1629B67A19009014C3 /* bookList.json */,
 				E331CD1A29B8E6CC009014C3 /* Sticker.swift */,
-				E331CD1E29C0C488009014C3 /* JSONreader.swift */,
 				E3A5497229CC8DA3002931C3 /* SaveCertifcate.swift */,
 				E34BD65929CA0B22004DFE88 /* ShakeAnimation.swift */,
 				E3A5497829DC702B002931C3 /* BookData.swift */,
@@ -214,7 +211,6 @@
 				400743E9299D3046002A2EEB /* HowToPlay.swift in Sources */,
 				E3BEB6762A0159F600F7659C /* CustomAlert.swift in Sources */,
 				E31BFF36298C11D400F213D2 /* ContentView.swift in Sources */,
-				E331CD1F29C0C489009014C3 /* JSONreader.swift in Sources */,
 				E31BFF34298C11D400F213D2 /* Library_ShelverApp.swift in Sources */,
 				E31BFF44298D5F9D00F213D2 /* Book.swift in Sources */,
 				E3A5497729DB1A5D002931C3 /* SettingView.swift in Sources */,
@@ -366,7 +362,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,7 +396,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

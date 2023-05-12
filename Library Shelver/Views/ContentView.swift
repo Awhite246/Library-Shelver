@@ -40,125 +40,126 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Image("Wood Background 2")
-                    .resizable()
-                //.scaledToFill()
-                    .ignoresSafeArea()
-                VStack {
-                    HStack {
-                        Spacer()
-                        Spacer()
-                        Text("Library Shelver")
-                            .font(Font.custom("Baskerville", size: 55))
-                            .fontWeight(.bold)
-                            .font(.system(size: 50))
-                            .foregroundColor(Color("Bistre"))
-                            .shadow(color: Color("Peach"),radius: 10)
-                            .shadow(color: Color("Peach"),radius: 2)
-                            .multilineTextAlignment(.center)
+            GeometryReader { geo in
+                ZStack {
+                    Image("Wood Background 2")
+                        .resizable()
+                    //.scaledToFill()
+                        .ignoresSafeArea()
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Spacer()
+                            Text("Library Shelver")
+                                .font(Font.custom("Baskerville", size: 55))
+                                .fontWeight(.bold)
+                                .font(.system(size: 50))
+                                .foregroundColor(Color("Bistre"))
+                                .shadow(color: Color("Peach"),radius: 10)
+                                .shadow(color: Color("Peach"),radius: 2)
+                                .multilineTextAlignment(.center)
+                            
+                            Spacer()
+                            NavigationLink {
+                                SettingView(certificateList: certificateList, name: $name)
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .foregroundColor(Color("Peach"))
+                                        .frame(width: 40, height: 40)
+                                        .shadow(color: Color("Bistre"),radius: 15)
+                                        .shadow(color: Color("Bistre"),radius: 5)
+                                    Image(systemName: "gearshape.fill")
+                                        .resizable()
+                                        .foregroundColor(Color("Bistre"))
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            Spacer()
+                        }
+                        ZStack {
+                            if !submit {
+                                VStack {
+                                    TextField("Enter your name here", text: $name)
+                                        .font(Font.custom("Baskerville", size: 25))
+                                        .multilineTextAlignment(.center)
+                                        .font(.system(size: 25))
+                                        .foregroundColor(Color("Falu Red"))
+                                        .padding()
+                                        .padding(.horizontal)
+                                        .background {
+                                            Color("Peach")
+                                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                .padding(.horizontal, 75)
+                                                .shadow(radius: 10)
+                                        }
+                                    Button {
+                                        if name.count > 1 {
+                                            submit = true
+                                        } else {
+                                            submitShake = true
+                                        }
+                                    } label: {
+                                        CustomButton(text: "Submit")
+                                    }
+                                    .shake($submitShake) {
+                                        print("Finished")
+                                    }
+                                    
+                                }
+                            }
+                            else {
+                                VStack {
+                                    NavigationLink {
+                                        DeweyView(name: name, certificateList: certificateList, bookList: deweyList)
+                                            .navigationBarBackButtonHidden()
+                                    } label: {
+                                        CustomButton(text: "Non-Fiction")
+                                    }
+                                    .padding(.bottom, 5)
+                                    NavigationLink {
+                                        FictionView(name: name, certificateList: certificateList, bookList: fictionList)
+                                            .navigationBarBackButtonHidden()
+                                    } label: {
+                                        CustomButton(text: "Fiction")
+                                    }
+                                }
+                                .disabled(name.count < 1)
+                            }
+                        }
+                        .padding(.bottom, 5)
                         
-                        Spacer()
-                        NavigationLink {
-                            SettingView(certificateList: certificateList, name: $name)
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .foregroundColor(Color("Peach"))
-                                    .frame(width: 40, height: 40)
-                                    .shadow(color: Color("Bistre"),radius: 15)
-                                    .shadow(color: Color("Bistre"),radius: 5)
-                                Image(systemName: "gearshape.fill")
-                                    .resizable()
-                                    .foregroundColor(Color("Bistre"))
-                                    .frame(width: 30, height: 30)
+                        HStack {
+                            NavigationLink {
+                                HowToPlay()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                CustomButton(text: "Help")
+                            }
+                            .padding(.horizontal, 55)
+                            NavigationLink {
+                                SavedCertificate(certificateList: certificateList)
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                CustomButton(text: "Certificate")
                             }
                         }
-                        Spacer()
+                        .padding(.bottom, 5)
                     }
-                    ZStack {
-                        if !submit {
-                            VStack {
-                                TextField("Enter your name here", text: $name)
-                                    .font(Font.custom("Baskerville", size: 25))
-                                    .multilineTextAlignment(.center)
-                                    .font(.system(size: 25))
-                                    .foregroundColor(Color("Falu Red"))
-                                    .padding()
-                                    .padding(.horizontal)
-                                    .background {
-                                        Color("Peach")
-                                            .clipShape(RoundedRectangle(cornerRadius: 15))
-                                            .padding(.horizontal, 75)
-                                            .shadow(radius: 10)
-                                    }
-                                Button {
-                                    if name.count > 1 {
-                                        submit = true
-                                    } else {
-                                        submitShake = true
-                                    }
-                                } label: {
-                                    CustomButton(text: "Submit")
-                                }
-                                .shake($submitShake) {
-                                    print("Finished")
-                                }
-                                
-                            }
-                        }
-                        else {
-                            VStack {
-                                NavigationLink {
-                                    DeweyView(name: name, certificateList: certificateList, bookList: deweyList)
-                                        .navigationBarBackButtonHidden()
-                                } label: {
-                                    CustomButton(text: "Non-Fiction")
-                                }
-                                .padding(.bottom, 5)
-                                NavigationLink {
-                                    FictionView(name: name, certificateList: certificateList, bookList: fictionList)
-                                        .navigationBarBackButtonHidden()
-                                } label: {
-                                    CustomButton(text: "Fiction")
-                                }
-                            }
-                            .disabled(name.count < 1)
-                        }
-                    }
-                    .padding(.bottom, 5)
-                    
-                    HStack {
-                        NavigationLink {
-                            HowToPlay()
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            CustomButton(text: "Help")
-                        }
-                        .padding(.horizontal, 55)
-                        NavigationLink {
-                            SavedCertificate(certificateList: certificateList)
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            CustomButton(text: "Certificate")
-                        }
-                    }
-                    .padding(.bottom, 5)
                 }
-            }
-            .onAppear {
-                deweyList = fillDeweyList()
-                fictionList = fillFictionList()
-                if !certificateList.certifcates.isEmpty {
-                    name = certificateList.certifcates.last!.name
-                    submit = true
+                .onAppear {
+                    deweyList = fillDeweyList()
+                    fictionList = fillFictionList()
+                    if !certificateList.certifcates.isEmpty {
+                        name = certificateList.certifcates.last!.name
+                        submit = true
+                    }
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
     func fillDeweyList() -> [Book] {
         let deweyInfo = deweyData.shuffled().prefix(7)
         var deweyList = [Book]()
