@@ -16,7 +16,7 @@ struct HowToPlay: View {
                 .ignoresSafeArea()
             Color("Peach")
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(height: 350)
+                .frame(height: 360)
                 .padding(.horizontal)
             VStack {
                 HStack {
