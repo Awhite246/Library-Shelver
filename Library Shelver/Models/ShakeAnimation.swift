@@ -2,8 +2,8 @@
 //  ShakeAnimation.swift
 //  Library Shelver
 //
-//  Created by Alistair White on 3/21/23.
-//
+//  Code by Luke Price on Stack Overflow
+// https://stackoverflow.com/questions/61619013/is-there-a-better-way-to-implement-a-shake-animation-in-swiftui
 import Foundation
 import SwiftUI
 
