@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var settingShake = false
     @State var deweyList = [Book]()
     @State var fictionList = [Book]()
+    //Colors used for books
     @State var colorList : [Color] = [
         Color(red: 1/255, green: 253/255, blue: 246/255), //Fluorescent cyan
         Color(red: 203/255, green: 186/255, blue: 237/255), //Periwinkle
@@ -35,8 +36,6 @@ struct ContentView: View {
         Color(red: 128/255, green: 147/255, blue: 241/255), //Vista Blue
         Color(red: 114/255, green: 221/255, blue: 247/255) //Sky blue
     ]
-    
-    
     
     var body: some View {
         NavigationView {
