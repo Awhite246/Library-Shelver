@@ -78,6 +78,7 @@ struct BookView: View { //var bookInfo : BookInfo //Book View displays an indivi
                     .multilineTextAlignment(.center)
                     .rotationEffect(Angle(degrees: 90))
                     .font(.title3)
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .shadow(color: .white, radius: 1)
                     .shadow(color: .white, radius: 1)
